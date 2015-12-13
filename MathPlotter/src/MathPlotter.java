@@ -42,10 +42,8 @@ public class MathPlotter {
 				case "cube":
 					plot(new MathCube());
 					break;
-				case "ende":
-					run = false;
-					return;
 				default:
+					IO.writeln(select + " not found");
 					break;
 				}
 			}
