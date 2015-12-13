@@ -9,42 +9,45 @@ public class MathPlotter {
 		while (run) {
 			String select = IO.promptAndRead("Funktion: ").toLowerCase();
 			if (select.equals("ende")) {
-				return;
-			}
-			start = IO.readDouble("Start: ");
-			range = IO.readDouble("Ende: ");
-			steps = IO.readDouble("Schritte: ");
-
-			switch (select) {
-			case "exp":
-				plot(new MathExp());
-				break;
-			case "sqrt":
-				plot(new MathSqrt());
-				break;
-			case "sin":
-				plot(new MathSin());
-				break;
-			case "cos":
-				plot(new MathCos());
-				break;
-			case "log":
-				plot(new MathLog());
-				break;
-			case "tan":
-				plot(new MathTan());
-				break;
-			case "square":
-				plot(new MathSquare());
-				break;
-			case "cube":
-				plot(new MathCube());
-				break;
-			case "ende":
 				run = false;
-				return;
-			default:
-				break;
+			}
+
+			if (run) {
+				start = IO.readDouble("Start: ");
+				range = IO.readDouble("Ende: ");
+				steps = IO.readDouble("Schritte: ");
+
+				switch (select) {
+				case "exp":
+					plot(new MathExp());
+					break;
+				case "sqrt":
+					plot(new MathSqrt());
+					break;
+				case "sin":
+					plot(new MathSin());
+					break;
+				case "cos":
+					plot(new MathCos());
+					break;
+				case "log":
+					plot(new MathLog());
+					break;
+				case "tan":
+					plot(new MathTan());
+					break;
+				case "square":
+					plot(new MathSquare());
+					break;
+				case "cube":
+					plot(new MathCube());
+					break;
+				case "ende":
+					run = false;
+					return;
+				default:
+					break;
+				}
 			}
 		}
 	}
