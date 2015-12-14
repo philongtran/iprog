@@ -5,8 +5,13 @@ public class Player {
 	private int x;
 	private int y;
 
-	public Player(String color, int x, int y) {
-		this.color = color;
+	public Player(int color, int x, int y) {
+		if (color == 1) {
+			this.color = "w";
+		}
+		if (color == 0) {
+			this.color = "b";
+		}
 		this.x = x;
 		this.y = y;
 	}
@@ -33,6 +38,10 @@ public class Player {
 
 	public int getY() {
 		return y;
+	}
+
+	public String getColor() {
+		return color;
 	}
 
 }
