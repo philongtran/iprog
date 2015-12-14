@@ -1,4 +1,4 @@
-
+import java.util.Arrays;
 import java.util.Calendar;
 
 /**
@@ -33,10 +33,18 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 	public static void main(String[] args) throws Exception {
 		Person person1 = new Person();
 		Person person2 = new Person();
-		IO.writeln(person1.toString());
-		IO.writeln(person2.toString());
+		Person[] personsArray = new Person[] { person1, person2 };
+		for (Person person : personsArray) {
+			IO.writeln(person.toString());
+		}
+		Arrays.sort(personsArray);
+		IO.writeln("Nach sortieren: ");
+		for (Person person : personsArray) {
+			IO.writeln(person.toString());
+		}
 		person1.compare(person2);
 		IO.writeln("" + person1.compareTo(person2));
+
 	}
 
 	public Person() throws Exception {
@@ -59,9 +67,10 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 	 */
 	@Override
 	public String toString() {
-		String personAsString = "Name: " + name + " Beruf: " + job + " Farbe: " + favoriteColor + " Tier: "
-				+ favoriteAnimal + " Alter: " + getAge() + " Körpergrösse: " + bodyHeight + ", " + bodyHeightDescription
-				+ ", Treename: " + nameTree;
+		String personAsString = "Name: " + name + " Beruf: " + job + " Farbe: "
+				+ favoriteColor + " Tier: " + favoriteAnimal + " Alter: "
+				+ getAge() + " Körpergrösse: " + bodyHeight + ", "
+				+ bodyHeightDescription + ", Treename: " + nameTree;
 		return personAsString;
 	}
 
@@ -85,9 +94,11 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 	 */
 	private void compare(Person otherPerson) {
 		int ageDifference = Math.abs(getAge() - otherPerson.getAge());
-		float bodyHeightDifference = Math.abs(this.bodyHeight - otherPerson.bodyHeight);
-		IO.writeln("Die Personen haben einen Altersunterschied von " + ageDifference
-				+ " Jahr(en) und einen Grössenunterschied von " + bodyHeightDifference + "cm");
+		float bodyHeightDifference = Math.abs(this.bodyHeight
+				- otherPerson.bodyHeight);
+		IO.writeln("Die Personen haben einen Altersunterschied von "
+				+ ageDifference + " Jahr(en) und einen Grössenunterschied von "
+				+ bodyHeightDifference + "cm");
 	}
 
 	@Override
