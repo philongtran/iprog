@@ -1,17 +1,13 @@
 
 public class Player {
 
-	private String color;
+	private int color;
 	private int x;
 	private int y;
 
-	public Player(int color, int x, int y) {
-		if (color == 1) {
-			this.color = "w";
-		}
-		if (color == 0) {
-			this.color = "b";
-		}
+	public Player(int x, int y, int color) {
+		this.color = color;
+		this.color = color;
 		this.x = x;
 		this.y = y;
 	}
@@ -40,7 +36,7 @@ public class Player {
 		return y;
 	}
 
-	public String getColor() {
+	public int getColor() {
 		return color;
 	}
 

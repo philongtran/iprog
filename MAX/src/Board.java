@@ -25,10 +25,21 @@ public class Board {
 	public void show() {
 		for (int y = 0; y < sizeY; y++) {
 			for (int x = 0; x < sizeX; x++) {
-				System.out.print(board[y][x] + " ");
+				if (board[y][x] == -1) {
+					System.out.print("b ");
+				} else if (board[y][x] == -2) {
+					System.out.print("w ");
+				} else {
+					System.out.print(board[y][x] + " ");
+				}
+
 			}
 			System.out.println();
 		}
+	}
+
+	public void set(int x, int y, int value) {
+		this.board[y][x] = value;
 	}
 
 }
