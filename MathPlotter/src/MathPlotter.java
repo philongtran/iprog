@@ -6,6 +6,13 @@ import static java.lang.Math.sin;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.tan;
 
+/**
+ * Is responsible for displaying the results of various math functions
+ * 
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
+ */
 public class MathPlotter {
 
 	private static double start = 0.0;
