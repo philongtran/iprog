@@ -26,9 +26,8 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 	private int childcnt;
 
 	/**
-	 * main method which creates the objects of the interactiveIO class and the
-	 * person classes. Afterwards it prints the the person to the console using
-	 * {@link #toString()} and does a simple compare of these two persons
+	 * Prompt user for creating two persons and do various actions (such as
+	 * comparing/cloning/sorting to them)
 	 */
 	public static void main(String[] args) throws Exception {
 		Person person1 = new Person();
