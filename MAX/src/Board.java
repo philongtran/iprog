@@ -42,4 +42,8 @@ public class Board {
 		this.board[y][x] = value;
 	}
 
+	public int getValue(int x, int y) {
+		return this.board[y][x];
+	}
+
 }
