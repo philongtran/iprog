@@ -1,3 +1,11 @@
+import static java.lang.Math.cos;
+import static java.lang.Math.exp;
+import static java.lang.Math.log;
+import static java.lang.Math.pow;
+import static java.lang.Math.sin;
+import static java.lang.Math.sqrt;
+import static java.lang.Math.tan;
+
 public class MathPlotter {
 
 	private static double start = 0.0;
@@ -19,31 +27,85 @@ public class MathPlotter {
 
 				switch (select) {
 				case "exp":
-					plot(new MathExp());
+					plot(new D2Method() {
+
+						@Override
+						public double compute(double value) {
+							return exp(value);
+						}
+					});
 					break;
 				case "sqrt":
-					plot(new MathSqrt());
+					plot(new D2Method() {
+
+						@Override
+						public double compute(double value) {
+							return sqrt(value);
+						}
+					});
 					break;
 				case "sin":
-					plot(new MathSin());
+					plot(new D2Method() {
+
+						@Override
+						public double compute(double value) {
+							return sin(value);
+						}
+					});
 					break;
 				case "cos":
-					plot(new MathCos());
+					plot(new D2Method() {
+
+						@Override
+						public double compute(double value) {
+							return cos(value);
+						}
+					});
 					break;
 				case "log":
-					plot(new MathLog());
+					plot(new D2Method() {
+
+						@Override
+						public double compute(double value) {
+							return log(value);
+						}
+					});
 					break;
 				case "tan":
-					plot(new MathTan());
+					plot(new D2Method() {
+
+						@Override
+						public double compute(double value) {
+							return tan(value);
+						}
+					});
 					break;
 				case "square":
-					plot(new MathSquare());
+					plot(new D2Method() {
+
+						@Override
+						public double compute(double value) {
+							return pow(value, 2);
+						}
+					});
 					break;
 				case "cube":
-					plot(new MathCube());
+					plot(new D2Method() {
+
+						@Override
+						public double compute(double value) {
+							return pow(value, 3);
+						}
+					});
 					break;
 				case "bisquare":
-					plot(new MathBiSquare());
+					plot(new D2Method() {
+
+						@Override
+						public double compute(double value) {
+							return pow(value, 4);
+						}
+					});
 					break;
 				default:
 					IO.writeln(select + " not found");
