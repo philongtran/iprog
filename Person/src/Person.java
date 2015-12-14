@@ -42,6 +42,8 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 		for (Person person : personsArray) {
 			IO.writeln(person.toString());
 		}
+		Person clonedPerson1 = (Person) person1.clone();
+		IO.writeln("Klon Person 1: " + clonedPerson1);
 		person1.compare(person2);
 		IO.writeln("" + person1.compareTo(person2));
 
