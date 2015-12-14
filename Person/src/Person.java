@@ -1,4 +1,4 @@
-
+import java.util.Arrays;
 import java.util.Calendar;
 
 /**
@@ -33,10 +33,27 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 	public static void main(String[] args) throws Exception {
 		Person person1 = new Person();
 		Person person2 = new Person();
-		IO.writeln(person1.toString());
-		IO.writeln(person2.toString());
+		Person[] personsArray = new Person[] { person1, person2 };
+		for (Person person : personsArray) {
+			IO.writeln(person.toString());
+		}
+		Arrays.sort(personsArray);
+		IO.writeln("Nach sortieren: ");
+		for (Person person : personsArray) {
+			IO.writeln(person.toString());
+		}
+		Person clonedPerson1 = (Person) person1.clone();
+		IO.writeln("Klon Person 1: " + clonedPerson1);
 		person1.compare(person2);
 		IO.writeln("" + person1.compareTo(person2));
+
+		IO.writeln("Person 2 wird als Kind von Person 1 eingetragen");
+		person1.addChild(person2);
+		person1.getChild(0).equals(person2);
+		IO.writeln("Person 1 hat " + person1.getChildCnt()
+				+ " Kind(er), Person 2 hat " + person2.getChildCnt()
+				+ " Kind(er)");
+
 	}
 
 	public Person() throws Exception {
@@ -59,9 +76,10 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 	 */
 	@Override
 	public String toString() {
-		String personAsString = "Name: " + name + " Beruf: " + job + " Farbe: " + favoriteColor + " Tier: "
-				+ favoriteAnimal + " Alter: " + getAge() + " Körpergrösse: " + bodyHeight + ", " + bodyHeightDescription
-				+ ", Treename: " + nameTree;
+		String personAsString = "Name: " + name + " Beruf: " + job + " Farbe: "
+				+ favoriteColor + " Tier: " + favoriteAnimal + " Alter: "
+				+ getAge() + " Körpergrösse: " + bodyHeight + ", "
+				+ bodyHeightDescription + ", Treename: " + nameTree;
 		return personAsString;
 	}
 
@@ -85,9 +103,11 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 	 */
 	private void compare(Person otherPerson) {
 		int ageDifference = Math.abs(getAge() - otherPerson.getAge());
-		float bodyHeightDifference = Math.abs(this.bodyHeight - otherPerson.bodyHeight);
-		IO.writeln("Die Personen haben einen Altersunterschied von " + ageDifference
-				+ " Jahr(en) und einen Grössenunterschied von " + bodyHeightDifference + "cm");
+		float bodyHeightDifference = Math.abs(this.bodyHeight
+				- otherPerson.bodyHeight);
+		IO.writeln("Die Personen haben einen Altersunterschied von "
+				+ ageDifference + " Jahr(en) und einen Grössenunterschied von "
+				+ bodyHeightDifference + "cm");
 	}
 
 	@Override
