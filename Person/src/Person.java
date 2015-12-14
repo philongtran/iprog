@@ -47,6 +47,13 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 		person1.compare(person2);
 		IO.writeln("" + person1.compareTo(person2));
 
+		IO.writeln("Person 2 wird als Kind von Person 1 eingetragen");
+		person1.addChild(person2);
+		person1.getChild(0).equals(person2);
+		IO.writeln("Person 1 hat " + person1.getChildCnt()
+				+ " Kind(er), Person 2 hat " + person2.getChildCnt()
+				+ " Kind(er)");
+
 	}
 
 	public Person() throws Exception {
