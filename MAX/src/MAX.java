@@ -16,7 +16,7 @@ public class MAX {
 		System.out.println("Score P1: " + player1.getScore());
 		board.show();
 
-		while (player1.getScore() <= 100 && player2.getScore() <= 100) {
+		while (player1.getScore() < 100 && player2.getScore() < 100) {
 			String input = IO.promptAndRead("i: ");
 			switch (input) {
 			case "w":
