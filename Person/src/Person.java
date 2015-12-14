@@ -52,17 +52,19 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 		person1.addChild(person2);
 		person1.addChild(person2);
 		person1.getChild(0).equals(person2);
-		IO.writeln("Person 1 hat " + person1.getChildCnt() + " Kind(er), Person 2 hat " + person2.getChildCnt()
+		IO.writeln("Person 1 hat " + person1.getChildCnt()
+				+ " Kind(er), Person 2 hat " + person2.getChildCnt()
 				+ " Kind(er)");
 
 	}
 
-	public Person(String name, String job, String color, String animal, int year, float bodyHeight) {
+	public Person(String name, String job, String color, String animal,
+			int year, float bodyHeight) {
 		this.name = name;
 		this.job = job;
-		favoriteColor = color;
-		favoriteAnimal = animal;
-		birthyear = year;
+		this.favoriteColor = color;
+		this.favoriteAnimal = animal;
+		this.birthyear = year;
 		this.bodyHeight = bodyHeight;
 		this.bodyHeightDescription = analyzeBodyHeight();
 		this.CAPACITY = 1;
@@ -72,8 +74,9 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 	}
 
 	public Person() throws Exception {
-		this(IO.promptAndRead("Name:"), IO.promptAndRead("Beruf:"), IO.promptAndRead("Farbe:"),
-				IO.promptAndRead("Tier:"), IO.readInt("Geburstsjahr: "), IO.readFloat("Körpergrösse: "));
+		this(IO.promptAndRead("Name:"), IO.promptAndRead("Beruf:"), IO
+				.promptAndRead("Farbe:"), IO.promptAndRead("Tier:"), IO
+				.readInt("Geburstsjahr: "), IO.readFloat("Körpergrösse: "));
 	}
 
 	/**
@@ -81,9 +84,10 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 	 */
 	@Override
 	public String toString() {
-		String personAsString = "Name: " + name + " Beruf: " + job + " Farbe: " + favoriteColor + " Tier: "
-				+ favoriteAnimal + " Alter: " + getAge() + " Körpergrösse: " + bodyHeight + ", " + bodyHeightDescription
-				+ ", Treename: " + nameTree;
+		String personAsString = "Name: " + name + " Beruf: " + job + " Farbe: "
+				+ favoriteColor + " Tier: " + favoriteAnimal + " Alter: "
+				+ getAge() + " Körpergrösse: " + bodyHeight + ", "
+				+ bodyHeightDescription + ", Treename: " + nameTree;
 		return personAsString;
 	}
 
@@ -107,9 +111,11 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 	 */
 	private void compare(Person otherPerson) {
 		int ageDifference = Math.abs(getAge() - otherPerson.getAge());
-		float bodyHeightDifference = Math.abs(this.bodyHeight - otherPerson.bodyHeight);
-		IO.writeln("Die Personen haben einen Altersunterschied von " + ageDifference
-				+ " Jahr(en) und einen Grössenunterschied von " + bodyHeightDifference + "cm");
+		float bodyHeightDifference = Math.abs(this.bodyHeight
+				- otherPerson.bodyHeight);
+		IO.writeln("Die Personen haben einen Altersunterschied von "
+				+ ageDifference + " Jahr(en) und einen Grössenunterschied von "
+				+ bodyHeightDifference + "cm");
 	}
 
 	@Override
@@ -149,7 +155,8 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
-		Person clonedPerson = new Person(this.name, this.job, this.favoriteColor, this.favoriteAnimal, this.birthyear,
+		Person clonedPerson = new Person(this.name, this.job,
+				this.favoriteColor, this.favoriteAnimal, this.birthyear,
 				this.bodyHeight);
 		return clonedPerson;
 	}
