@@ -135,8 +135,14 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 
 	@Override
 	public int compareTo(Person arg0) {
-		int ageDifference = Math.abs(getAge() - arg0.getAge());
-		return ageDifference;
+		int ageDifference = getAge() - arg0.getAge();
+		if (ageDifference > 0) {
+			return 1;
+		} else if (ageDifference < 0) {
+			return -1;
+		} else {
+			return 0;
+		}
 	}
 
 }
