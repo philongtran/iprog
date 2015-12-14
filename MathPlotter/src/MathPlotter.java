@@ -42,6 +42,9 @@ public class MathPlotter {
 				case "cube":
 					plot(new MathCube());
 					break;
+				case "bisquare":
+					plot(new MathBiSquare());
+					break;
 				default:
 					IO.writeln(select + " not found");
 					break;
