@@ -1,9 +1,6 @@
 
 public class MAX {
 
-	int oldPositionX;
-	int oldPositionY;
-
 	public static void main(String[] args) throws Exception {
 		int oldPositionX;
 		int oldPositionY;
