@@ -57,7 +57,7 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 
   }
 
-  public Person(String name, String job, String color, String animal, int year, float bodyHeight) {
+  private Person(String name, String job, String color, String animal, int year, float bodyHeight) {
     this.name = name;
     this.job = job;
     this.favoriteColor = color;
@@ -148,7 +148,7 @@ public class Person implements Cloneable, Comparable<Person>, SimpleTreeNode {
 
   @Override
   protected Person clone() throws CloneNotSupportedException {
-    return new Person(this.name, this.job, this.favoriteColor, this.favoriteAnimal, this.birthyear, this.bodyHeight);
+    return (Person) super.clone();
   }
 
 }
