@@ -5,6 +5,7 @@ public class Player {
 	private int x;
 	private int y;
 	private int score;
+	private boolean active;
 
 	public Player(int x, int y, int color) {
 		this.color = color;
@@ -12,6 +13,7 @@ public class Player {
 		this.x = x;
 		this.y = y;
 		this.score = 0;
+		this.active = false;
 	}
 
 	public void moveUp() {
@@ -48,6 +50,22 @@ public class Player {
 
 	public int getScore() {
 		return score;
+	}
+
+	public boolean getActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public void toggleActive() {
+		if (this.active) {
+			this.active = false;
+		} else {
+			this.active = true;
+		}
 	}
 
 }
