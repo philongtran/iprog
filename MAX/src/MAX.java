@@ -12,7 +12,7 @@ public class MAX {
 		Board board = new Board(8, 8);
 		board.set(player1.getX(), player1.getY(), player1.getColor());
 		board.set(player2.getX(), player2.getY(), player2.getColor());
-		System.out.println("Score P1: " + player1.getScore() + " Score P2: " + player2.getScore());
+		System.out.print("Score B: " + player1.getScore() + " Score W: " + player2.getScore() + " | ");
 		System.out.println("Black to move");
 		board.show();
 
@@ -33,7 +33,7 @@ public class MAX {
 					board.set(oldPositionX, oldPositionY, 0);
 					player2.moveUp();
 					player2.addScore(board.getValue(player2.getX(), player2.getY()));
-					board.set(player2.getX(), player2.getY(), -1);
+					board.set(player2.getX(), player2.getY(), -2);
 				}
 				player1.toggleActive();
 				player2.toggleActive();
@@ -52,7 +52,7 @@ public class MAX {
 					board.set(oldPositionX, oldPositionY, 0);
 					player2.moveDown();
 					player2.addScore(board.getValue(player2.getX(), player2.getY()));
-					board.set(player2.getX(), player2.getY(), -1);
+					board.set(player2.getX(), player2.getY(), -2);
 				}
 				player1.toggleActive();
 				player2.toggleActive();
@@ -71,7 +71,7 @@ public class MAX {
 					board.set(oldPositionX, oldPositionY, 0);
 					player2.moveLeft();
 					player2.addScore(board.getValue(player2.getX(), player2.getY()));
-					board.set(player2.getX(), player2.getY(), -1);
+					board.set(player2.getX(), player2.getY(), -2);
 				}
 				player1.toggleActive();
 				player2.toggleActive();
@@ -90,13 +90,13 @@ public class MAX {
 					board.set(oldPositionX, oldPositionY, 0);
 					player2.moveRight();
 					player2.addScore(board.getValue(player2.getX(), player2.getY()));
-					board.set(player2.getX(), player2.getY(), -1);
+					board.set(player2.getX(), player2.getY(), -2);
 				}
 				player1.toggleActive();
 				player2.toggleActive();
 				break;
 			}
-			System.out.println("Score P1: " + player1.getScore() + " Score P2: " + player2.getScore());
+			System.out.print("Score B: " + player1.getScore() + " Score W: " + player2.getScore() + " | ");
 			if (player1.getActive()) {
 				System.out.println("Black to move");
 			} else {
