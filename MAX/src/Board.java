@@ -46,4 +46,12 @@ public class Board {
 		return this.board[y][x];
 	}
 
+	public int getSizeX() {
+		return this.sizeX;
+	}
+
+	public int getSizeY() {
+		return this.sizeY;
+	}
+
 }
