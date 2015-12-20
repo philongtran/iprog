@@ -9,7 +9,6 @@ public class Player {
 
 	public Player(int x, int y, int color) {
 		this.color = color;
-		this.color = color;
 		this.x = x;
 		this.y = y;
 		this.score = 0;
