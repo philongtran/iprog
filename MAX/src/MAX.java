@@ -32,8 +32,8 @@ public class MAX {
 		// initialize the board and its size
 		board = new Board(8, 8);
 		// plants the players on the board
-		board.set(player1.getX(), player1.getY(), player1.getColor());
-		board.set(player2.getX(), player2.getY(), player2.getColor());
+		board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
+		board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
 		// prints the score on the screen and which players turn it is
 		System.out.print("Score B: " + player1.getScore() + " Score W: " + player2.getScore() + " | ");
 		System.out.println("Black to move");
@@ -56,13 +56,13 @@ public class MAX {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player1.getX();
 						oldPositionY = player1.getY();
-						board.set(oldPositionX, oldPositionY, 0);
+						board.setPlayer(oldPositionX, oldPositionY, 0);
 						// moves the player up
 						player1.moveUp();
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(), player1.getY()));
 						// marks the field to be player owned
-						board.set(player1.getX(), player1.getY(), -1);
+						board.setPlayer(player1.getX(), player1.getY(), -1);
 						// switches turns
 						togglePlayer();
 					} else {
@@ -77,13 +77,13 @@ public class MAX {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player2.getX();
 						oldPositionY = player2.getY();
-						board.set(oldPositionX, oldPositionY, 0);
+						board.setPlayer(oldPositionX, oldPositionY, 0);
 						// moves the player up
 						player2.moveUp();
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(), player2.getY()));
 						// marks the field to be player owned
-						board.set(player2.getX(), player2.getY(), -2);
+						board.setPlayer(player2.getX(), player2.getY(), -2);
 						// switches turns
 						togglePlayer();
 					} else {
@@ -102,13 +102,13 @@ public class MAX {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player1.getX();
 						oldPositionY = player1.getY();
-						board.set(oldPositionX, oldPositionY, 0);
+						board.setPlayer(oldPositionX, oldPositionY, 0);
 						// moves the player down
 						player1.moveDown();
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(), player1.getY()));
 						// marks the field to be player owned
-						board.set(player1.getX(), player1.getY(), -1);
+						board.setPlayer(player1.getX(), player1.getY(), -1);
 						// switches turns
 						togglePlayer();
 					} else {
@@ -123,13 +123,13 @@ public class MAX {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player2.getX();
 						oldPositionY = player2.getY();
-						board.set(oldPositionX, oldPositionY, 0);
+						board.setPlayer(oldPositionX, oldPositionY, 0);
 						// moves the player down
 						player2.moveDown();
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(), player2.getY()));
 						// marks the field to be player owned
-						board.set(player2.getX(), player2.getY(), -2);
+						board.setPlayer(player2.getX(), player2.getY(), -2);
 						// switches turns
 						togglePlayer();
 					} else {
@@ -148,13 +148,13 @@ public class MAX {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player1.getX();
 						oldPositionY = player1.getY();
-						board.set(oldPositionX, oldPositionY, 0);
+						board.setPlayer(oldPositionX, oldPositionY, 0);
 						// moves the player left
 						player1.moveLeft();
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(), player1.getY()));
 						// marks the field to be player owned
-						board.set(player1.getX(), player1.getY(), -1);
+						board.setPlayer(player1.getX(), player1.getY(), -1);
 						// switches turns
 						togglePlayer();
 					} else {
@@ -169,13 +169,13 @@ public class MAX {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player2.getX();
 						oldPositionY = player2.getY();
-						board.set(oldPositionX, oldPositionY, 0);
+						board.setPlayer(oldPositionX, oldPositionY, 0);
 						// moves the player left
 						player2.moveLeft();
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(), player2.getY()));
 						// marks the field to be player owned
-						board.set(player2.getX(), player2.getY(), -2);
+						board.setPlayer(player2.getX(), player2.getY(), -2);
 						// switches turns
 						togglePlayer();
 					} else {
@@ -194,13 +194,13 @@ public class MAX {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player1.getX();
 						oldPositionY = player1.getY();
-						board.set(oldPositionX, oldPositionY, 0);
+						board.setPlayer(oldPositionX, oldPositionY, 0);
 						// moves the player left
 						player1.moveRight();
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(), player1.getY()));
 						// marks the field to be player owned
-						board.set(player1.getX(), player1.getY(), -1);
+						board.setPlayer(player1.getX(), player1.getY(), -1);
 						// switches turns
 						togglePlayer();
 					} else {
@@ -215,13 +215,13 @@ public class MAX {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player2.getX();
 						oldPositionY = player2.getY();
-						board.set(oldPositionX, oldPositionY, 0);
+						board.setPlayer(oldPositionX, oldPositionY, 0);
 						// moves the player left
 						player2.moveRight();
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(), player2.getY()));
 						// marks the field to be player owned
-						board.set(player2.getX(), player2.getY(), -2);
+						board.setPlayer(player2.getX(), player2.getY(), -2);
 						// switches turns
 						togglePlayer();
 					} else {

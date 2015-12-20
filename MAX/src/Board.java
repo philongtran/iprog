@@ -73,7 +73,7 @@ public class Board {
 	 *            enter the value in the x,y coordinate
 	 * 
 	 */
-	public void set(int x, int y, int value) {
+	public void setPlayer(int x, int y, int value) {
 		this.board[y][x] = value;
 	}
 
