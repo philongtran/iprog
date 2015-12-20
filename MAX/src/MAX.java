@@ -62,7 +62,7 @@ public class MAX {
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(), player1.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), -1);
+						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -83,7 +83,7 @@ public class MAX {
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(), player2.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), -2);
+						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -108,7 +108,7 @@ public class MAX {
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(), player1.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), -1);
+						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -129,7 +129,7 @@ public class MAX {
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(), player2.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), -2);
+						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -154,7 +154,7 @@ public class MAX {
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(), player1.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), -1);
+						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -175,7 +175,7 @@ public class MAX {
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(), player2.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), -2);
+						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -200,7 +200,7 @@ public class MAX {
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(), player1.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), -1);
+						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -221,7 +221,7 @@ public class MAX {
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(), player2.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), -2);
+						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
