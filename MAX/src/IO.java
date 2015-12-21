@@ -54,34 +54,122 @@ public class IO {
 	}
 
 	public static int readInt(String s) throws Exception {
-		return Integer.parseInt(promptAndReadWithTrim(s));
+		boolean ok;
+		int i = 0;
+		do
+			try {
+				i = Integer.parseInt(promptAndReadWithTrim(s));
+				ok = false;
+			} catch (NumberFormatException e) {
+				writeln("NAN");
+				ok = true;
+			}
+		while (ok);
+		return i;
 	}
 
 	public static long readLong(String s) throws Exception {
-		return Long.parseLong(promptAndReadWithTrim(s));
+		boolean ok;
+		long i = 0;
+		do
+			try {
+				i = Long.parseLong(promptAndReadWithTrim(s));
+				ok = false;
+			} catch (NumberFormatException e) {
+				writeln("NAN");
+				ok = true;
+			}
+		while (ok);
+		return i;
 	}
 
 	public static byte readByte(String s) throws Exception {
-		return Byte.parseByte(promptAndReadWithTrim(s));
+		boolean ok;
+		byte i = 0;
+		do
+			try {
+				i = Byte.parseByte(promptAndReadWithTrim(s));
+				ok = false;
+			} catch (NumberFormatException e) {
+				writeln("NAN");
+				ok = true;
+			}
+		while (ok);
+		return i;
 	}
 
 	public static short readShort(String s) throws Exception {
-		return Short.parseShort(promptAndReadWithTrim(s));
+		boolean ok;
+		short i = 0;
+		do
+			try {
+				i = Short.parseShort(promptAndReadWithTrim(s));
+				ok = false;
+			} catch (NumberFormatException e) {
+				writeln("NAN");
+				ok = true;
+			}
+		while (ok);
+		return i;
 	}
 
 	public static double readDouble(String question) throws Exception {
-		return Double.parseDouble(promptAndReadWithTrim(question));
+		boolean ok;
+		double i = 0;
+		do
+			try {
+				i = Double.parseDouble(promptAndReadWithTrim(question));
+				ok = false;
+			} catch (NumberFormatException e) {
+				writeln("NAN");
+				ok = true;
+			}
+		while (ok);
+		return i;
 	}
 
 	public static float readFloat(String s) throws Exception {
-		return Float.parseFloat(promptAndReadWithTrim(s));
+		boolean ok;
+		float i = 0;
+		do
+			try {
+				i = Float.parseFloat(promptAndReadWithTrim(s));
+				ok = false;
+			} catch (NumberFormatException e) {
+				writeln("NAN");
+				ok = true;
+			}
+		while (ok);
+		return i;
 	}
 
 	public static BigInteger readBigInt(String s) throws IOException {
-		return new BigInteger(promptAndReadWithTrim(s));
+		boolean ok;
+		BigInteger i = new BigInteger("0");
+		do
+			try {
+				i = new BigInteger(promptAndReadWithTrim(s));
+				ok = false;
+			} catch (NumberFormatException e) {
+				writeln("NAN");
+				ok = true;
+			}
+		while (ok);
+		return i;
 	}
 
 	public static BigDecimal readBigDecimal(String s) throws IOException {
-		return new BigDecimal(promptAndReadWithTrim(s));
+		boolean ok;
+		BigDecimal i = new BigDecimal("0");
+		do
+			try {
+				i = new BigDecimal(promptAndReadWithTrim(s));
+				ok = false;
+			} catch (NumberFormatException e) {
+				writeln("NAN");
+				ok = true;
+			}
+		while (ok);
+		return i;
 	}
 }
