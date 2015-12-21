@@ -50,7 +50,13 @@ public class IO {
 	}
 
 	private static String promptAndReadWithTrim(String question) throws IOException {
-		return promptAndRead(question).trim();
+		String i = "";
+		try {
+			i = promptAndRead(question).trim();
+		} catch (IOException e) {
+			System.out.println("IOException");
+		}
+		return i;
 	}
 
 	public static int readInt(String s) throws Exception {
