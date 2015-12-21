@@ -51,9 +51,9 @@ public class Board {
 		for (int y = 0; y < sizeY; y++) {
 			for (int x = 0; x < sizeX; x++) {
 				if (board[y][x] == -1) {
-					System.out.print("b ");
+					System.out.print("B ");
 				} else if (board[y][x] == -2) {
-					System.out.print("w ");
+					System.out.print("W ");
 				} else {
 					System.out.print(board[y][x] + " ");
 				}
