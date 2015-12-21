@@ -25,7 +25,7 @@ public class MAX {
 							// player
 		int scoreLimit = 105; // sets the score limit of the game
 
-		// set starting position of the players and who's active
+		// set starting position and color of the players and who's active
 		player1 = new Player(4, 3, -1);
 		player1.setActive(true);
 		player2 = new Player(3, 4, -2);
