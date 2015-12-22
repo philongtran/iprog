@@ -20,22 +20,7 @@ public class MAX {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		// set starting position and color of the players and who's active
-		player1 = new Player(4, 3, -1);
-		player1.setActive(true);
-		player2 = new Player(3, 4, -2);
-		player2.setActive(false);
-		// initialize the board and its size
-		board = new Board(8, 8);
-		// plants the players on the board
-		board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
-		board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
-		// prints the score on the screen and which players turn it is
-		System.out.print("Score B: " + player1.getScore() + " Score W: "
-				+ player2.getScore() + " | ");
-		System.out.println("Black to move");
-		// prints the board on the screen
-		board.show();
+		initializeGame();
 
 		// runs while players are below score
 		while (player1.getScore() < SCORELIMIT
@@ -253,6 +238,25 @@ public class MAX {
 			// prints the board on the screen
 			board.show();
 		}
+	}
+
+	private static void initializeGame() {
+		// set starting position and color of the players and who's active
+		player1 = new Player(4, 3, -1);
+		player1.setActive(true);
+		player2 = new Player(3, 4, -2);
+		player2.setActive(false);
+		// initialize the board and its size
+		board = new Board(8, 8);
+		// plants the players on the board
+		board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
+		board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
+		// prints the score on the screen and which players turn it is
+		System.out.print("Score B: " + player1.getScore() + " Score W: "
+				+ player2.getScore() + " | ");
+		System.out.println("Black to move");
+		// prints the board on the screen
+		board.show();
 	}
 
 	/**
