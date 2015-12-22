@@ -12,10 +12,6 @@ public class MAX {
 	private static Player player2;
 	private static Board board;
 	private static final int SCORELIMIT = 105;
-	private static final String RIGHT = "d";
-	private static final String LEFT = "a";
-	private static final String DOWN = "s";
-	private static final String UP = "w";
 
 	/**
 	 * main method of the game
@@ -30,9 +26,9 @@ public class MAX {
 		while (player1.getScore() < SCORELIMIT
 				&& player2.getScore() < SCORELIMIT) {
 			// reads keyboard input to move the active player
-			String input = IO.promptAndRead("i: ");
+			Direction direction = Direction.of(IO.promptAndRead("i: "));
 			// cases which are allowed
-			switch (input) {
+			switch (direction) {
 			// moves the player up
 			case UP:
 				// checks which players turn it is
@@ -212,6 +208,8 @@ public class MAX {
 						break;
 					}
 				}
+				break;
+			default:
 				break;
 			}
 			// prints the score on the screen
