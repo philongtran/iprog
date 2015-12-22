@@ -11,6 +11,7 @@ public class MAX {
 	private static Player player1; // player 1
 	private static Player player2; // player 2
 	private static Board board; // board
+	private static final int SCORELIMIT = 105;
 
 	/**
 	 * main method of the game
@@ -22,8 +23,6 @@ public class MAX {
 		int oldPositionX; // temporary holder of the old x position of the
 							// player
 		int oldPositionY; // temporary holder of the old y position of the
-							// player
-		int scoreLimit = 105; // sets the score limit of the game
 
 		// set starting position and color of the players and who's active
 		player1 = new Player(4, 3, -1);
@@ -43,8 +42,8 @@ public class MAX {
 		board.show();
 
 		// runs while players are below score
-		while (player1.getScore() < scoreLimit
-				&& player2.getScore() < scoreLimit) {
+		while (player1.getScore() < SCORELIMIT
+				&& player2.getScore() < SCORELIMIT) {
 			// reads keyboard input to move the active player
 			String input = IO.promptAndRead("i: ");
 			// cases which are allowed
@@ -264,15 +263,15 @@ public class MAX {
 					+ player2.getScore() + " | ");
 			// if scores of the players are below the score limit prints on the
 			// screen which players turn it is
-			if (player1.getActive() && player1.getScore() < scoreLimit
-					&& player2.getScore() < scoreLimit) {
+			if (player1.getActive() && player1.getScore() < SCORELIMIT
+					&& player2.getScore() < SCORELIMIT) {
 				System.out.println("Black to move");
-			} else if (player2.getActive() && player1.getScore() < scoreLimit
-					&& player2.getScore() < scoreLimit) {
+			} else if (player2.getActive() && player1.getScore() < SCORELIMIT
+					&& player2.getScore() < SCORELIMIT) {
 				System.out.println("White to move");
 			} else {
 				// otherwise prints on the screen who won
-				if (player1.getScore() >= scoreLimit) {
+				if (player1.getScore() >= SCORELIMIT) {
 					System.out.println("Black wins");
 				} else {
 					System.out.println("White wins");
