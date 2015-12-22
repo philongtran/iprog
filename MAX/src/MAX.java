@@ -36,13 +36,15 @@ public class MAX {
 		board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
 		board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
 		// prints the score on the screen and which players turn it is
-		System.out.print("Score B: " + player1.getScore() + " Score W: " + player2.getScore() + " | ");
+		System.out.print("Score B: " + player1.getScore() + " Score W: "
+				+ player2.getScore() + " | ");
 		System.out.println("Black to move");
 		// prints the board on the screen
 		board.show();
 
 		// runs while players are below score
-		while (player1.getScore() < scoreLimit && player2.getScore() < scoreLimit) {
+		while (player1.getScore() < scoreLimit
+				&& player2.getScore() < scoreLimit) {
 			// reads keyboard input to move the active player
 			String input = IO.promptAndRead("i: ");
 			// cases which are allowed
@@ -53,7 +55,8 @@ public class MAX {
 				if (player1.getActive()) {
 					// out of bounds and collision check
 					if (player1.getY() - 1 >= 0
-							&& !(player1.getX() == player2.getX() && player1.getY() - 1 == player2.getY())) {
+							&& !(player1.getX() == player2.getX() && player1
+									.getY() - 1 == player2.getY())) {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player1.getX();
 						oldPositionY = player1.getY();
@@ -61,9 +64,11 @@ public class MAX {
 						// moves the player up
 						player1.moveUp();
 						// add the value of the board to the score
-						player1.addScore(board.getValue(player1.getX(), player1.getY()));
+						player1.addScore(board.getValue(player1.getX(),
+								player1.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
+						board.setPlayer(player1.getX(), player1.getY(),
+								player1.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -74,7 +79,8 @@ public class MAX {
 				} else {
 					// out of bounds and collision check
 					if (player2.getY() - 1 >= 0
-							&& !(player1.getX() == player2.getX() && player1.getY() == player2.getY() - 1)) {
+							&& !(player1.getX() == player2.getX() && player1
+									.getY() == player2.getY() - 1)) {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player2.getX();
 						oldPositionY = player2.getY();
@@ -82,9 +88,11 @@ public class MAX {
 						// moves the player up
 						player2.moveUp();
 						// add the value of the board to the score
-						player2.addScore(board.getValue(player2.getX(), player2.getY()));
+						player2.addScore(board.getValue(player2.getX(),
+								player2.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
+						board.setPlayer(player2.getX(), player2.getY(),
+								player2.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -99,7 +107,8 @@ public class MAX {
 				if (player1.getActive()) {
 					// out of bounds and collision check
 					if (player1.getY() + 1 < board.getSizeY()
-							&& !(player1.getX() == player2.getX() && player1.getY() + 1 == player2.getY())) {
+							&& !(player1.getX() == player2.getX() && player1
+									.getY() + 1 == player2.getY())) {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player1.getX();
 						oldPositionY = player1.getY();
@@ -107,9 +116,11 @@ public class MAX {
 						// moves the player down
 						player1.moveDown();
 						// add the value of the board to the score
-						player1.addScore(board.getValue(player1.getX(), player1.getY()));
+						player1.addScore(board.getValue(player1.getX(),
+								player1.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
+						board.setPlayer(player1.getX(), player1.getY(),
+								player1.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -120,7 +131,8 @@ public class MAX {
 				} else {
 					// out of bounds and collision check
 					if (player2.getY() + 1 < board.getSizeY()
-							&& !(player1.getX() == player2.getX() && player1.getY() == player2.getY() + 1)) {
+							&& !(player1.getX() == player2.getX() && player1
+									.getY() == player2.getY() + 1)) {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player2.getX();
 						oldPositionY = player2.getY();
@@ -128,9 +140,11 @@ public class MAX {
 						// moves the player down
 						player2.moveDown();
 						// add the value of the board to the score
-						player2.addScore(board.getValue(player2.getX(), player2.getY()));
+						player2.addScore(board.getValue(player2.getX(),
+								player2.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
+						board.setPlayer(player2.getX(), player2.getY(),
+								player2.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -145,7 +159,8 @@ public class MAX {
 				if (player1.getActive()) {
 					// out of bounds and collision check
 					if (player1.getX() - 1 >= 0
-							&& !(player1.getX() - 1 == player2.getX() && player1.getY() == player2.getY())) {
+							&& !(player1.getX() - 1 == player2.getX() && player1
+									.getY() == player2.getY())) {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player1.getX();
 						oldPositionY = player1.getY();
@@ -153,9 +168,11 @@ public class MAX {
 						// moves the player left
 						player1.moveLeft();
 						// add the value of the board to the score
-						player1.addScore(board.getValue(player1.getX(), player1.getY()));
+						player1.addScore(board.getValue(player1.getX(),
+								player1.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
+						board.setPlayer(player1.getX(), player1.getY(),
+								player1.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -166,7 +183,8 @@ public class MAX {
 				} else {
 					// out of bounds and collision check
 					if (player2.getX() - 1 >= 0
-							&& !(player1.getX() == player2.getX() - 1 && player1.getY() == player2.getY())) {
+							&& !(player1.getX() == player2.getX() - 1 && player1
+									.getY() == player2.getY())) {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player2.getX();
 						oldPositionY = player2.getY();
@@ -174,9 +192,11 @@ public class MAX {
 						// moves the player left
 						player2.moveLeft();
 						// add the value of the board to the score
-						player2.addScore(board.getValue(player2.getX(), player2.getY()));
+						player2.addScore(board.getValue(player2.getX(),
+								player2.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
+						board.setPlayer(player2.getX(), player2.getY(),
+								player2.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -191,7 +211,8 @@ public class MAX {
 				if (player1.getActive()) {
 					// out of bounds and collision check
 					if (player1.getX() + 1 < board.getSizeX()
-							&& !(player1.getX() + 1 == player2.getX() && player1.getY() == player2.getY())) {
+							&& !(player1.getX() + 1 == player2.getX() && player1
+									.getY() == player2.getY())) {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player1.getX();
 						oldPositionY = player1.getY();
@@ -199,9 +220,11 @@ public class MAX {
 						// moves the player left
 						player1.moveRight();
 						// add the value of the board to the score
-						player1.addScore(board.getValue(player1.getX(), player1.getY()));
+						player1.addScore(board.getValue(player1.getX(),
+								player1.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
+						board.setPlayer(player1.getX(), player1.getY(),
+								player1.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -212,7 +235,8 @@ public class MAX {
 				} else {
 					// out of bounds and collision check
 					if (player2.getX() + 1 < board.getSizeX()
-							&& !(player1.getX() == player2.getX() + 1 && player1.getY() == player2.getY())) {
+							&& !(player1.getX() == player2.getX() + 1 && player1
+									.getY() == player2.getY())) {
 						// saves the old position of the player and sets it to 0
 						oldPositionX = player2.getX();
 						oldPositionY = player2.getY();
@@ -220,9 +244,11 @@ public class MAX {
 						// moves the player left
 						player2.moveRight();
 						// add the value of the board to the score
-						player2.addScore(board.getValue(player2.getX(), player2.getY()));
+						player2.addScore(board.getValue(player2.getX(),
+								player2.getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
+						board.setPlayer(player2.getX(), player2.getY(),
+								player2.getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -234,12 +260,15 @@ public class MAX {
 				break;
 			}
 			// prints the score on the screen
-			System.out.print("Score B: " + player1.getScore() + " Score W: " + player2.getScore() + " | ");
+			System.out.print("Score B: " + player1.getScore() + " Score W: "
+					+ player2.getScore() + " | ");
 			// if scores of the players are below the score limit prints on the
 			// screen which players turn it is
-			if (player1.getActive() && player1.getScore() < scoreLimit && player2.getScore() < scoreLimit) {
+			if (player1.getActive() && player1.getScore() < scoreLimit
+					&& player2.getScore() < scoreLimit) {
 				System.out.println("Black to move");
-			} else if (player2.getActive() && player1.getScore() < scoreLimit && player2.getScore() < scoreLimit) {
+			} else if (player2.getActive() && player1.getScore() < scoreLimit
+					&& player2.getScore() < scoreLimit) {
 				System.out.println("White to move");
 			} else {
 				// otherwise prints on the screen who won
