@@ -12,6 +12,10 @@ public class MAX {
 	private static Player player2;
 	private static Board board;
 	private static final int SCORELIMIT = 105;
+	private static final String RIGHT = "d";
+	private static final String LEFT = "a";
+	private static final String DOWN = "s";
+	private static final String UP = "w";
 
 	/**
 	 * main method of the game
@@ -30,7 +34,7 @@ public class MAX {
 			// cases which are allowed
 			switch (input) {
 			// moves the player up
-			case "w":
+			case UP:
 				// checks which players turn it is
 				if (player1.getActive()) {
 					// out of bounds and collision check
@@ -76,7 +80,7 @@ public class MAX {
 					}
 				}
 				break;
-			case "s":
+			case DOWN:
 				// checks which players turn it is
 				if (player1.getActive()) {
 					// out of bounds and collision check
@@ -84,7 +88,6 @@ public class MAX {
 							&& !(player1.getX() == player2.getX() && player1
 									.getY() + 1 == player2.getY())) {
 						removePlayerFromPreviousPosition(player1);
-						// moves the player down
 						player1.moveDown();
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(),
@@ -106,7 +109,6 @@ public class MAX {
 									.getY() == player2.getY() + 1)) {
 						// saves the old position of the player and sets it to 0
 						removePlayerFromPreviousPosition(player2);
-						// moves the player down
 						player2.moveDown();
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(),
@@ -123,7 +125,7 @@ public class MAX {
 					}
 				}
 				break;
-			case "a":
+			case LEFT:
 				// checks which players turn it is
 				if (player1.getActive()) {
 					// out of bounds and collision check
@@ -167,7 +169,7 @@ public class MAX {
 					}
 				}
 				break;
-			case "d":
+			case RIGHT:
 				// checks which players turn it is
 				if (player1.getActive()) {
 					// out of bounds and collision check
