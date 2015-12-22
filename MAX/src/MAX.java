@@ -131,7 +131,6 @@ public class MAX {
 							&& !(player1.getX() - 1 == player2.getX() && player1
 									.getY() == player2.getY())) {
 						removePlayerFromPreviousPosition(player1);
-						// moves the player left
 						player1.moveLeft();
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(),
@@ -152,7 +151,6 @@ public class MAX {
 							&& !(player1.getX() == player2.getX() - 1 && player1
 									.getY() == player2.getY())) {
 						removePlayerFromPreviousPosition(player2);
-						// moves the player left
 						player2.moveLeft();
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(),
@@ -177,7 +175,6 @@ public class MAX {
 							&& !(player1.getX() + 1 == player2.getX() && player1
 									.getY() == player2.getY())) {
 						removePlayerFromPreviousPosition(player1);
-						// moves the player left
 						player1.moveRight();
 						// add the value of the board to the score
 						player1.addScore(board.getValue(player1.getX(),
@@ -198,7 +195,6 @@ public class MAX {
 							&& !(player1.getX() == player2.getX() + 1 && player1
 									.getY() == player2.getY())) {
 						removePlayerFromPreviousPosition(player2);
-						// moves the player left
 						player2.moveRight();
 						// add the value of the board to the score
 						player2.addScore(board.getValue(player2.getX(),
