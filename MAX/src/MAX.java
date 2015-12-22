@@ -20,10 +20,6 @@ public class MAX {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		int oldPositionX; // temporary holder of the old x position of the
-							// player
-		int oldPositionY; // temporary holder of the old y position of the
-
 		// set starting position and color of the players and who's active
 		player1 = new Player(4, 3, -1);
 		player1.setActive(true);
@@ -56,10 +52,7 @@ public class MAX {
 					if (player1.getY() - 1 >= 0
 							&& !(player1.getX() == player2.getX() && player1
 									.getY() - 1 == player2.getY())) {
-						// saves the old position of the player and sets it to 0
-						oldPositionX = player1.getX();
-						oldPositionY = player1.getY();
-						board.setPlayer(oldPositionX, oldPositionY, 0);
+						removePlayerFromPreviousPosition(player1);
 						// moves the player up
 						player1.moveUp();
 						// add the value of the board to the score
@@ -80,10 +73,7 @@ public class MAX {
 					if (player2.getY() - 1 >= 0
 							&& !(player1.getX() == player2.getX() && player1
 									.getY() == player2.getY() - 1)) {
-						// saves the old position of the player and sets it to 0
-						oldPositionX = player2.getX();
-						oldPositionY = player2.getY();
-						board.setPlayer(oldPositionX, oldPositionY, 0);
+						removePlayerFromPreviousPosition(player2);
 						// moves the player up
 						player2.moveUp();
 						// add the value of the board to the score
@@ -108,10 +98,7 @@ public class MAX {
 					if (player1.getY() + 1 < board.getSizeY()
 							&& !(player1.getX() == player2.getX() && player1
 									.getY() + 1 == player2.getY())) {
-						// saves the old position of the player and sets it to 0
-						oldPositionX = player1.getX();
-						oldPositionY = player1.getY();
-						board.setPlayer(oldPositionX, oldPositionY, 0);
+						removePlayerFromPreviousPosition(player1);
 						// moves the player down
 						player1.moveDown();
 						// add the value of the board to the score
@@ -133,9 +120,7 @@ public class MAX {
 							&& !(player1.getX() == player2.getX() && player1
 									.getY() == player2.getY() + 1)) {
 						// saves the old position of the player and sets it to 0
-						oldPositionX = player2.getX();
-						oldPositionY = player2.getY();
-						board.setPlayer(oldPositionX, oldPositionY, 0);
+						removePlayerFromPreviousPosition(player2);
 						// moves the player down
 						player2.moveDown();
 						// add the value of the board to the score
@@ -160,10 +145,7 @@ public class MAX {
 					if (player1.getX() - 1 >= 0
 							&& !(player1.getX() - 1 == player2.getX() && player1
 									.getY() == player2.getY())) {
-						// saves the old position of the player and sets it to 0
-						oldPositionX = player1.getX();
-						oldPositionY = player1.getY();
-						board.setPlayer(oldPositionX, oldPositionY, 0);
+						removePlayerFromPreviousPosition(player1);
 						// moves the player left
 						player1.moveLeft();
 						// add the value of the board to the score
@@ -184,10 +166,7 @@ public class MAX {
 					if (player2.getX() - 1 >= 0
 							&& !(player1.getX() == player2.getX() - 1 && player1
 									.getY() == player2.getY())) {
-						// saves the old position of the player and sets it to 0
-						oldPositionX = player2.getX();
-						oldPositionY = player2.getY();
-						board.setPlayer(oldPositionX, oldPositionY, 0);
+						removePlayerFromPreviousPosition(player2);
 						// moves the player left
 						player2.moveLeft();
 						// add the value of the board to the score
@@ -212,10 +191,7 @@ public class MAX {
 					if (player1.getX() + 1 < board.getSizeX()
 							&& !(player1.getX() + 1 == player2.getX() && player1
 									.getY() == player2.getY())) {
-						// saves the old position of the player and sets it to 0
-						oldPositionX = player1.getX();
-						oldPositionY = player1.getY();
-						board.setPlayer(oldPositionX, oldPositionY, 0);
+						removePlayerFromPreviousPosition(player1);
 						// moves the player left
 						player1.moveRight();
 						// add the value of the board to the score
@@ -236,10 +212,7 @@ public class MAX {
 					if (player2.getX() + 1 < board.getSizeX()
 							&& !(player1.getX() == player2.getX() + 1 && player1
 									.getY() == player2.getY())) {
-						// saves the old position of the player and sets it to 0
-						oldPositionX = player2.getX();
-						oldPositionY = player2.getY();
-						board.setPlayer(oldPositionX, oldPositionY, 0);
+						removePlayerFromPreviousPosition(player2);
 						// moves the player left
 						player2.moveRight();
 						// add the value of the board to the score
@@ -280,6 +253,13 @@ public class MAX {
 			// prints the board on the screen
 			board.show();
 		}
+	}
+
+	private static void removePlayerFromPreviousPosition(Player player) {
+		// saves the old position of the player and sets it to 0
+		int oldPositionX = player.getX();
+		int oldPositionY = player.getY();
+		board.setPlayer(oldPositionX, oldPositionY, 0);
 	}
 
 	/**
