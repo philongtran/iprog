@@ -255,8 +255,13 @@ public class MAX {
 		}
 	}
 
+	/**
+	 * saves the old position of the player and sets it to 0
+	 * 
+	 * @param player
+	 *            which position should be reset to 0
+	 */
 	private static void removePlayerFromPreviousPosition(Player player) {
-		// saves the old position of the player and sets it to 0
 		int oldPositionX = player.getX();
 		int oldPositionY = player.getY();
 		board.setPlayer(oldPositionX, oldPositionY, 0);
