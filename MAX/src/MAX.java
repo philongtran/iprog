@@ -8,9 +8,9 @@
  */
 public class MAX {
 
-	private static Player player1; // player 1
-	private static Player player2; // player 2
-	private static Board board; // board
+	private static Player player1;
+	private static Player player2;
+	private static Board board;
 	private static final int SCORELIMIT = 105;
 
 	/**
