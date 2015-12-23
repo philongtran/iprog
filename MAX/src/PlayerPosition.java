@@ -3,7 +3,7 @@ public class PlayerPosition {
 
 	private int[][] position;
 
-	public void generate(int playerCount, int boardDimensionX, int boardDimensionY) {
+	public PlayerPosition(int playerCount, int boardDimensionX, int boardDimensionY) {
 		switch (playerCount) {
 		case 2:
 			int p1x = boardDimensionX / 2;
