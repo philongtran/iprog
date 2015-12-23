@@ -13,6 +13,8 @@ public class MAX {
 	private static Board board;
 	private static PlayerPosition playerPosition;
 	private static final int SCORELIMIT = 105;
+	private static int boardSizeX;
+	private static int boardSizeY;
 
 	/**
 	 * main method of the game
@@ -210,15 +212,17 @@ public class MAX {
 	}
 
 	private static void initializeGame() {
+		boardSizeX = 8;
+		boardSizeY = 8;
 		// set starting position and color of the players and who's active
-		playerPosition = new PlayerPosition(2, 15, 15);
+		playerPosition = new PlayerPosition(2, boardSizeX, boardSizeY);
 		int[][] position = playerPosition.getPosition();
 		player1 = new Player(position[0][0], position[0][1], -1);
 		player1.setActive(true);
 		player2 = new Player(position[1][0], position[1][1], -2);
 		player2.setActive(false);
 		// initialize the board and its size
-		board = new Board(15, 15);
+		board = new Board(boardSizeX, boardSizeY);
 		// plants the players on the board
 		board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
 		board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
