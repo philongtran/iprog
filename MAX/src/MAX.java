@@ -212,6 +212,7 @@ public class MAX {
 	}
 
 	private static void initializeGame() {
+		// set size of board
 		boardSizeX = 8;
 		boardSizeY = 8;
 		// set starting position and color of the players and who's active
