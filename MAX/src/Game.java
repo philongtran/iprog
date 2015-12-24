@@ -126,10 +126,6 @@ public class Game {
 		for (int i = 0; i < player.length; i++) {
 			board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
 		}
-		// board.setPlayer(player[0].getX(), player[0].getY(),
-		// player[0].getColor());
-		// board.setPlayer(player[1].getX(), player[1].getY(),
-		// player[1].getColor());
 		// displays score and board
 		display(-1);
 	}
