@@ -98,7 +98,7 @@ public class Game {
 					i = previousPlayer(i);
 					break;
 				}
-				displayV2(i);
+				display(i);
 			}
 		}
 	}
@@ -119,7 +119,7 @@ public class Game {
 		// plants the players on the board
 		board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
 		board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
-		displayV2(1);
+		display(1);
 	}
 
 	/**
@@ -224,34 +224,26 @@ public class Game {
 	 * 
 	 * @param i
 	 */
-	private void display(int i) {
-		// prints the score on the screen
-		System.out.print("Score B: " + player[0].getScore() + " Score W: " + player[1].getScore() + " | ");
-		// if scores of the players are below the score limit prints on
-		// the
-		// screen which players turn it is
-		if (i == 1 && player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
-			System.out.println("Black to move");
-		} else if (i == 0 && player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
-			System.out.println("White to move");
-		} else {
-			// otherwise prints on the screen who won
-			if (player[0].getScore() >= SCORELIMIT) {
-				System.out.println("Black wins");
-			} else {
-				System.out.println("White wins");
-			}
-		}
-		// prints the board on the screen
-		board.show();
-	}
+	/*
+	 * private void display(int i) { // prints the score on the screen
+	 * System.out.print("Score B: " + player[0].getScore() + " Score W: " +
+	 * player[1].getScore() + " | "); // if scores of the players are below the
+	 * score limit prints on // the // screen which players turn it is if (i ==
+	 * 1 && player[0].getScore() < SCORELIMIT && player[1].getScore() <
+	 * SCORELIMIT) { System.out.println("Black to move"); } else if (i == 0 &&
+	 * player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
+	 * System.out.println("White to move"); } else { // otherwise prints on the
+	 * screen who won if (player[0].getScore() >= SCORELIMIT) {
+	 * System.out.println("Black wins"); } else { System.out.println(
+	 * "White wins"); } } // prints the board on the screen board.show(); }
+	 */
 
 	/**
 	 * Prints score board and play board to the screen <- for generic use
 	 * 
 	 * @param i
 	 */
-	private void displayV2(int i) {
+	private void display(int i) {
 		String score = "";
 		for (int j = 0; j < player.length; j++) {
 			score += "Score " + returnLetter(j) + ": " + player[j].getScore() + " ";
