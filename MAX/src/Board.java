@@ -46,18 +46,6 @@ public class Board {
 		}
 	}
 
-	/*
-	 * print the formated board on the screen it shows it values and spots the
-	 * players and assign them a value a player can recognize
-	 *
-	 * public void show() { for (int y = 0; y < sizeY; y++) { for (int x = 0; x
-	 * < sizeX; x++) { if (board[y][x] == -1) { System.out.print("B "); } else
-	 * if (board[y][x] == -2) { System.out.print("W "); } else {
-	 * System.out.print(board[y][x] + " "); }
-	 * 
-	 * } System.out.println(); } }
-	 */
-
 	/**
 	 * Assigns a value to the x,y coordinate.
 	 * 

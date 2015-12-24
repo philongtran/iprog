@@ -235,25 +235,6 @@ public class Game {
 		board.setPlayer(player[playerID].getX(), player[playerID].getY(), player[playerID].getColor());
 	}
 
-	/*
-	 * DO NOT DELETE prints score board and play board to the screen <- for
-	 * special use DO NOT DELETE
-	 * 
-	 * @param i
-	 *
-	 * private void display(int i) { // prints the score on the screen
-	 * System.out.print("Score B: " + player[0].getScore() + " Score W: " +
-	 * player[1].getScore() + " | "); // if scores of the players are below the
-	 * score limit prints on // the // screen which players turn it is if (i ==
-	 * 1 && player[0].getScore() < SCORELIMIT && player[1].getScore() <
-	 * SCORELIMIT) { System.out.println("Black to move"); } else if (i == 0 &&
-	 * player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
-	 * System.out.println("White to move"); } else { // otherwise prints on the
-	 * screen who won if (player[0].getScore() >= SCORELIMIT) {
-	 * System.out.println("Black wins"); } else { System.out.println(
-	 * "White wins"); } } // prints the board on the screen board.show(); }
-	 */
-
 	/**
 	 * Displays the score board and the play board to the screen.
 	 * 
