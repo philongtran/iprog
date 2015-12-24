@@ -8,7 +8,7 @@
  */
 public class Player {
 
-	private int color; // color of the player (-1 = black; -2 = white)
+	private final int color; // color of the player (-1 = black; -2 = white)
 	private int x; // x coordinate of the player
 	private int y; // y coordinate of the player
 	private int score; // score of the player
