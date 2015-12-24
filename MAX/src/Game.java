@@ -9,8 +9,6 @@
 
 public class Game {
 	private Player[] player;
-	private Player player1;
-	private Player player2;
 	private Board board;
 	private PlayerPosition playerPosition;
 	private final int SCORELIMIT = 105;
@@ -26,6 +24,7 @@ public class Game {
 	public Game(int boardSizeX, int boardSizeY, int playerCount) {
 		this.boardSizeX = boardSizeX;
 		this.boardSizeY = boardSizeY;
+		this.player = new Player[playerCount];
 	}
 
 	/**
@@ -37,7 +36,7 @@ public class Game {
 		initializeGame();
 
 		// runs while players are below score
-		while (player1.getScore() < SCORELIMIT && player2.getScore() < SCORELIMIT) {
+		while (player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
 			// reads keyboard input to move the active player
 			Direction direction = Direction.of(IO.promptAndRead("i: "));
 			// cases which are allowed
@@ -45,17 +44,17 @@ public class Game {
 			// moves the player up
 			case UP:
 				// checks which players turn it is
-				if (player1.getActive()) {
+				if (player[0].getActive()) {
 					// out of bounds and collision check
-					if (player1.getY() - 1 >= 0
-							&& !(player1.getX() == player2.getX() && player1.getY() - 1 == player2.getY())) {
-						removePlayerFromPreviousPosition(player1);
+					if (player[0].getY() - 1 >= 0
+							&& !(player[0].getX() == player[1].getX() && player[0].getY() - 1 == player[1].getY())) {
+						removePlayerFromPreviousPosition(player[0]);
 						// moves the player up
-						player1.moveUp();
+						player[0].moveUp();
 						// add the value of the board to the score
-						player1.addScore(board.getValue(player1.getX(), player1.getY()));
+						player[0].addScore(board.getValue(player[0].getX(), player[0].getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
+						board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -65,15 +64,15 @@ public class Game {
 					}
 				} else {
 					// out of bounds and collision check
-					if (player2.getY() - 1 >= 0
-							&& !(player1.getX() == player2.getX() && player1.getY() == player2.getY() - 1)) {
-						removePlayerFromPreviousPosition(player2);
+					if (player[1].getY() - 1 >= 0
+							&& !(player[0].getX() == player[1].getX() && player[0].getY() == player[1].getY() - 1)) {
+						removePlayerFromPreviousPosition(player[1]);
 						// moves the player up
-						player2.moveUp();
+						player[1].moveUp();
 						// add the value of the board to the score
-						player2.addScore(board.getValue(player2.getX(), player2.getY()));
+						player[1].addScore(board.getValue(player[1].getX(), player[1].getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
+						board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -85,16 +84,16 @@ public class Game {
 				break;
 			case DOWN:
 				// checks which players turn it is
-				if (player1.getActive()) {
+				if (player[0].getActive()) {
 					// out of bounds and collision check
-					if (player1.getY() + 1 < board.getSizeY()
-							&& !(player1.getX() == player2.getX() && player1.getY() + 1 == player2.getY())) {
-						removePlayerFromPreviousPosition(player1);
-						player1.moveDown();
+					if (player[0].getY() + 1 < board.getSizeY()
+							&& !(player[0].getX() == player[1].getX() && player[0].getY() + 1 == player[1].getY())) {
+						removePlayerFromPreviousPosition(player[0]);
+						player[0].moveDown();
 						// add the value of the board to the score
-						player1.addScore(board.getValue(player1.getX(), player1.getY()));
+						player[0].addScore(board.getValue(player[0].getX(), player[0].getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
+						board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -104,15 +103,15 @@ public class Game {
 					}
 				} else {
 					// out of bounds and collision check
-					if (player2.getY() + 1 < board.getSizeY()
-							&& !(player1.getX() == player2.getX() && player1.getY() == player2.getY() + 1)) {
+					if (player[1].getY() + 1 < board.getSizeY()
+							&& !(player[0].getX() == player[1].getX() && player[0].getY() == player[1].getY() + 1)) {
 						// saves the old position of the player and sets it to 0
-						removePlayerFromPreviousPosition(player2);
-						player2.moveDown();
+						removePlayerFromPreviousPosition(player[1]);
+						player[1].moveDown();
 						// add the value of the board to the score
-						player2.addScore(board.getValue(player2.getX(), player2.getY()));
+						player[1].addScore(board.getValue(player[1].getX(), player[1].getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
+						board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -124,16 +123,16 @@ public class Game {
 				break;
 			case LEFT:
 				// checks which players turn it is
-				if (player1.getActive()) {
+				if (player[0].getActive()) {
 					// out of bounds and collision check
-					if (player1.getX() - 1 >= 0
-							&& !(player1.getX() - 1 == player2.getX() && player1.getY() == player2.getY())) {
-						removePlayerFromPreviousPosition(player1);
-						player1.moveLeft();
+					if (player[0].getX() - 1 >= 0
+							&& !(player[0].getX() - 1 == player[1].getX() && player[0].getY() == player[1].getY())) {
+						removePlayerFromPreviousPosition(player[0]);
+						player[0].moveLeft();
 						// add the value of the board to the score
-						player1.addScore(board.getValue(player1.getX(), player1.getY()));
+						player[0].addScore(board.getValue(player[0].getX(), player[0].getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
+						board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -143,14 +142,14 @@ public class Game {
 					}
 				} else {
 					// out of bounds and collision check
-					if (player2.getX() - 1 >= 0
-							&& !(player1.getX() == player2.getX() - 1 && player1.getY() == player2.getY())) {
-						removePlayerFromPreviousPosition(player2);
-						player2.moveLeft();
+					if (player[1].getX() - 1 >= 0
+							&& !(player[0].getX() == player[1].getX() - 1 && player[0].getY() == player[1].getY())) {
+						removePlayerFromPreviousPosition(player[1]);
+						player[1].moveLeft();
 						// add the value of the board to the score
-						player2.addScore(board.getValue(player2.getX(), player2.getY()));
+						player[1].addScore(board.getValue(player[1].getX(), player[1].getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
+						board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -162,16 +161,16 @@ public class Game {
 				break;
 			case RIGHT:
 				// checks which players turn it is
-				if (player1.getActive()) {
+				if (player[0].getActive()) {
 					// out of bounds and collision check
-					if (player1.getX() + 1 < board.getSizeX()
-							&& !(player1.getX() + 1 == player2.getX() && player1.getY() == player2.getY())) {
-						removePlayerFromPreviousPosition(player1);
-						player1.moveRight();
+					if (player[0].getX() + 1 < board.getSizeX()
+							&& !(player[0].getX() + 1 == player[1].getX() && player[0].getY() == player[1].getY())) {
+						removePlayerFromPreviousPosition(player[0]);
+						player[0].moveRight();
 						// add the value of the board to the score
-						player1.addScore(board.getValue(player1.getX(), player1.getY()));
+						player[0].addScore(board.getValue(player[0].getX(), player[0].getY()));
 						// marks the field to be player owned
-						board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
+						board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -181,14 +180,14 @@ public class Game {
 					}
 				} else {
 					// out of bounds and collision check
-					if (player2.getX() + 1 < board.getSizeX()
-							&& !(player1.getX() == player2.getX() + 1 && player1.getY() == player2.getY())) {
-						removePlayerFromPreviousPosition(player2);
-						player2.moveRight();
+					if (player[1].getX() + 1 < board.getSizeX()
+							&& !(player[0].getX() == player[1].getX() + 1 && player[0].getY() == player[1].getY())) {
+						removePlayerFromPreviousPosition(player[1]);
+						player[1].moveRight();
 						// add the value of the board to the score
-						player2.addScore(board.getValue(player2.getX(), player2.getY()));
+						player[1].addScore(board.getValue(player[1].getX(), player[1].getY()));
 						// marks the field to be player owned
-						board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
+						board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
 						// switches turns
 						togglePlayer();
 					} else {
@@ -202,16 +201,17 @@ public class Game {
 				break;
 			}
 			// prints the score on the screen
-			System.out.print("Score B: " + player1.getScore() + " Score W: " + player2.getScore() + " | ");
+			System.out.print("Score B: " + player[0].getScore() + " Score W: " + player[1].getScore() + " | ");
 			// if scores of the players are below the score limit prints on the
 			// screen which players turn it is
-			if (player1.getActive() && player1.getScore() < SCORELIMIT && player2.getScore() < SCORELIMIT) {
+			if (player[0].getActive() && player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
 				System.out.println("Black to move");
-			} else if (player2.getActive() && player1.getScore() < SCORELIMIT && player2.getScore() < SCORELIMIT) {
+			} else if (player[1].getActive() && player[0].getScore() < SCORELIMIT
+					&& player[1].getScore() < SCORELIMIT) {
 				System.out.println("White to move");
 			} else {
 				// otherwise prints on the screen who won
-				if (player1.getScore() >= SCORELIMIT) {
+				if (player[0].getScore() >= SCORELIMIT) {
 					System.out.println("Black wins");
 				} else {
 					System.out.println("White wins");
@@ -226,17 +226,17 @@ public class Game {
 		// set starting position and color of the players and who's active
 		playerPosition = new PlayerPosition(2, boardSizeX, boardSizeY);
 		int[][] position = playerPosition.getPosition();
-		player1 = new Player(position[0][0], position[0][1], -1);
-		player1.setActive(true);
-		player2 = new Player(position[1][0], position[1][1], -2);
-		player2.setActive(false);
+		player[0] = new Player(position[0][0], position[0][1], -1);
+		player[0].setActive(true);
+		player[1] = new Player(position[1][0], position[1][1], -2);
+		player[1].setActive(false);
 		// initialize the board and its size
 		board = new Board(boardSizeX, boardSizeY);
 		// plants the players on the board
-		board.setPlayer(player1.getX(), player1.getY(), player1.getColor());
-		board.setPlayer(player2.getX(), player2.getY(), player2.getColor());
+		board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
+		board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
 		// prints the score on the screen and which players turn it is
-		System.out.print("Score B: " + player1.getScore() + " Score W: " + player2.getScore() + " | ");
+		System.out.print("Score B: " + player[0].getScore() + " Score W: " + player[1].getScore() + " | ");
 		System.out.println("Black to move");
 		// prints the board on the screen
 		board.show();
@@ -258,8 +258,8 @@ public class Game {
 	 * switches player turns
 	 */
 	private void togglePlayer() {
-		player1.toggleActive();
-		player2.toggleActive();
+		player[0].toggleActive();
+		player[1].toggleActive();
 	}
 
 }
