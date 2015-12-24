@@ -123,23 +123,22 @@ public class Game {
 		// initialize the board and its size
 		board = new Board(BOARD_SIZE_X, BOARD_SIZE_Y);
 		// plants the players on the board
-		board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
-		board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
+		for (int i = 0; i < player.length; i++) {
+			board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+		}
 		// displays score and board
-		display(1);
+		display(-1);
 	}
 
 	/**
-	 * Saves the old position of the player and sets the value inside the board
+	 * Gets the old position of the player and sets the value inside the board
 	 * to 0.
 	 * 
 	 * @param player
 	 *            - Which player position should be reset to 0
 	 */
 	private void removePlayerFromPreviousPosition(Player player) {
-		int oldPositionX = player.getX();
-		int oldPositionY = player.getY();
-		board.setPlayer(oldPositionX, oldPositionY, 0);
+		board.setPlayer(player.getX(), player.getY(), 0);
 	}
 
 	/**
@@ -234,25 +233,6 @@ public class Game {
 		board.setPlayer(player[playerID].getX(), player[playerID].getY(), player[playerID].getColor());
 	}
 
-	/*
-	 * DO NOT DELETE prints score board and play board to the screen <- for
-	 * special use DO NOT DELETE
-	 * 
-	 * @param i
-	 *
-	 * private void display(int i) { // prints the score on the screen
-	 * System.out.print("Score B: " + player[0].getScore() + " Score W: " +
-	 * player[1].getScore() + " | "); // if scores of the players are below the
-	 * score limit prints on // the // screen which players turn it is if (i ==
-	 * 1 && player[0].getScore() < SCORELIMIT && player[1].getScore() <
-	 * SCORELIMIT) { System.out.println("Black to move"); } else if (i == 0 &&
-	 * player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
-	 * System.out.println("White to move"); } else { // otherwise prints on the
-	 * screen who won if (player[0].getScore() >= SCORELIMIT) {
-	 * System.out.println("Black wins"); } else { System.out.println(
-	 * "White wins"); } } // prints the board on the screen board.show(); }
-	 */
-
 	/**
 	 * Displays the score board and the play board to the screen.
 	 * 
@@ -266,10 +246,10 @@ public class Game {
 		if (checkScore()) {
 			score += "| " + returnLetter(player[playerID].getColor()) + " wins";
 		} else {
-			if (playerID == 0) {
-				score += "| " + returnLetter(player[player.length - 1].getColor()) + " to move";
+			if (playerID == player.length - 1) {
+				score += "| " + returnLetter(player[0].getColor()) + " to move";
 			} else {
-				score += "| " + returnLetter(player[playerID - 1].getColor()) + " to move";
+				score += "| " + returnLetter(player[playerID + 1].getColor()) + " to move";
 			}
 		}
 		IO.writeln(score);
@@ -304,6 +284,10 @@ public class Game {
 			return "B";
 		case -2:
 			return "W";
+		case -3:
+			return "G";
+		case -4:
+			return "L";
 		default:
 			return "P" + (color * (-1));
 		}
