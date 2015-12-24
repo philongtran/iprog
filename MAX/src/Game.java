@@ -11,7 +11,7 @@ public class Game {
 	private Player[] player;
 	private Board board;
 	private PlayerPosition playerPosition;
-	private final int SCORE_LIMIT = 105;
+	private final int SCORE_LIMIT = 10;
 	private final int PLAYER_COUNT;
 	private final int BOARD_SIZE_X;
 	private final int BOARD_SIZE_Y;
@@ -241,15 +241,15 @@ public class Game {
 	private void display(int playerID) {
 		String score = "";
 		for (int i = 0; i < player.length; i++) {
-			score += "Score " + returnLetter(player[i].getColor()) + ": " + player[i].getScore() + " ";
+			score += "Score " + board.returnLetter(player[i].getColor()) + ": " + player[i].getScore() + " ";
 		}
 		if (checkScore()) {
-			score += "| " + returnLetter(player[playerID].getColor()) + " wins";
+			score += "| " + board.returnLetter(player[playerID].getColor()) + " wins";
 		} else {
 			if (playerID == player.length - 1) {
-				score += "| " + returnLetter(player[0].getColor()) + " to move";
+				score += "| " + board.returnLetter(player[0].getColor()) + " to move";
 			} else {
-				score += "| " + returnLetter(player[playerID + 1].getColor()) + " to move";
+				score += "| " + board.returnLetter(player[playerID + 1].getColor()) + " to move";
 			}
 		}
 		IO.writeln(score);
@@ -269,47 +269,6 @@ public class Game {
 			}
 		}
 		return scoreReached;
-	}
-
-	/**
-	 * Assigning letters from the colors to the players.
-	 * 
-	 * @param color
-	 *            - Color of the player
-	 * @return - Letter of the player if available, otherwise generic name
-	 */
-	private String returnLetter(int color) {
-		switch (color) {
-		case -1:
-			return "B";
-		case -2:
-			return "W";
-		case -3:
-			return "G";
-		case -4:
-			return "L";
-		default:
-			return "P" + (color * (-1));
-		}
-	}
-
-	/**
-	 * Displays the formated board on the screen. It shows its values and spots
-	 * the players and then assigns them with a predefined letter or generic
-	 * name.
-	 */
-	private void showBoard() {
-		for (int y = 0; y < board.getSizeY(); y++) {
-			for (int x = 0; x < board.getSizeX(); x++) {
-				if (board.getValue(x, y) < 0) {
-					System.out.print(returnLetter(board.getValue(x, y)) + " ");
-				} else {
-					System.out.print(board.getValue(x, y) + " ");
-				}
-
-			}
-			System.out.println();
-		}
 	}
 
 }

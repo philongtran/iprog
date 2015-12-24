@@ -102,7 +102,7 @@ public class Board {
 	 *            - Color of the player
 	 * @return - Letter of the player if available, otherwise generic name
 	 */
-	private String returnLetter(int color) {
+	public String returnLetter(int color) {
 		switch (color) {
 		case -1:
 			return "B";
