@@ -108,7 +108,7 @@ public class Game {
 	 */
 	private void initializeGame() {
 		// set starting positions
-		playerPosition = new PlayerPosition(playerCount, boardSizeX, boardSizeY);
+		playerPosition = new PlayerPosition(boardSizeX, boardSizeY, playerCount);
 		int[][] position = playerPosition.getPosition();
 		// create players with starting location and color
 		for (int i = 0; i < playerCount; i++) {
