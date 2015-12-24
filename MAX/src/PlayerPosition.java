@@ -10,7 +10,13 @@ public class PlayerPosition {
 
 	private int[][] position;
 
-	// calculates the player positions
+	/**
+	 * calculates the player positions
+	 * 
+	 * @param playerCount
+	 * @param boardDimensionX
+	 * @param boardDimensionY
+	 */
 	public PlayerPosition(int playerCount, int boardDimensionX, int boardDimensionY) {
 		switch (playerCount) {
 		case 2:
@@ -26,7 +32,11 @@ public class PlayerPosition {
 		}
 	}
 
-	// returns the starting positions
+	/**
+	 * returns the starting positions
+	 * 
+	 * @return
+	 */
 	public int[][] getPosition() {
 		return position;
 	}
