@@ -138,9 +138,7 @@ public class Game {
 	 *            - Which player position should be reset to 0
 	 */
 	private void removePlayerFromPreviousPosition(Player player) {
-		int oldPositionX = player.getX();
-		int oldPositionY = player.getY();
-		board.setPlayer(oldPositionX, oldPositionY, 0);
+		board.setPlayer(player.getX(), player.getY(), 0);
 	}
 
 	/**
