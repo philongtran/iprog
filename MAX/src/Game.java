@@ -9,12 +9,12 @@
 
 public class Game {
 	private Player[] player;
-	private int playerCount;
 	private Board board;
 	private PlayerPosition playerPosition;
 	private final int SCORELIMIT = 10;
-	private int boardSizeX;
-	private int boardSizeY;
+	private final int playerCount;
+	private final int boardSizeX;
+	private final int boardSizeY;
 
 	/**
 	 * constructor
@@ -98,6 +98,7 @@ public class Game {
 					i = previousPlayer(i);
 					break;
 				}
+				// displays score and board
 				display(i);
 			}
 		}
@@ -108,7 +109,7 @@ public class Game {
 	 */
 	private void initializeGame() {
 		// set starting positions
-		playerPosition = new PlayerPosition(playerCount, boardSizeX, boardSizeY);
+		playerPosition = new PlayerPosition(boardSizeX, boardSizeY, playerCount);
 		int[][] position = playerPosition.getPosition();
 		// create players with starting location and color
 		for (int i = 0; i < playerCount; i++) {
@@ -119,6 +120,7 @@ public class Game {
 		// plants the players on the board
 		board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
 		board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
+		// displays score and board
 		display(1);
 	}
 

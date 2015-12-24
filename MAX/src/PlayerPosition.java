@@ -17,7 +17,7 @@ public class PlayerPosition {
 	 * @param boardDimensionX
 	 * @param boardDimensionY
 	 */
-	public PlayerPosition(int playerCount, int boardDimensionX, int boardDimensionY) {
+	public PlayerPosition(int boardDimensionX, int boardDimensionY, int playerCount) {
 		switch (playerCount) {
 		case 2:
 			int p1x = boardDimensionX / 2;
