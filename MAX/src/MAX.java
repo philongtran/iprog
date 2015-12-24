@@ -15,7 +15,7 @@ public class MAX {
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {
-		Game game1 = new Game(8, 8);
+		Game game1 = new Game(8, 8, 2);
 		game1.run();
 	}
 
