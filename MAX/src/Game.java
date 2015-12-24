@@ -12,7 +12,7 @@ public class Game {
 	private int playerCount;
 	private Board board;
 	private PlayerPosition playerPosition;
-	private final int SCORELIMIT = 20;
+	private final int SCORELIMIT = 10;
 	private int boardSizeX;
 	private int boardSizeY;
 
@@ -41,6 +41,10 @@ public class Game {
 		while (player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
 
 			for (int i = 0; i < player.length; i++) {
+				// checks if score limit is reached
+				if (checkScore()) {
+					break;
+				}
 				// reads keyboard input to move the active player
 				Direction direction = Direction.of(IO.promptAndRead("i: "));
 				// cases which are allowed
@@ -98,9 +102,6 @@ public class Game {
 					break;
 				}
 				display(i);
-				if (checkScore()) {
-					break;
-				}
 			}
 		}
 	}
@@ -203,13 +204,13 @@ public class Game {
 	}
 
 	private boolean checkScore() {
-		boolean scoreNotReached = true;
+		boolean scoreReached = false;
 		for (int i = 0; i < player.length; i++) {
 			if (player[i].getScore() >= SCORELIMIT) {
-				scoreNotReached = false;
+				scoreReached = true;
 			}
 		}
-		return scoreNotReached;
+		return scoreReached;
 	}
 
 }
