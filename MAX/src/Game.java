@@ -1,3 +1,11 @@
+/**
+ * This class represents the game.
+ * 
+ * @author Phi Long Tran <191624>
+ * @author Manuel Wessner <191711>
+ * @author Steve Nono <191709>
+ *
+ */
 
 public class Game {
 	private Player player1;

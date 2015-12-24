@@ -1,5 +1,5 @@
 /**
- * This class represents the game.
+ * This class is the starting point the game creation.
  * 
  * @author Phi Long Tran <191624>
  * @author Manuel Wessner <191711>
