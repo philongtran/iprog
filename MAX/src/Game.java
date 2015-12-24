@@ -12,7 +12,7 @@ public class Game {
 	private int playerCount;
 	private Board board;
 	private PlayerPosition playerPosition;
-	private final int SCORELIMIT = 105;
+	private final int SCORELIMIT = 10;
 	private int boardSizeX;
 	private int boardSizeY;
 
@@ -98,7 +98,7 @@ public class Game {
 					i = previousPlayer(i);
 					break;
 				}
-				display(i);
+				displayV2(i);
 			}
 		}
 	}
@@ -119,7 +119,7 @@ public class Game {
 		// plants the players on the board
 		board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
 		board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
-		display(1);
+		displayV2(1);
 	}
 
 	/**
@@ -219,7 +219,8 @@ public class Game {
 	}
 
 	/**
-	 * Prints score board and play board to the screen
+	 * DO NOT DELETE Prints score board and play board to the screen <- for
+	 * special use DO NOT DELETE
 	 * 
 	 * @param i
 	 */
@@ -242,6 +243,29 @@ public class Game {
 			}
 		}
 		// prints the board on the screen
+		board.show();
+	}
+
+	/**
+	 * Prints score board and play board to the screen <- for generic use
+	 * 
+	 * @param i
+	 */
+	private void displayV2(int i) {
+		String score = "";
+		for (int j = 0; j < player.length; j++) {
+			score += "Score P" + (j + 1) + ": " + player[j].getScore() + " ";
+		}
+		if (checkScore()) {
+			score += "| " + "P" + (i + 1) + " wins";
+		} else {
+			if (i == 0) {
+				score += "| " + "P" + player.length + " to move";
+			} else {
+				score += "| " + "P" + i + " to move";
+			}
+		}
+		IO.writeln(score);
 		board.show();
 	}
 
