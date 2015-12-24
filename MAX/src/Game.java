@@ -58,7 +58,7 @@ public class Game {
 				switch (direction) {
 
 				case UP:
-					if (check(currentPlayer, Direction.UP)) {
+					if (check(currentPlayer, direction)) {
 						removePlayerFromPreviousPosition(currentPlayer);
 						currentPlayer.moveUp();
 						calcSet(i);
@@ -69,7 +69,7 @@ public class Game {
 					}
 
 				case DOWN:
-					if (check(currentPlayer, Direction.DOWN)) {
+					if (check(currentPlayer, direction)) {
 						removePlayerFromPreviousPosition(player[i]);
 						currentPlayer.moveDown();
 						calcSet(i);
@@ -80,7 +80,7 @@ public class Game {
 					}
 
 				case LEFT:
-					if (check(currentPlayer, Direction.LEFT)) {
+					if (check(currentPlayer, direction)) {
 						removePlayerFromPreviousPosition(currentPlayer);
 						currentPlayer.moveLeft();
 						calcSet(i);
@@ -91,7 +91,7 @@ public class Game {
 					}
 
 				case RIGHT:
-					if (check(currentPlayer, Direction.RIGHT)) {
+					if (check(currentPlayer, direction)) {
 						removePlayerFromPreviousPosition(currentPlayer);
 						currentPlayer.moveRight();
 						calcSet(i);
