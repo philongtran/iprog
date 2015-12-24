@@ -52,13 +52,14 @@ public class Game {
 				}
 				// reads keyboard input to move the active player
 				Direction direction = Direction.of(IO.promptAndRead("i: "));
+				Player currentPlayer = player[i];
 				// cases which are allowed
 				switch (direction) {
 
 				case UP:
-					if (check(player[i], "UP")) {
-						removePlayerFromPreviousPosition(player[i]);
-						player[i].moveUp();
+					if (check(currentPlayer, "UP")) {
+						removePlayerFromPreviousPosition(currentPlayer);
+						currentPlayer.moveUp();
 						calcSet(i);
 						break;
 					} else {
@@ -67,9 +68,9 @@ public class Game {
 					}
 
 				case DOWN:
-					if (check(player[i], "DOWN")) {
+					if (check(currentPlayer, "DOWN")) {
 						removePlayerFromPreviousPosition(player[i]);
-						player[i].moveDown();
+						currentPlayer.moveDown();
 						calcSet(i);
 						break;
 					} else {
@@ -78,9 +79,9 @@ public class Game {
 					}
 
 				case LEFT:
-					if (check(player[i], "LEFT")) {
-						removePlayerFromPreviousPosition(player[i]);
-						player[i].moveLeft();
+					if (check(currentPlayer, "LEFT")) {
+						removePlayerFromPreviousPosition(currentPlayer);
+						currentPlayer.moveLeft();
 						calcSet(i);
 						break;
 					} else {
@@ -89,9 +90,9 @@ public class Game {
 					}
 
 				case RIGHT:
-					if (check(player[i], "RIGHT")) {
-						removePlayerFromPreviousPosition(player[i]);
-						player[i].moveRight();
+					if (check(currentPlayer, "RIGHT")) {
+						removePlayerFromPreviousPosition(currentPlayer);
+						currentPlayer.moveRight();
 						calcSet(i);
 						break;
 					} else {
