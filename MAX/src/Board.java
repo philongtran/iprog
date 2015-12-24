@@ -9,6 +9,8 @@ import java.util.Random;
  *
  */
 public class Board {
+	private int minimumNumber; // minimum number which can appear on the board
+	private int maximumNumber; // maximum number which can appear on the board
 	private final int SIZE_X; // size of the x side board
 	private final int SIZE_Y; // size of the y side board
 	private int[][] board; // board itself
@@ -24,6 +26,8 @@ public class Board {
 	 * 
 	 */
 	public Board(int sizeX, int sizeY) {
+		this.minimumNumber = 1;
+		this.maximumNumber = 9;
 		this.SIZE_X = sizeX;
 		this.SIZE_Y = sizeY;
 		this.board = new int[sizeY][sizeX];
@@ -37,7 +41,7 @@ public class Board {
 	public void initialize() {
 		for (int y = 0; y < SIZE_Y; y++) {
 			for (int x = 0; x < SIZE_X; x++) {
-				board[y][x] = random.nextInt(9) + 1;
+				board[y][x] = random.nextInt((maximumNumber - minimumNumber) + 1) + minimumNumber;
 			}
 		}
 	}
