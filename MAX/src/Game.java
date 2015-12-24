@@ -1,5 +1,5 @@
 /**
- * this class represents the game.
+ * This class represents the game.
  * 
  * @author Phi Long Tran <191624>
  * @author Manuel Wessner <191711>
@@ -11,26 +11,31 @@ public class Game {
 	private Player[] player;
 	private Board board;
 	private PlayerPosition playerPosition;
-	private final int SCORELIMIT = 10;
-	private final int playerCount;
-	private final int boardSizeX;
-	private final int boardSizeY;
+	private final int SCORE_LIMIT = 105;
+	private final int PLAYER_COUNT;
+	private final int BOARD_SIZE_X;
+	private final int BOARD_SIZE_Y;
 
 	/**
-	 * constructor
+	 * The constructor of the game.
 	 * 
 	 * @param boardSizeX
+	 *            - X size of the board
 	 * @param boardSizeY
+	 *            - Y size of the board
+	 * @param playerCount
+	 *            - Amount of players
 	 */
 	public Game(int boardSizeX, int boardSizeY, int playerCount) {
-		this.boardSizeX = boardSizeX;
-		this.boardSizeY = boardSizeY;
-		this.playerCount = playerCount;
+		this.BOARD_SIZE_X = boardSizeX;
+		this.BOARD_SIZE_Y = boardSizeY;
+		this.PLAYER_COUNT = playerCount;
 		this.player = new Player[playerCount];
 	}
 
 	/**
-	 * method for running the game
+	 * Method for running the game logic. It contains the movement and score-
+	 * and board display.
 	 * 
 	 * @throws Exception
 	 */
@@ -105,18 +110,18 @@ public class Game {
 	}
 
 	/**
-	 * initializes the game with its default values
+	 * Initializes the game with its default values.
 	 */
 	private void initializeGame() {
 		// set starting positions
-		playerPosition = new PlayerPosition(boardSizeX, boardSizeY, playerCount);
+		playerPosition = new PlayerPosition(BOARD_SIZE_X, BOARD_SIZE_Y, PLAYER_COUNT);
 		int[][] position = playerPosition.getPosition();
 		// create players with starting location and color
-		for (int i = 0; i < playerCount; i++) {
+		for (int i = 0; i < PLAYER_COUNT; i++) {
 			player[i] = new Player(position[i][0], position[i][1], (i + 1) * (-1));
 		}
 		// initialize the board and its size
-		board = new Board(boardSizeX, boardSizeY);
+		board = new Board(BOARD_SIZE_X, BOARD_SIZE_Y);
 		// plants the players on the board
 		board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
 		board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
@@ -125,10 +130,11 @@ public class Game {
 	}
 
 	/**
-	 * saves the old position of the player and sets it to 0
+	 * Saves the old position of the player and sets the value inside the board
+	 * to 0.
 	 * 
 	 * @param player
-	 *            which position should be reset to 0
+	 *            - Which player position should be reset to 0
 	 */
 	private void removePlayerFromPreviousPosition(Player player) {
 		int oldPositionX = player.getX();
@@ -137,11 +143,13 @@ public class Game {
 	}
 
 	/**
-	 * out of bounds check
+	 * Checking if player tries to move out of bounds.
 	 * 
 	 * @param player
+	 *            - Which player should be tested
 	 * @param direction
-	 * @return
+	 *            - Which direction does the player want to go
+	 * @return - Returns boolean if move is legitimate
 	 */
 	private boolean oobCheck(Player player, String direction) {
 		if (direction.equals("UP") && player.getY() > 0) {
@@ -160,11 +168,13 @@ public class Game {
 	}
 
 	/**
-	 * player collision check
+	 * Checking player movement for collision with other players.
 	 * 
 	 * @param player
+	 *            - Which player should be tested
 	 * @param direction
-	 * @return
+	 *            - Which direction does the player want to go
+	 * @return - Returns boolean if move is legitimate
 	 */
 	private boolean collisionCheck(Player player, String direction) {
 		if (direction.equals("UP") && board.getValue(player.getX(), player.getY() - 1) >= 0) {
@@ -184,49 +194,52 @@ public class Game {
 	}
 
 	/**
-	 * checks the out of bounds and player collision
+	 * Checks for out of bounds and player collision problems.
 	 * 
 	 * @param player
+	 *            - Which player should be tested
 	 * @param direction
-	 * @return
+	 *            - Which direction does the player want to go
+	 * @return - Returns boolean if move is legitimate
 	 */
 	private boolean check(Player player, String direction) {
 		return oobCheck(player, direction) && collisionCheck(player, direction);
 	}
 
 	/**
-	 * returns to previous player
+	 * Returns to previous/same player if move were illegal.
 	 * 
-	 * @param i
-	 * @return
+	 * @param playerID
+	 *            - ID of the wrongly assumed player.
+	 * @return - The old player ID
 	 */
-	private int previousPlayer(int i) {
-		if (i == 0) {
+	private int previousPlayer(int playerID) {
+		if (playerID == 0) {
 			return player.length - 1;
 		} else {
-			return --i;
+			return --playerID;
 		}
 	}
 
 	/**
-	 * makes calculation of the score and sets players new position
+	 * Makes the calculation of the score and sets the players new position.
 	 * 
-	 * @param i
+	 * @param playerID
+	 *            - ID of the player which score and position should be set
 	 */
-	private void calcSet(int i) {
+	private void calcSet(int playerID) {
 		// add the value of the board to the score
-		player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
+		player[playerID].addScore(board.getValue(player[playerID].getX(), player[playerID].getY()));
 		// marks the field to be player owned
-		board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+		board.setPlayer(player[playerID].getX(), player[playerID].getY(), player[playerID].getColor());
 	}
 
-	/**
+	/*
 	 * DO NOT DELETE prints score board and play board to the screen <- for
 	 * special use DO NOT DELETE
 	 * 
 	 * @param i
-	 */
-	/*
+	 *
 	 * private void display(int i) { // prints the score on the screen
 	 * System.out.print("Score B: " + player[0].getScore() + " Score W: " +
 	 * player[1].getScore() + " | "); // if scores of the players are below the
@@ -241,22 +254,22 @@ public class Game {
 	 */
 
 	/**
-	 * prints score board and play board to the screen <- for generic use
+	 * Displays the score board and the play board to the screen.
 	 * 
-	 * @param i
+	 * @param playerID
 	 */
-	private void display(int i) {
+	private void display(int playerID) {
 		String score = "";
-		for (int j = 0; j < player.length; j++) {
-			score += "Score " + returnLetter(player[j].getColor()) + ": " + player[j].getScore() + " ";
+		for (int i = 0; i < player.length; i++) {
+			score += "Score " + returnLetter(player[i].getColor()) + ": " + player[i].getScore() + " ";
 		}
 		if (checkScore()) {
-			score += "| " + returnLetter(player[i].getColor()) + " wins";
+			score += "| " + returnLetter(player[playerID].getColor()) + " wins";
 		} else {
-			if (i == 0) {
+			if (playerID == 0) {
 				score += "| " + returnLetter(player[player.length - 1].getColor()) + " to move";
 			} else {
-				score += "| " + returnLetter(player[i - 1].getColor()) + " to move";
+				score += "| " + returnLetter(player[playerID - 1].getColor()) + " to move";
 			}
 		}
 		IO.writeln(score);
@@ -264,14 +277,14 @@ public class Game {
 	}
 
 	/**
-	 * checks if score limit is reached
+	 * Checks if the score limit is reached.
 	 * 
-	 * @return
+	 * @return - Boolean if score limit is reached
 	 */
 	private boolean checkScore() {
 		boolean scoreReached = false;
 		for (int i = 0; i < player.length; i++) {
-			if (player[i].getScore() >= SCORELIMIT) {
+			if (player[i].getScore() >= SCORE_LIMIT) {
 				scoreReached = true;
 			}
 		}
@@ -279,10 +292,11 @@ public class Game {
 	}
 
 	/**
-	 * assignment letters to the players
+	 * Assigning letters from the colors to the players.
 	 * 
 	 * @param color
-	 * @return
+	 *            - Color of the player
+	 * @return - Letter of the player if available, otherwise generic name
 	 */
 	private String returnLetter(int color) {
 		switch (color) {
@@ -296,8 +310,9 @@ public class Game {
 	}
 
 	/**
-	 * print the formated board on the screen it shows it values and spots the
-	 * players and assign them a value a player can recognize
+	 * Displays the formated board on the screen. It shows its values and spots
+	 * the players and then assigns them with a predefined letter or generic
+	 * name.
 	 */
 	private void showBoard() {
 		for (int y = 0; y < board.getSizeY(); y++) {
