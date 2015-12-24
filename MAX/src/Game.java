@@ -12,7 +12,7 @@ public class Game {
 	private int playerCount;
 	private Board board;
 	private PlayerPosition playerPosition;
-	private final int SCORELIMIT = 105;
+	private final int SCORELIMIT = 20;
 	private int boardSizeX;
 	private int boardSizeY;
 
@@ -125,13 +125,12 @@ public class Game {
 	}
 
 	private void initializeGame() {
-		// set starting position and color of the players and who's active
+		// set starting position and color of the players
 		playerPosition = new PlayerPosition(playerCount, boardSizeX, boardSizeY);
 		int[][] position = playerPosition.getPosition();
 		for (int i = 0; i < playerCount; i++) {
 			player[i] = new Player(position[i][0], position[i][1], (i + 1) * (-1));
 		}
-		player[0].setActive(true);
 		// initialize the board and its size
 		board = new Board(boardSizeX, boardSizeY);
 		// plants the players on the board

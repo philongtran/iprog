@@ -12,7 +12,6 @@ public class Player {
 	private int x; // x coordinate of the player
 	private int y; // y coordinate of the player
 	private int score; // score of the player
-	private boolean active; // players turn true/false
 
 	/**
 	 * constructor of the class to initialize the player
@@ -30,7 +29,6 @@ public class Player {
 		this.x = x;
 		this.y = y;
 		this.score = 0;
-		this.active = false;
 	}
 
 	/**
@@ -99,39 +97,6 @@ public class Player {
 	 */
 	public int getScore() {
 		return score;
-	}
-
-	/**
-	 * checks if the player is on his turn
-	 * 
-	 * @return returns the active status
-	 * 
-	 */
-	public boolean getActive() {
-		return active;
-	}
-
-	/**
-	 * sets the player to be on his turn or not on his turn
-	 * 
-	 * @param active
-	 *            true = on his turn; false = not his turn
-	 * 
-	 */
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-	/**
-	 * toggles the turn of the player
-	 * 
-	 */
-	public void toggleActive() {
-		if (this.active) {
-			this.active = false;
-		} else {
-			this.active = true;
-		}
 	}
 
 }
