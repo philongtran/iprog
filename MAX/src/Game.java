@@ -97,29 +97,7 @@ public class Game {
 					i = previousPlayer(i);
 					break;
 				}
-				// prints the score on the screen
-				System.out.print("Score B: " + player[0].getScore() + " Score W: " + player[1].getScore() + " | ");
-				// if scores of the players are below the score limit prints on
-				// the
-				// screen which players turn it is
-				if (i == 1 && player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
-					System.out.println("Black to move");
-				} else if (i == 0 && player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
-					System.out.println("White to move");
-				} else {
-					// otherwise prints on the screen who won
-					if (player[0].getScore() >= SCORELIMIT) {
-						System.out.println("Black wins");
-						board.show();
-						break;
-					} else {
-						System.out.println("White wins");
-						board.show();
-						break;
-					}
-				}
-				// prints the board on the screen
-				board.show();
+				display(i);
 			}
 		}
 	}
@@ -136,11 +114,7 @@ public class Game {
 		// plants the players on the board
 		board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
 		board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
-		// prints the score on the screen and which players turn it is
-		System.out.print("Score B: " + player[0].getScore() + " Score W: " + player[1].getScore() + " | ");
-		System.out.println("Black to move");
-		// prints the board on the screen
-		board.show();
+		display(1);
 	}
 
 	/**
@@ -201,6 +175,28 @@ public class Game {
 		player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
 		// marks the field to be player owned
 		board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+	}
+
+	private void display(int i) {
+		// prints the score on the screen
+		System.out.print("Score B: " + player[0].getScore() + " Score W: " + player[1].getScore() + " | ");
+		// if scores of the players are below the score limit prints on
+		// the
+		// screen which players turn it is
+		if (i == 1 && player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
+			System.out.println("Black to move");
+		} else if (i == 0 && player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
+			System.out.println("White to move");
+		} else {
+			// otherwise prints on the screen who won
+			if (player[0].getScore() >= SCORELIMIT) {
+				System.out.println("Black wins");
+			} else {
+				System.out.println("White wins");
+			}
+		}
+		// prints the board on the screen
+		board.show();
 	}
 
 }
