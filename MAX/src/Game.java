@@ -98,6 +98,9 @@ public class Game {
 					break;
 				}
 				display(i);
+				if (checkScore()) {
+					break;
+				}
 			}
 		}
 	}
@@ -197,6 +200,16 @@ public class Game {
 		}
 		// prints the board on the screen
 		board.show();
+	}
+
+	private boolean checkScore() {
+		boolean scoreNotReached = true;
+		for (int i = 0; i < player.length; i++) {
+			if (player[i].getScore() >= SCORELIMIT) {
+				scoreNotReached = false;
+			}
+		}
+		return scoreNotReached;
 	}
 
 }
