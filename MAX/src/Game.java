@@ -254,27 +254,15 @@ public class Game {
 	private void displayV2(int i) {
 		String score = "";
 		for (int j = 0; j < player.length; j++) {
-			score += "Score ";
-			switch (player[j].getColor()) {
-			case -1:
-				score += "B";
-				break;
-			case -2:
-				score += "W";
-				break;
-			default:
-				score += "P" + (j + 1);
-				break;
-			}
-			score += ": " + player[j].getScore() + " ";
+			score += "Score " + returnLetter(j) + ": " + player[j].getScore() + " ";
 		}
 		if (checkScore()) {
-			score += "| " + "P" + (i + 1) + " wins";
+			score += "| " + returnLetter(i) + " wins";
 		} else {
 			if (i == 0) {
-				score += "| " + "P" + player.length + " to move";
+				score += "| " + returnLetter(player.length - 1) + " to move";
 			} else {
-				score += "| " + "P" + i + " to move";
+				score += "| " + returnLetter(i - 1) + " to move";
 			}
 		}
 		IO.writeln(score);
@@ -294,6 +282,17 @@ public class Game {
 			}
 		}
 		return scoreReached;
+	}
+
+	private String returnLetter(int i) {
+		switch (player[i].getColor()) {
+		case -1:
+			return "B";
+		case -2:
+			return "W";
+		default:
+			return "P" + (i + 1);
+		}
 	}
 
 }
