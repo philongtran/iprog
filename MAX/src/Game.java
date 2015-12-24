@@ -217,6 +217,11 @@ public class Game {
 		board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
 	}
 
+	/**
+	 * Prints score board and play board to the screen
+	 * 
+	 * @param i
+	 */
 	private void display(int i) {
 		// prints the score on the screen
 		System.out.print("Score B: " + player[0].getScore() + " Score W: " + player[1].getScore() + " | ");
@@ -239,6 +244,11 @@ public class Game {
 		board.show();
 	}
 
+	/**
+	 * Checks if score limit is reached
+	 * 
+	 * @return
+	 */
 	private boolean checkScore() {
 		boolean scoreReached = false;
 		for (int i = 0; i < player.length; i++) {
