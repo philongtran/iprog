@@ -9,9 +9,8 @@ public class Game {
 	private static int boardSizeY;
 
 	/**
-	 * main method of the game
+	 * method for running the game
 	 * 
-	 * @param args
 	 * @throws Exception
 	 */
 	public void run() throws Exception {

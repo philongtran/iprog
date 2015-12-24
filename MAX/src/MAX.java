@@ -8,6 +8,12 @@
  */
 public class MAX {
 
+	/**
+	 * main method of the game
+	 * 
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 		Game game1 = new Game();
 		game1.run();
