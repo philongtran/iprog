@@ -1,5 +1,5 @@
 /**
- * Calculation of the starting position of the players
+ * calculation of the starting position of the players
  *
  * @author Manuel Wessner <191711>
  * @author Phi Long Tran <191624>
