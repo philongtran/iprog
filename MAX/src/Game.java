@@ -49,7 +49,6 @@ public class Game {
 				case UP:
 					if (oobCheck(player[i], "UP") && collisionCheck(player[i], "UP")) {
 						removePlayerFromPreviousPosition(player[i]);
-						// moves the player up
 						player[i].moveUp();
 						calculate(i);
 						break;
@@ -62,7 +61,6 @@ public class Game {
 					if (oobCheck(player[i], "DOWN") && collisionCheck(player[i], "DOWN")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveDown();
-						// add the value of the board to the score
 						calculate(i);
 						break;
 					} else {
@@ -74,7 +72,6 @@ public class Game {
 					if (oobCheck(player[i], "LEFT") && collisionCheck(player[i], "LEFT")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveLeft();
-						// add the value of the board to the score
 						calculate(i);
 						break;
 					} else {
