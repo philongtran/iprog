@@ -11,10 +11,10 @@ public class Game {
 	private Player[] player;
 	private Board board;
 	private PlayerPosition playerPosition;
-	private final int SCORELIMIT = 10;
-	private final int playerCount;
-	private final int boardSizeX;
-	private final int boardSizeY;
+	private final int SCORE_LIMIT = 105;
+	private final int PLAYER_COUNT;
+	private final int BOARD_SIZE_X;
+	private final int BOARD_SIZE_Y;
 
 	/**
 	 * constructor
@@ -23,9 +23,9 @@ public class Game {
 	 * @param boardSizeY
 	 */
 	public Game(int boardSizeX, int boardSizeY, int playerCount) {
-		this.boardSizeX = boardSizeX;
-		this.boardSizeY = boardSizeY;
-		this.playerCount = playerCount;
+		this.BOARD_SIZE_X = boardSizeX;
+		this.BOARD_SIZE_Y = boardSizeY;
+		this.PLAYER_COUNT = playerCount;
 		this.player = new Player[playerCount];
 	}
 
@@ -109,14 +109,14 @@ public class Game {
 	 */
 	private void initializeGame() {
 		// set starting positions
-		playerPosition = new PlayerPosition(boardSizeX, boardSizeY, playerCount);
+		playerPosition = new PlayerPosition(BOARD_SIZE_X, BOARD_SIZE_Y, PLAYER_COUNT);
 		int[][] position = playerPosition.getPosition();
 		// create players with starting location and color
-		for (int i = 0; i < playerCount; i++) {
+		for (int i = 0; i < PLAYER_COUNT; i++) {
 			player[i] = new Player(position[i][0], position[i][1], (i + 1) * (-1));
 		}
 		// initialize the board and its size
-		board = new Board(boardSizeX, boardSizeY);
+		board = new Board(BOARD_SIZE_X, BOARD_SIZE_Y);
 		// plants the players on the board
 		board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
 		board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
@@ -271,7 +271,7 @@ public class Game {
 	private boolean checkScore() {
 		boolean scoreReached = false;
 		for (int i = 0; i < player.length; i++) {
-			if (player[i].getScore() >= SCORELIMIT) {
+			if (player[i].getScore() >= SCORE_LIMIT) {
 				scoreReached = true;
 			}
 		}

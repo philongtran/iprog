@@ -9,8 +9,8 @@ import java.util.Random;
  *
  */
 public class Board {
-	private final int sizeX; // size of the x side board
-	private final int sizeY; // size of the y side board
+	private final int SIZE_X; // size of the x side board
+	private final int SIZE_Y; // size of the y side board
 	private int[][] board; // board itself
 	private Random random; // random number generator
 
@@ -25,8 +25,8 @@ public class Board {
 	 * 
 	 */
 	public Board(int sizeX, int sizeY) {
-		this.sizeX = sizeX;
-		this.sizeY = sizeY;
+		this.SIZE_X = sizeX;
+		this.SIZE_Y = sizeY;
 		this.board = new int[sizeY][sizeX];
 		this.random = new Random();
 		this.initialize();
@@ -36,8 +36,8 @@ public class Board {
 	 * initializes the fields of the board with random numbers
 	 */
 	public void initialize() {
-		for (int y = 0; y < sizeY; y++) {
-			for (int x = 0; x < sizeX; x++) {
+		for (int y = 0; y < SIZE_Y; y++) {
+			for (int x = 0; x < SIZE_X; x++) {
 				board[y][x] = random.nextInt(9) + 1;
 			}
 		}
@@ -87,7 +87,7 @@ public class Board {
 	 * 
 	 */
 	public int getSizeX() {
-		return this.sizeX;
+		return this.SIZE_X;
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class Board {
 	 * 
 	 */
 	public int getSizeY() {
-		return this.sizeY;
+		return this.SIZE_Y;
 	}
 
 }

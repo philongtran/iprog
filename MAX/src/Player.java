@@ -8,7 +8,7 @@
  */
 public class Player {
 
-	private final int color; // color of the player (-1 = black; -2 = white)
+	private final int COLOR; // color of the player (-1 = black; -2 = white)
 	private int x; // x coordinate of the player
 	private int y; // y coordinate of the player
 	private int score; // score of the player
@@ -25,7 +25,7 @@ public class Player {
 	 * 
 	 */
 	public Player(int x, int y, int color) {
-		this.color = color;
+		this.COLOR = color;
 		this.x = x;
 		this.y = y;
 		this.score = 0;
@@ -77,7 +77,7 @@ public class Player {
 	 * gets the color of the player
 	 */
 	public int getColor() {
-		return color;
+		return COLOR;
 	}
 
 	/**
