@@ -9,6 +9,17 @@ public class Game {
 	private int boardSizeY;
 
 	/**
+	 * constructor
+	 * 
+	 * @param boardSizeX
+	 * @param boardSizeY
+	 */
+	public Game(int boardSizeX, int boardSizeY) {
+		this.boardSizeX = boardSizeX;
+		this.boardSizeY = boardSizeY;
+	}
+
+	/**
 	 * method for running the game
 	 * 
 	 * @throws Exception
@@ -203,9 +214,6 @@ public class Game {
 	}
 
 	private void initializeGame() {
-		// set size of board
-		boardSizeX = 8;
-		boardSizeY = 8;
 		// set starting position and color of the players and who's active
 		playerPosition = new PlayerPosition(2, boardSizeX, boardSizeY);
 		int[][] position = playerPosition.getPosition();
