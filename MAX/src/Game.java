@@ -8,6 +8,7 @@
  */
 
 public class Game {
+	private Player[] player;
 	private Player player1;
 	private Player player2;
 	private Board board;
@@ -22,7 +23,7 @@ public class Game {
 	 * @param boardSizeX
 	 * @param boardSizeY
 	 */
-	public Game(int boardSizeX, int boardSizeY) {
+	public Game(int boardSizeX, int boardSizeY, int playerCount) {
 		this.boardSizeX = boardSizeX;
 		this.boardSizeY = boardSizeY;
 	}
