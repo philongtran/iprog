@@ -64,7 +64,7 @@ public class Game {
 						calcSet(i);
 						break;
 					} else {
-						i = previousPlayer(i);
+						i = playerRetry(i);
 						break;
 					}
 
@@ -75,7 +75,7 @@ public class Game {
 						calcSet(i);
 						break;
 					} else {
-						i = previousPlayer(i);
+						i = playerRetry(i);
 						break;
 					}
 
@@ -86,7 +86,7 @@ public class Game {
 						calcSet(i);
 						break;
 					} else {
-						i = previousPlayer(i);
+						i = playerRetry(i);
 						break;
 					}
 
@@ -97,12 +97,12 @@ public class Game {
 						calcSet(i);
 						break;
 					} else {
-						i = previousPlayer(i);
+						i = playerRetry(i);
 						break;
 					}
 
 				default:
-					i = previousPlayer(i);
+					i = playerRetry(i);
 					break;
 				}
 				// displays score and board
@@ -208,13 +208,13 @@ public class Game {
 	}
 
 	/**
-	 * Returns to previous/same player if move were illegal.
+	 * Returns to the same player if move was illegal.
 	 * 
 	 * @param playerID
 	 *            - ID of the wrongly assumed player.
 	 * @return - The old player ID
 	 */
-	private int previousPlayer(int playerID) {
+	private int playerRetry(int playerID) {
 		if (playerID == 0) {
 			return player.length - 1;
 		} else {
