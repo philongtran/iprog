@@ -254,7 +254,19 @@ public class Game {
 	private void displayV2(int i) {
 		String score = "";
 		for (int j = 0; j < player.length; j++) {
-			score += "Score P" + (j + 1) + ": " + player[j].getScore() + " ";
+			score += "Score ";
+			switch (player[j].getColor()) {
+			case -1:
+				score += "B";
+				break;
+			case -2:
+				score += "W";
+				break;
+			default:
+				score += "P" + (j + 1);
+				break;
+			}
+			score += ": " + player[j].getScore() + " ";
 		}
 		if (checkScore()) {
 			score += "| " + "P" + (i + 1) + " wins";
