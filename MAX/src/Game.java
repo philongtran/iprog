@@ -124,6 +124,9 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Initializes the game with its default values
+	 */
 	private void initializeGame() {
 		// set starting position and color of the players
 		playerPosition = new PlayerPosition(playerCount, boardSizeX, boardSizeY);
@@ -155,6 +158,13 @@ public class Game {
 		board.setPlayer(oldPositionX, oldPositionY, 0);
 	}
 
+	/**
+	 * Out of bounds check
+	 * 
+	 * @param player
+	 * @param direction
+	 * @return
+	 */
 	private boolean oobCheck(Player player, String direction) {
 		if (direction.equals("UP") && player.getY() > 0) {
 			return true;
@@ -171,6 +181,13 @@ public class Game {
 		return false;
 	}
 
+	/**
+	 * Player collision check
+	 * 
+	 * @param player
+	 * @param direction
+	 * @return
+	 */
 	private boolean collisionCheck(Player player, String direction) {
 		if (direction.equals("UP") && board.getValue(player.getX(), player.getY() - 1) >= 0) {
 			return true;
@@ -188,6 +205,12 @@ public class Game {
 		return false;
 	}
 
+	/**
+	 * Returns to previous player
+	 * 
+	 * @param i
+	 * @return
+	 */
 	private int previousPlayer(int i) {
 		if (i == 0) {
 			return player.length - 1;
@@ -196,6 +219,11 @@ public class Game {
 		}
 	}
 
+	/**
+	 * Makes calculations after movement and setting players new position
+	 * 
+	 * @param i
+	 */
 	private void calculate(int i) {
 		// add the value of the board to the score
 		player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
