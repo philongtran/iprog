@@ -88,7 +88,7 @@ public class Board {
 	/**
 	 * Returns the y size of the board.
 	 * 
-	 * @return Returns the y size of the board
+	 * @return - Returns the y size of the board
 	 * 
 	 */
 	public int getSizeY() {
