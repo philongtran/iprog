@@ -1,8 +1,16 @@
+/**
+ * Calculation of the starting position of the players
+ *
+ * @author Manuel Wessner <191711>
+ * @author Phi Long Tran <191624>
+ * @author Steve Nono <191709>
+ */
 
 public class PlayerPosition {
 
 	private int[][] position;
 
+	// calculates the player positions
 	public PlayerPosition(int playerCount, int boardDimensionX, int boardDimensionY) {
 		switch (playerCount) {
 		case 2:
@@ -18,6 +26,7 @@ public class PlayerPosition {
 		}
 	}
 
+	// returns the starting positions
 	public int[][] getPosition() {
 		return position;
 	}
