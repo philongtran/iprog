@@ -52,6 +52,7 @@ public class Game {
 				}
 				// reads keyboard input to move the active player
 				Direction direction = Direction.of(IO.promptAndRead("i: "));
+				// temporary variable to hold current player
 				Player currentPlayer = player[i];
 				// cases which are allowed
 				switch (direction) {
