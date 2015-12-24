@@ -51,10 +51,7 @@ public class Game {
 						removePlayerFromPreviousPosition(player[i]);
 						// moves the player up
 						player[i].moveUp();
-						// add the value of the board to the score
-						player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
-						// marks the field to be player owned
-						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+						calculate(i);
 						break;
 					} else {
 						i = previousPlayer(i);
@@ -66,9 +63,7 @@ public class Game {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveDown();
 						// add the value of the board to the score
-						player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
-						// marks the field to be player owned
-						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+						calculate(i);
 						break;
 					} else {
 						i = previousPlayer(i);
@@ -80,9 +75,7 @@ public class Game {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveLeft();
 						// add the value of the board to the score
-						player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
-						// marks the field to be player owned
-						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+						calculate(i);
 						break;
 					} else {
 						i = previousPlayer(i);
@@ -93,10 +86,7 @@ public class Game {
 					if (oobCheck(player[i], "RIGHT") && collisionCheck(player[i], "RIGHT")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveRight();
-						// add the value of the board to the score
-						player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
-						// marks the field to be player owned
-						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+						calculate(i);
 						break;
 					} else {
 						i = previousPlayer(i);
@@ -205,6 +195,13 @@ public class Game {
 		} else {
 			return --i;
 		}
+	}
+
+	private void calculate(int i) {
+		// add the value of the board to the score
+		player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
+		// marks the field to be player owned
+		board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
 	}
 
 }
