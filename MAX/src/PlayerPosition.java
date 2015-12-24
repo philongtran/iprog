@@ -1,5 +1,5 @@
 /**
- * calculation of the starting position of the players
+ * Calculation of the starting position of the players.
  *
  * @author Manuel Wessner <191711>
  * @author Phi Long Tran <191624>
@@ -11,11 +11,14 @@ public class PlayerPosition {
 	private int[][] position;
 
 	/**
-	 * calculates the player positions
+	 * Calculates the starting positions of the players.
 	 * 
 	 * @param playerCount
+	 *            - Amount of players
 	 * @param boardDimensionX
+	 *            - X size of the board
 	 * @param boardDimensionY
+	 *            - Y size of the board
 	 */
 	public PlayerPosition(int boardDimensionX, int boardDimensionY, int playerCount) {
 		switch (playerCount) {
@@ -33,9 +36,9 @@ public class PlayerPosition {
 	}
 
 	/**
-	 * returns the starting positions
+	 * Returns the starting positions.
 	 * 
-	 * @return
+	 * @return - Returns the starting positions
 	 */
 	public int[][] getPosition() {
 		return position;

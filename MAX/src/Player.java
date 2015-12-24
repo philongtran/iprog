@@ -14,14 +14,15 @@ public class Player {
 	private int score; // score of the player
 
 	/**
-	 * constructor of the class to initialize the player
+	 * The constructor of the class to initialize the player.
 	 * 
 	 * @param x
-	 *            x coordinate of the player
+	 *            - X coordinate of the player
 	 * @param y
-	 *            y coordinate of the player
+	 *            - Y coordinate of the player
 	 * @param color
-	 *            color of the player (negative number -1 = black; -2 = white)
+	 *            - Color of the player (negative number e.g. -1 = black; -2 =
+	 *            white)
 	 * 
 	 */
 	public Player(int x, int y, int color) {
@@ -32,58 +33,65 @@ public class Player {
 	}
 
 	/**
-	 * moves the player up one field
+	 * Moves the player up one field.
 	 */
 	public void moveUp() {
 		y--;
 	}
 
 	/**
-	 * moves the player down one field
+	 * Moves the player down one field.
 	 */
 	public void moveDown() {
 		y++;
 	}
 
 	/**
-	 * moves the player left one field
+	 * Moves the player left one field.
 	 */
 	public void moveLeft() {
 		x--;
 	}
 
 	/**
-	 * moves the player right one field
+	 * Moves the player right one field.
 	 */
 	public void moveRight() {
 		x++;
 	}
 
 	/**
-	 * gets the x coordinate of the player
+	 * Returns the x coordinate of the player.
+	 * 
+	 * @return - Returns the x coordinate of the player
 	 */
 	public int getX() {
 		return x;
 	}
 
 	/**
-	 * gets the y coordinate of the player
+	 * Returns the y coordinate of the player.
+	 * 
+	 * @return - Returns the y coordinate of the player
 	 */
 	public int getY() {
 		return y;
 	}
 
 	/**
-	 * gets the color of the player
+	 * Returns the color of the player.
+	 * 
+	 * @return - Returns the color of the player
 	 */
 	public int getColor() {
 		return COLOR;
 	}
 
 	/**
+	 * Add the value of the score to the players score.
 	 * 
 	 * @param score
-	 *            add the value of the score to the players score
+	 *            - Add the value of score to the players score
 	 * 
 	 */
 	public void addScore(int score) {
@@ -91,8 +99,9 @@ public class Player {
 	}
 
 	/**
+	 * Returns the score of the player.
 	 * 
-	 * @return returns the score of the player
+	 * @return - Returns the score of the player
 	 * 
 	 */
 	public int getScore() {

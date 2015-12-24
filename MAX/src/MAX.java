@@ -9,9 +9,10 @@
 public class MAX {
 
 	/**
-	 * main method of the game
+	 * Main method of the game.
 	 * 
 	 * @param args
+	 *            - Arguments from the command line
 	 * @throws Exception
 	 */
 	public static void main(String[] args) throws Exception {

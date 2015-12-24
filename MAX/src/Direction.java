@@ -1,5 +1,5 @@
 /**
- * Visible reprentation of a players direction <br>
+ * Visible representation of a players direction
  *
  * @author Manuel Wessner <191711>
  * @author Phi Long Tran <191624>
@@ -12,23 +12,30 @@ enum Direction {
 	private final String direction;
 
 	/**
+	 * Representation of direction as string.
+	 * 
 	 * @param directionAsString
-	 *            - representation of direction as string
+	 *            - Representation of direction as string
 	 */
 	private Direction(String directionAsString) {
 		this.direction = directionAsString;
 	}
 
+	/**
+	 * Returns the direction as string.
+	 * 
+	 * @return - Returns the direction as string
+	 */
 	private String getDirection() {
 		return direction;
 	}
 
 	/**
-	 * gets the corresponding direction value of a string
+	 * Gets the corresponding direction value of a string.
 	 * 
 	 * @param direction
 	 *            - w,a,s,d
-	 * @return Direction as Enum
+	 * @return - Direction as Enum
 	 */
 	static Direction of(String direction) {
 		for (Direction directionEnum : Direction.values()) {

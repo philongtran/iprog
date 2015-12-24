@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- * this class provides support of user input/output handling
+ * This class provides support of user input/output handling.
  * 
  * @author Manuel Wessner <191711>
  * @author Phi Long Tran <191624>
@@ -18,20 +18,21 @@ public class IO {
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 	/**
-	 * prints out a given input to System.out
+	 * Prints out a given input to System.out
 	 * 
 	 * @param s
-	 *            - the input which should be printed
+	 *            - The input which should be printed
 	 */
 	public static void writeln(String s) {
 		writeAndFlushLine(s);
 	}
 
 	/**
-	 * reads an input from a user by a given question
+	 * Reads an input from a user by a given question
 	 * 
 	 * @param question
-	 * @return user input
+	 *            - Question as string
+	 * @return user input - Returns the user input
 	 * @throws IOException
 	 */
 	public static String promptAndRead(String question) throws IOException {

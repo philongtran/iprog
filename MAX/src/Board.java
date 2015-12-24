@@ -1,7 +1,7 @@
 import java.util.Random;
 
 /**
- * this class represents the board of the game.
+ * This class represents the board of the game.
  * 
  * @author Phi Long Tran <191624>
  * @author Manuel Wessner <191711>
@@ -15,13 +15,12 @@ public class Board {
 	private Random random; // random number generator
 
 	/**
+	 * The Constructor creates a board of the size x,y and initializes it.
 	 * 
 	 * @param sizeX
-	 *            sets the size of the x part
+	 *            - Sets the size of the x part
 	 * @param sizeY
-	 *            sets the size of the y part
-	 * 
-	 *            constructor creates a board of the size x,y and initialize it
+	 *            - Sets the size of the y part
 	 * 
 	 */
 	public Board(int sizeX, int sizeY) {
@@ -33,7 +32,7 @@ public class Board {
 	}
 
 	/**
-	 * initializes the fields of the board with random numbers
+	 * Initializes the fields of the board with random numbers.
 	 */
 	public void initialize() {
 		for (int y = 0; y < SIZE_Y; y++) {
@@ -43,11 +42,10 @@ public class Board {
 		}
 	}
 
-	/**
+	/*
 	 * print the formated board on the screen it shows it values and spots the
 	 * players and assign them a value a player can recognize
-	 */
-	/*
+	 *
 	 * public void show() { for (int y = 0; y < sizeY; y++) { for (int x = 0; x
 	 * < sizeX; x++) { if (board[y][x] == -1) { System.out.print("B "); } else
 	 * if (board[y][x] == -2) { System.out.print("W "); } else {
@@ -57,13 +55,14 @@ public class Board {
 	 */
 
 	/**
+	 * Assigns a value to the x,y coordinate.
 	 * 
 	 * @param x
-	 *            selects the x part of the board
+	 *            - Selects the x part of the board
 	 * @param y
-	 *            selects the y part of the board
+	 *            - Selects the y part of the board
 	 * @param value
-	 *            enter the value in the x,y coordinate
+	 *            - Enter the value in the x,y coordinate
 	 * 
 	 */
 	public void setPlayer(int x, int y, int value) {
@@ -71,10 +70,13 @@ public class Board {
 	}
 
 	/**
+	 * Getting a specific value in the x,y coordinate.
 	 * 
 	 * @param x
+	 *            - X coordinate of the board
 	 * @param y
-	 * @return returns the value in the x,y coordinate
+	 *            - Y coordinate of the board
+	 * @return - Returns the value in the x,y coordinate
 	 * 
 	 */
 	public int getValue(int x, int y) {
@@ -82,8 +84,9 @@ public class Board {
 	}
 
 	/**
+	 * Returns the x size of the board.
 	 * 
-	 * @return returns the x size of the board
+	 * @return - Returns the x size of the board
 	 * 
 	 */
 	public int getSizeX() {
@@ -91,8 +94,9 @@ public class Board {
 	}
 
 	/**
+	 * Returns the y size of the board.
 	 * 
-	 * @return returns the y size of the board
+	 * @return Returns the y size of the board
 	 * 
 	 */
 	public int getSizeY() {
