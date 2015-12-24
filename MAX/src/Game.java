@@ -131,7 +131,7 @@ public class Game {
 	}
 
 	/**
-	 * Saves the old position of the player and sets the value inside the board
+	 * Gets the old position of the player and sets the value inside the board
 	 * to 0.
 	 * 
 	 * @param player
