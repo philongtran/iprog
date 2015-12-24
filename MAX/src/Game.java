@@ -1,12 +1,12 @@
 
 public class Game {
-	private static Player player1;
-	private static Player player2;
-	private static Board board;
-	private static PlayerPosition playerPosition;
-	private static final int SCORELIMIT = 105;
-	private static int boardSizeX;
-	private static int boardSizeY;
+	private Player player1;
+	private Player player2;
+	private Board board;
+	private PlayerPosition playerPosition;
+	private final int SCORELIMIT = 105;
+	private int boardSizeX;
+	private int boardSizeY;
 
 	/**
 	 * method for running the game
@@ -202,7 +202,7 @@ public class Game {
 		}
 	}
 
-	private static void initializeGame() {
+	private void initializeGame() {
 		// set size of board
 		boardSizeX = 8;
 		boardSizeY = 8;
@@ -231,7 +231,7 @@ public class Game {
 	 * @param player
 	 *            which position should be reset to 0
 	 */
-	private static void removePlayerFromPreviousPosition(Player player) {
+	private void removePlayerFromPreviousPosition(Player player) {
 		int oldPositionX = player.getX();
 		int oldPositionY = player.getY();
 		board.setPlayer(oldPositionX, oldPositionY, 0);
@@ -240,7 +240,7 @@ public class Game {
 	/**
 	 * switches player turns
 	 */
-	private static void togglePlayer() {
+	private void togglePlayer() {
 		player1.toggleActive();
 		player2.toggleActive();
 	}
