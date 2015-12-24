@@ -57,11 +57,7 @@ public class Game {
 						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
 						break;
 					} else {
-						if (i == 0) {
-							i = player.length - 1;
-						} else {
-							i--;
-						}
+						i = previousPlayer(i);
 						break;
 					}
 
@@ -75,11 +71,7 @@ public class Game {
 						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
 						break;
 					} else {
-						if (i == 0) {
-							i = player.length - 1;
-						} else {
-							i--;
-						}
+						i = previousPlayer(i);
 						break;
 					}
 
@@ -93,11 +85,7 @@ public class Game {
 						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
 						break;
 					} else {
-						if (i == 0) {
-							i = player.length - 1;
-						} else {
-							i--;
-						}
+						i = previousPlayer(i);
 						break;
 					}
 
@@ -111,20 +99,12 @@ public class Game {
 						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
 						break;
 					} else {
-						if (i == 0) {
-							i = player.length - 1;
-						} else {
-							i--;
-						}
+						i = previousPlayer(i);
 						break;
 					}
 
 				default:
-					if (i == 0) {
-						i = player.length - 1;
-					} else {
-						i--;
-					}
+					i = previousPlayer(i);
 					break;
 				}
 				// prints the score on the screen
@@ -200,6 +180,14 @@ public class Game {
 			return true;
 		}
 		return false;
+	}
+
+	private int previousPlayer(int i) {
+		if (i == 0) {
+			return player.length - 1;
+		} else {
+			return i--;
+		}
 	}
 
 }
