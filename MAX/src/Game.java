@@ -123,10 +123,15 @@ public class Game {
 		// initialize the board and its size
 		board = new Board(BOARD_SIZE_X, BOARD_SIZE_Y);
 		// plants the players on the board
-		board.setPlayer(player[0].getX(), player[0].getY(), player[0].getColor());
-		board.setPlayer(player[1].getX(), player[1].getY(), player[1].getColor());
+		for (int i = 0; i < player.length; i++) {
+			board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+		}
+		// board.setPlayer(player[0].getX(), player[0].getY(),
+		// player[0].getColor());
+		// board.setPlayer(player[1].getX(), player[1].getY(),
+		// player[1].getColor());
 		// displays score and board
-		display(1);
+		display(-1);
 	}
 
 	/**
@@ -266,10 +271,10 @@ public class Game {
 		if (checkScore()) {
 			score += "| " + returnLetter(player[playerID].getColor()) + " wins";
 		} else {
-			if (playerID == 0) {
-				score += "| " + returnLetter(player[player.length - 1].getColor()) + " to move";
+			if (playerID == player.length - 1) {
+				score += "| " + returnLetter(player[0].getColor()) + " to move";
 			} else {
-				score += "| " + returnLetter(player[playerID - 1].getColor()) + " to move";
+				score += "| " + returnLetter(player[playerID + 1].getColor()) + " to move";
 			}
 		}
 		IO.writeln(score);
@@ -304,6 +309,10 @@ public class Game {
 			return "B";
 		case -2:
 			return "W";
+		case -3:
+			return "G";
+		case -4:
+			return "L";
 		default:
 			return "P" + (color * (-1));
 		}
