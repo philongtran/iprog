@@ -54,7 +54,7 @@ public class Game {
 					if (check(player[i], "UP")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveUp();
-						calculate(i);
+						calcSet(i);
 						break;
 					} else {
 						i = previousPlayer(i);
@@ -65,7 +65,7 @@ public class Game {
 					if (check(player[i], "DOWN")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveDown();
-						calculate(i);
+						calcSet(i);
 						break;
 					} else {
 						i = previousPlayer(i);
@@ -76,7 +76,7 @@ public class Game {
 					if (check(player[i], "LEFT")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveLeft();
-						calculate(i);
+						calcSet(i);
 						break;
 					} else {
 						i = previousPlayer(i);
@@ -87,7 +87,7 @@ public class Game {
 					if (check(player[i], "RIGHT")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveRight();
-						calculate(i);
+						calcSet(i);
 						break;
 					} else {
 						i = previousPlayer(i);
@@ -107,9 +107,10 @@ public class Game {
 	 * Initializes the game with its default values
 	 */
 	private void initializeGame() {
-		// set starting position and color of the players
+		// set starting positions
 		playerPosition = new PlayerPosition(playerCount, boardSizeX, boardSizeY);
 		int[][] position = playerPosition.getPosition();
+		// create players with starting location and color
 		for (int i = 0; i < playerCount; i++) {
 			player[i] = new Player(position[i][0], position[i][1], (i + 1) * (-1));
 		}
@@ -206,11 +207,11 @@ public class Game {
 	}
 
 	/**
-	 * Makes calculations after movement and setting players new position
+	 * Makes calculation of the score and sets players new position
 	 * 
 	 * @param i
 	 */
-	private void calculate(int i) {
+	private void calcSet(int i) {
 		// add the value of the board to the score
 		player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
 		// marks the field to be player owned
