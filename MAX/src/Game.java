@@ -47,7 +47,7 @@ public class Game {
 				switch (direction) {
 
 				case UP:
-					if (oobCheck(player[i], "UP")) {
+					if (oobCheck(player[i], "UP") && collisionCheck(player[i], "UP")) {
 						removePlayerFromPreviousPosition(player[i]);
 						// moves the player up
 						player[i].moveUp();
@@ -62,7 +62,7 @@ public class Game {
 					}
 
 				case DOWN:
-					if (oobCheck(player[i], "DOWN")) {
+					if (oobCheck(player[i], "DOWN") && collisionCheck(player[i], "DOWN")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveDown();
 						// add the value of the board to the score
@@ -76,7 +76,7 @@ public class Game {
 					}
 
 				case LEFT:
-					if (oobCheck(player[i], "LEFT")) {
+					if (oobCheck(player[i], "LEFT") && collisionCheck(player[i], "LEFT")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveLeft();
 						// add the value of the board to the score
@@ -90,7 +90,7 @@ public class Game {
 					}
 
 				case RIGHT:
-					if (oobCheck(player[i], "RIGHT")) {
+					if (oobCheck(player[i], "RIGHT") && collisionCheck(player[i], "RIGHT")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveRight();
 						// add the value of the board to the score
@@ -170,13 +170,30 @@ public class Game {
 		if (direction.equals("UP") && player.getY() > 0) {
 			return true;
 		}
-		if (direction.equals("DOWN") && player.getY() < board.getSizeY()) {
+		if (direction.equals("DOWN") && player.getY() + 1 < board.getSizeY()) {
 			return true;
 		}
 		if (direction.equals("LEFT") && player.getX() > 0) {
 			return true;
 		}
-		if (direction.equals("RIGHT") && player.getX() < board.getSizeX()) {
+		if (direction.equals("RIGHT") && player.getX() + 1 < board.getSizeX()) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean collisionCheck(Player player, String direction) {
+		if (direction.equals("UP") && board.getValue(player.getX(), player.getY() - 1) >= 0) {
+			return true;
+		}
+		if (direction.equals("DOWN") && board.getValue(player.getX(), player.getY() + 1) >= 0) {
+			return true;
+		}
+		if (direction.equals("LEFT") && board.getValue(player.getX() - 1, player.getY()) >= 0) {
+			return true;
+		}
+		if (direction.equals("RIGHT") && board.getValue(player.getX() + 1, player.getY()) >= 0) {
+			System.out.println(board.getValue(player.getX(), player.getX() + 1));
 			return true;
 		}
 		return false;
@@ -186,7 +203,7 @@ public class Game {
 		if (i == 0) {
 			return player.length - 1;
 		} else {
-			return i--;
+			return --i;
 		}
 	}
 
