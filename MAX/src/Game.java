@@ -11,7 +11,7 @@ public class Game {
 	private Player[] player;
 	private Board board;
 	private PlayerPosition playerPosition;
-	private final int SCORE_LIMIT = 10;
+	private final int SCORE_LIMIT = 105;
 	private final int PLAYER_COUNT;
 	private final int BOARD_SIZE_X;
 	private final int BOARD_SIZE_Y;
@@ -57,7 +57,7 @@ public class Game {
 				switch (direction) {
 
 				case UP:
-					if (check(currentPlayer, "UP")) {
+					if (check(currentPlayer, Direction.UP)) {
 						removePlayerFromPreviousPosition(currentPlayer);
 						currentPlayer.moveUp();
 						calcSet(i);
@@ -68,7 +68,7 @@ public class Game {
 					}
 
 				case DOWN:
-					if (check(currentPlayer, "DOWN")) {
+					if (check(currentPlayer, Direction.DOWN)) {
 						removePlayerFromPreviousPosition(player[i]);
 						currentPlayer.moveDown();
 						calcSet(i);
@@ -79,7 +79,7 @@ public class Game {
 					}
 
 				case LEFT:
-					if (check(currentPlayer, "LEFT")) {
+					if (check(currentPlayer, Direction.LEFT)) {
 						removePlayerFromPreviousPosition(currentPlayer);
 						currentPlayer.moveLeft();
 						calcSet(i);
@@ -90,7 +90,7 @@ public class Game {
 					}
 
 				case RIGHT:
-					if (check(currentPlayer, "RIGHT")) {
+					if (check(currentPlayer, Direction.RIGHT)) {
 						removePlayerFromPreviousPosition(currentPlayer);
 						currentPlayer.moveRight();
 						calcSet(i);
@@ -151,17 +151,17 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean if move is legitimate
 	 */
-	private boolean oobCheck(Player player, String direction) {
-		if (direction.equals("UP") && player.getY() > 0) {
+	private boolean oobCheck(Player player, Direction direction) {
+		if (direction.equals(Direction.UP) && player.getY() > 0) {
 			return true;
 		}
-		if (direction.equals("DOWN") && player.getY() + 1 < board.getSizeY()) {
+		if (direction.equals(Direction.DOWN) && player.getY() + 1 < board.getSizeY()) {
 			return true;
 		}
-		if (direction.equals("LEFT") && player.getX() > 0) {
+		if (direction.equals(Direction.LEFT) && player.getX() > 0) {
 			return true;
 		}
-		if (direction.equals("RIGHT") && player.getX() + 1 < board.getSizeX()) {
+		if (direction.equals(Direction.RIGHT) && player.getX() + 1 < board.getSizeX()) {
 			return true;
 		}
 		return false;
@@ -176,17 +176,17 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean if move is legitimate
 	 */
-	private boolean collisionCheck(Player player, String direction) {
-		if (direction.equals("UP") && board.getValue(player.getX(), player.getY() - 1) >= 0) {
+	private boolean collisionCheck(Player player, Direction direction) {
+		if (direction.equals(Direction.UP) && board.getValue(player.getX(), player.getY() - 1) >= 0) {
 			return true;
 		}
-		if (direction.equals("DOWN") && board.getValue(player.getX(), player.getY() + 1) >= 0) {
+		if (direction.equals(Direction.DOWN) && board.getValue(player.getX(), player.getY() + 1) >= 0) {
 			return true;
 		}
-		if (direction.equals("LEFT") && board.getValue(player.getX() - 1, player.getY()) >= 0) {
+		if (direction.equals(Direction.LEFT) && board.getValue(player.getX() - 1, player.getY()) >= 0) {
 			return true;
 		}
-		if (direction.equals("RIGHT") && board.getValue(player.getX() + 1, player.getY()) >= 0) {
+		if (direction.equals(Direction.RIGHT) && board.getValue(player.getX() + 1, player.getY()) >= 0) {
 			System.out.println(board.getValue(player.getX(), player.getX() + 1));
 			return true;
 		}
@@ -202,7 +202,7 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean if move is legitimate
 	 */
-	private boolean check(Player player, String direction) {
+	private boolean check(Player player, Direction direction) {
 		return oobCheck(player, direction) && collisionCheck(player, direction);
 	}
 
