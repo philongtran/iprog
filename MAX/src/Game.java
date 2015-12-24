@@ -253,7 +253,7 @@ public class Game {
 			}
 		}
 		IO.writeln(score);
-		showBoard();
+		board.showBoard();
 	}
 
 	/**
