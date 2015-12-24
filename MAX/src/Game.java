@@ -12,7 +12,7 @@ public class Game {
 	private int playerCount;
 	private Board board;
 	private PlayerPosition playerPosition;
-	private final int SCORELIMIT = 20;
+	private final int SCORELIMIT = 105;
 	private int boardSizeX;
 	private int boardSizeY;
 
@@ -47,43 +47,84 @@ public class Game {
 				switch (direction) {
 
 				case UP:
-					removePlayerFromPreviousPosition(player[i]);
-					// moves the player up
-					player[i].moveUp();
-					// add the value of the board to the score
-					player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
-					// marks the field to be player owned
-					board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
-					break;
+					if (oobCheck(player[i], "UP")) {
+						removePlayerFromPreviousPosition(player[i]);
+						// moves the player up
+						player[i].moveUp();
+						// add the value of the board to the score
+						player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
+						// marks the field to be player owned
+						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+						break;
+					} else {
+						if (i == 0) {
+							i = player.length - 1;
+						} else {
+							i--;
+						}
+						break;
+					}
 
 				case DOWN:
-					removePlayerFromPreviousPosition(player[i]);
-					player[i].moveDown();
-					// add the value of the board to the score
-					player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
-					// marks the field to be player owned
-					board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
-					break;
+					if (oobCheck(player[i], "DOWN")) {
+						removePlayerFromPreviousPosition(player[i]);
+						player[i].moveDown();
+						// add the value of the board to the score
+						player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
+						// marks the field to be player owned
+						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+						break;
+					} else {
+						if (i == 0) {
+							i = player.length - 1;
+						} else {
+							i--;
+						}
+						break;
+					}
 
 				case LEFT:
-					removePlayerFromPreviousPosition(player[i]);
-					player[i].moveLeft();
-					// add the value of the board to the score
-					player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
-					// marks the field to be player owned
-					board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
-					break;
+					if (oobCheck(player[i], "LEFT")) {
+						removePlayerFromPreviousPosition(player[i]);
+						player[i].moveLeft();
+						// add the value of the board to the score
+						player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
+						// marks the field to be player owned
+						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+						break;
+					} else {
+						if (i == 0) {
+							i = player.length - 1;
+						} else {
+							i--;
+						}
+						break;
+					}
 
 				case RIGHT:
-					removePlayerFromPreviousPosition(player[i]);
-					player[i].moveRight();
-					// add the value of the board to the score
-					player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
-					// marks the field to be player owned
-					board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
-					break;
+					if (oobCheck(player[i], "RIGHT")) {
+						removePlayerFromPreviousPosition(player[i]);
+						player[i].moveRight();
+						// add the value of the board to the score
+						player[i].addScore(board.getValue(player[i].getX(), player[i].getY()));
+						// marks the field to be player owned
+						board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+						break;
+					} else {
+						if (i == 0) {
+							i = player.length - 1;
+						} else {
+							i--;
+						}
+						break;
+					}
 
 				default:
+					if (i == 0) {
+						i = player.length - 1;
+					} else {
+						i--;
+					}
 					break;
 				}
 				// prints the score on the screen
@@ -143,6 +184,22 @@ public class Game {
 		int oldPositionX = player.getX();
 		int oldPositionY = player.getY();
 		board.setPlayer(oldPositionX, oldPositionY, 0);
+	}
+
+	private boolean oobCheck(Player player, String direction) {
+		if (direction.equals("UP") && player.getY() > 0) {
+			return true;
+		}
+		if (direction.equals("DOWN") && player.getY() < board.getSizeY()) {
+			return true;
+		}
+		if (direction.equals("LEFT") && player.getX() > 0) {
+			return true;
+		}
+		if (direction.equals("RIGHT") && player.getX() < board.getSizeX()) {
+			return true;
+		}
+		return false;
 	}
 
 }
