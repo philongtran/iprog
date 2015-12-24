@@ -38,7 +38,7 @@ public class Game {
 		initializeGame();
 
 		// runs while players are below score
-		while (player[0].getScore() < SCORELIMIT && player[1].getScore() < SCORELIMIT) {
+		while (!checkScore()) {
 
 			for (int i = 0; i < player.length; i++) {
 				// checks if score limit is reached
