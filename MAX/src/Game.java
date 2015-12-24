@@ -12,7 +12,7 @@ public class Game {
 	private int playerCount;
 	private Board board;
 	private PlayerPosition playerPosition;
-	private final int SCORELIMIT = 20;
+	private final int SCORELIMIT = 105;
 	private int boardSizeX;
 	private int boardSizeY;
 
@@ -47,7 +47,7 @@ public class Game {
 				switch (direction) {
 
 				case UP:
-					if (oobCheck(player[i], "UP") && collisionCheck(player[i], "UP")) {
+					if (check(player[i], "UP")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveUp();
 						calculate(i);
@@ -58,7 +58,7 @@ public class Game {
 					}
 
 				case DOWN:
-					if (oobCheck(player[i], "DOWN") && collisionCheck(player[i], "DOWN")) {
+					if (check(player[i], "DOWN")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveDown();
 						calculate(i);
@@ -69,7 +69,7 @@ public class Game {
 					}
 
 				case LEFT:
-					if (oobCheck(player[i], "LEFT") && collisionCheck(player[i], "LEFT")) {
+					if (check(player[i], "LEFT")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveLeft();
 						calculate(i);
@@ -80,7 +80,7 @@ public class Game {
 					}
 
 				case RIGHT:
-					if (oobCheck(player[i], "RIGHT") && collisionCheck(player[i], "RIGHT")) {
+					if (check(player[i], "RIGHT")) {
 						removePlayerFromPreviousPosition(player[i]);
 						player[i].moveRight();
 						calculate(i);
@@ -200,6 +200,17 @@ public class Game {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * checks the out of bounds and player collision
+	 * 
+	 * @param player
+	 * @param direction
+	 * @return
+	 */
+	private boolean check(Player player, String direction) {
+		return oobCheck(player, direction) && collisionCheck(player, direction);
 	}
 
 	/**
