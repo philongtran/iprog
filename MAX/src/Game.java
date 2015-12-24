@@ -1,5 +1,5 @@
 /**
- * This class represents the game.
+ * this class represents the game.
  * 
  * @author Phi Long Tran <191624>
  * @author Manuel Wessner <191711>
@@ -104,7 +104,7 @@ public class Game {
 	}
 
 	/**
-	 * Initializes the game with its default values
+	 * initializes the game with its default values
 	 */
 	private void initializeGame() {
 		// set starting positions
@@ -135,7 +135,7 @@ public class Game {
 	}
 
 	/**
-	 * Out of bounds check
+	 * out of bounds check
 	 * 
 	 * @param player
 	 * @param direction
@@ -158,7 +158,7 @@ public class Game {
 	}
 
 	/**
-	 * Player collision check
+	 * player collision check
 	 * 
 	 * @param player
 	 * @param direction
@@ -193,7 +193,7 @@ public class Game {
 	}
 
 	/**
-	 * Returns to previous player
+	 * returns to previous player
 	 * 
 	 * @param i
 	 * @return
@@ -207,7 +207,7 @@ public class Game {
 	}
 
 	/**
-	 * Makes calculation of the score and sets players new position
+	 * makes calculation of the score and sets players new position
 	 * 
 	 * @param i
 	 */
@@ -219,7 +219,7 @@ public class Game {
 	}
 
 	/**
-	 * DO NOT DELETE Prints score board and play board to the screen <- for
+	 * DO NOT DELETE prints score board and play board to the screen <- for
 	 * special use DO NOT DELETE
 	 * 
 	 * @param i
@@ -239,30 +239,30 @@ public class Game {
 	 */
 
 	/**
-	 * Prints score board and play board to the screen <- for generic use
+	 * prints score board and play board to the screen <- for generic use
 	 * 
 	 * @param i
 	 */
 	private void display(int i) {
 		String score = "";
 		for (int j = 0; j < player.length; j++) {
-			score += "Score " + returnLetter(j) + ": " + player[j].getScore() + " ";
+			score += "Score " + returnLetter(player[j].getColor()) + ": " + player[j].getScore() + " ";
 		}
 		if (checkScore()) {
-			score += "| " + returnLetter(i) + " wins";
+			score += "| " + returnLetter(player[i].getColor()) + " wins";
 		} else {
 			if (i == 0) {
-				score += "| " + returnLetter(player.length - 1) + " to move";
+				score += "| " + returnLetter(player[player.length - 1].getColor()) + " to move";
 			} else {
-				score += "| " + returnLetter(i - 1) + " to move";
+				score += "| " + returnLetter(player[i - 1].getColor()) + " to move";
 			}
 		}
 		IO.writeln(score);
-		board.show();
+		showBoard();
 	}
 
 	/**
-	 * Checks if score limit is reached
+	 * checks if score limit is reached
 	 * 
 	 * @return
 	 */
@@ -276,14 +276,38 @@ public class Game {
 		return scoreReached;
 	}
 
-	private String returnLetter(int i) {
-		switch (player[i].getColor()) {
+	/**
+	 * assignment letters to the players
+	 * 
+	 * @param color
+	 * @return
+	 */
+	private String returnLetter(int color) {
+		switch (color) {
 		case -1:
 			return "B";
 		case -2:
 			return "W";
 		default:
-			return "P" + (i + 1);
+			return "P" + (color * (-1));
+		}
+	}
+
+	/**
+	 * print the formated board on the screen it shows it values and spots the
+	 * players and assign them a value a player can recognize
+	 */
+	private void showBoard() {
+		for (int y = 0; y < board.getSizeY(); y++) {
+			for (int x = 0; x < board.getSizeX(); x++) {
+				if (board.getValue(x, y) < 0) {
+					System.out.print(returnLetter(board.getValue(x, y)) + " ");
+				} else {
+					System.out.print(board.getValue(x, y) + " ");
+				}
+
+			}
+			System.out.println();
 		}
 	}
 

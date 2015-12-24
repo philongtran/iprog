@@ -24,7 +24,7 @@ enum Direction {
 	}
 
 	/**
-	 * Gets the corresponding direction value of a string
+	 * gets the corresponding direction value of a string
 	 * 
 	 * @param direction
 	 *            - w,a,s,d
