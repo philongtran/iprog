@@ -8,14 +8,16 @@
  */
 
 public class Game {
-	private Player[] player;
-	private Board board;
-	private PlayerPosition playerPosition;
-	private Display display;
 	private final int SCORE_LIMIT = 105;
 	private final int PLAYER_COUNT;
 	private final int BOARD_SIZE_X;
 	private final int BOARD_SIZE_Y;
+	private Player[] player;
+	private Board board;
+	private Board clonedBoard;
+	private PlayerPosition playerPosition;
+	private Display display;
+	private boolean restart;
 
 	/**
 	 * The constructor of the game.
@@ -32,6 +34,7 @@ public class Game {
 		this.BOARD_SIZE_Y = boardSizeY;
 		this.PLAYER_COUNT = playerCount;
 		this.player = new Player[playerCount];
+		this.restart = false;
 	}
 
 	/**
@@ -106,12 +109,11 @@ public class Game {
 						}
 
 					case RESTART:
-						initializeGame();
+						restart = true;
 						run();
 						break;
 
 					case NEW:
-						initializeGame();
 						run();
 						break;
 
@@ -140,8 +142,10 @@ public class Game {
 
 	/**
 	 * Initializes the game with its default values.
+	 * 
+	 * @throws CloneNotSupportedException
 	 */
-	private void initializeGame() {
+	private void initializeGame() throws CloneNotSupportedException {
 		// set starting positions
 		playerPosition = new PlayerPosition(BOARD_SIZE_X, BOARD_SIZE_Y, PLAYER_COUNT);
 		int[][] position = playerPosition.getPosition();
@@ -149,8 +153,19 @@ public class Game {
 		for (int i = 0; i < PLAYER_COUNT; i++) {
 			player[i] = new Player(position[i][0], position[i][1], (i + 1) * (-1));
 		}
-		// initialize the board and its size
-		board = new Board(BOARD_SIZE_X, BOARD_SIZE_Y);
+		try {
+			// restart game logic
+			if (restart) {
+				restart = false;
+				board = clonedBoard.clone();
+			} else {
+				// initialize the board and its size
+				board = new Board(BOARD_SIZE_X, BOARD_SIZE_Y);
+				clonedBoard = board.clone();
+			}
+		} catch (CloneNotSupportedException e) {
+			IO.writeln("error in cloning");
+		}
 		// plants the players on the board
 		for (int i = 0; i < player.length; i++) {
 			board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
