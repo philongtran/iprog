@@ -28,6 +28,16 @@ public class IO {
 	}
 
 	/**
+	 * Prints out a given input to System.out
+	 * 
+	 * @param s
+	 *            - The input which should be printed
+	 */
+	public static void write(String s) {
+		writeAndFlush(s);
+	}
+
+	/**
 	 * Reads an input from a user by a given question
 	 * 
 	 * @param question

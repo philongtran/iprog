@@ -16,6 +16,11 @@ public class Display {
 		this.board = board;
 	}
 
+	public void show(int playerID, boolean checkScore) {
+		showScore(playerID, checkScore);
+		showBoard(board);
+	}
+
 	/**
 	 * Displays the score board and the play board to the screen.
 	 * 
@@ -24,7 +29,7 @@ public class Display {
 	 * @param checkScore
 	 *            - Boolean if score limit is reached
 	 */
-	public void show(int playerID, boolean checkScore) {
+	public void showScore(int playerID, boolean checkScore) {
 		String score = "";
 		for (int i = 0; i < player.length; i++) {
 			score += "Score " + returnLetter(player[i].getColor()) + ": " + player[i].getScore() + " ";
@@ -39,7 +44,7 @@ public class Display {
 			}
 		}
 		IO.writeln(score);
-		showBoard(board);
+		// showBoard(board);
 	}
 
 	/**
@@ -76,13 +81,13 @@ public class Display {
 		for (int y = 0; y < board.getSizeY(); y++) {
 			for (int x = 0; x < board.getSizeX(); x++) {
 				if (board.getValue(x, y) < 0) {
-					System.out.print(returnLetter(board.getValue(x, y)) + " ");
+					IO.write(returnLetter(board.getValue(x, y)) + " ");
 				} else {
-					System.out.print(board.getValue(x, y) + " ");
+					IO.write(board.getValue(x, y) + " ");
 				}
 
 			}
-			System.out.println();
+			IO.writeln("");
 		}
 	}
 
