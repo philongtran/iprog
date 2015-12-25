@@ -35,7 +35,6 @@ public class Game {
 		this.PLAYER_COUNT = playerCount;
 		this.player = new Player[playerCount];
 		this.restart = false;
-		this.clonedBoard = null;
 	}
 
 	/**

@@ -16,6 +16,7 @@ public class Board implements Cloneable {
 	private final int SIZE_Y; // size of the y side board
 	private int[][] board; // board itself
 	private Random random; // random number generator
+	private Board clone; // clone for the board
 
 	/**
 	 * The Constructor creates a board of the size x,y and initializes it.
@@ -98,7 +99,6 @@ public class Board implements Cloneable {
 
 	@Override
 	public Board clone() throws CloneNotSupportedException {
-		Board clone = null;
 		try {
 			clone = (Board) super.clone();
 		} catch (CloneNotSupportedException e) {
