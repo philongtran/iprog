@@ -52,7 +52,6 @@ public class Display {
 			}
 		}
 		IO.writeln(score);
-		// showBoard(board);
 	}
 
 	/**

@@ -107,7 +107,6 @@ public class Game {
 					break;
 				}
 				// displays score and board
-				// display(i);
 				display.show(i, checkScore());
 			}
 		}
@@ -241,7 +240,7 @@ public class Game {
 	/**
 	 * Checks if the score limit is reached.
 	 * 
-	 * @return - Boolean if score limit is reached
+	 * @return - Boolean true if score limit is reached
 	 */
 	private boolean checkScore() {
 		boolean scoreReached = false;
