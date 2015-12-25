@@ -131,11 +131,9 @@ public class Game {
 			String direction = IO.promptAndRead("a? ").toLowerCase().substring(0, 1);
 			switch (direction) {
 			case "y":
-				initializeGame();
 				run();
 			default:
-				playAgain = false;
-				break;
+				System.exit(0);
 			}
 		}
 	}
