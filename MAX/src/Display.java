@@ -94,9 +94,9 @@ public class Display {
 	private String returnLetter(int color) {
 		switch (color) {
 		case -1:
-			return "B";
-		case -2:
 			return "W";
+		case -2:
+			return "B";
 		case -3:
 			return "G";
 		case -4:
