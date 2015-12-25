@@ -154,14 +154,18 @@ public class Game {
 		for (int i = 0; i < PLAYER_COUNT; i++) {
 			player[i] = new Player(position[i][0], position[i][1], (i + 1) * (-1));
 		}
-		// restart game logic
-		if (restart) {
-			restart = false;
-			board = clonedBoard.clone();
-		} else {
-			// initialize the board and its size
-			board = new Board(BOARD_SIZE_X, BOARD_SIZE_Y);
-			clonedBoard = board.clone();
+		try {
+			// restart game logic
+			if (restart) {
+				restart = false;
+				board = clonedBoard.clone();
+			} else {
+				// initialize the board and its size
+				board = new Board(BOARD_SIZE_X, BOARD_SIZE_Y);
+				clonedBoard = board.clone();
+			}
+		} catch (CloneNotSupportedException e) {
+			IO.writeln("error in cloning");
 		}
 		// plants the players on the board
 		for (int i = 0; i < player.length; i++) {
