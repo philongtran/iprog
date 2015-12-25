@@ -12,7 +12,7 @@ public class Game {
 	private Board board;
 	private PlayerPosition playerPosition;
 	private Display display;
-	private final int SCORE_LIMIT = 10;
+	private final int SCORE_LIMIT = 105;
 	private final int PLAYER_COUNT;
 	private final int BOARD_SIZE_X;
 	private final int BOARD_SIZE_Y;
