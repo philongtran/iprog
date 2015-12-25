@@ -9,7 +9,7 @@ import java.util.Random;
  *
  */
 
-public class Board {
+public class Board implements Cloneable {
 	private int minimumNumber; // minimum number which can appear on the board
 	private int maximumNumber; // maximum number which can appear on the board
 	private final int SIZE_X; // size of the x side board
@@ -94,6 +94,17 @@ public class Board {
 	 */
 	public int getSizeY() {
 		return this.SIZE_Y;
+	}
+
+	@Override
+	public Board clone() throws CloneNotSupportedException {
+		Board clone = null;
+		try {
+			clone = (Board) super.clone();
+		} catch (CloneNotSupportedException e) {
+			IO.writeln("can't clone");
+		}
+		return clone;
 	}
 
 }
