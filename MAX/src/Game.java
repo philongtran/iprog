@@ -12,7 +12,7 @@ public class Game {
 	private Board board;
 	private PlayerPosition playerPosition;
 	private Display display;
-	private final int SCORE_LIMIT = 105;
+	private final int SCORE_LIMIT = 10;
 	private final int PLAYER_COUNT;
 	private final int BOARD_SIZE_X;
 	private final int BOARD_SIZE_Y;
@@ -42,72 +42,97 @@ public class Game {
 	 */
 	public void run() throws Exception {
 		initializeGame();
+		boolean playAgain = true;
 
-		// runs while players are below score
-		while (!checkScore()) {
+		while (playAgain) {
+			// runs while players are below score
+			while (!checkScore()) {
 
-			for (int i = 0; i < player.length; i++) {
-				// checks if score limit is reached
-				if (checkScore()) {
-					break;
+				for (int i = 0; i < player.length; i++) {
+					// checks if score limit is reached
+					if (checkScore()) {
+						break;
+					}
+					// reads keyboard input to move the active player
+					Direction direction = Direction.of(IO.promptAndRead("i: "));
+					// temporary variable to hold current player
+					Player currentPlayer = player[i];
+					// cases which are allowed
+					switch (direction) {
+
+					case UP:
+						if (check(currentPlayer, direction)) {
+							removePlayerFromPreviousPosition(currentPlayer);
+							currentPlayer.moveUp();
+							calcSet(i);
+							break;
+						} else {
+							i = playerRetry(i);
+							break;
+						}
+
+					case DOWN:
+						if (check(currentPlayer, direction)) {
+							removePlayerFromPreviousPosition(currentPlayer);
+							currentPlayer.moveDown();
+							calcSet(i);
+							break;
+						} else {
+							i = playerRetry(i);
+							break;
+						}
+
+					case LEFT:
+						if (check(currentPlayer, direction)) {
+							removePlayerFromPreviousPosition(currentPlayer);
+							currentPlayer.moveLeft();
+							calcSet(i);
+							break;
+						} else {
+							i = playerRetry(i);
+							break;
+						}
+
+					case RIGHT:
+						if (check(currentPlayer, direction)) {
+							removePlayerFromPreviousPosition(currentPlayer);
+							currentPlayer.moveRight();
+							calcSet(i);
+							break;
+						} else {
+							i = playerRetry(i);
+							break;
+						}
+
+					case RESTART:
+						initializeGame();
+						run();
+						break;
+
+					case NEW:
+						initializeGame();
+						run();
+						break;
+
+					case QUIT:
+						System.exit(0);
+
+					default:
+						i = playerRetry(i);
+						break;
+					}
+					// displays score and board
+					display.show(i, checkScore());
 				}
-				// reads keyboard input to move the active player
-				Direction direction = Direction.of(IO.promptAndRead("i: "));
-				// temporary variable to hold current player
-				Player currentPlayer = player[i];
-				// cases which are allowed
-				switch (direction) {
-
-				case UP:
-					if (check(currentPlayer, direction)) {
-						removePlayerFromPreviousPosition(currentPlayer);
-						currentPlayer.moveUp();
-						calcSet(i);
-						break;
-					} else {
-						i = playerRetry(i);
-						break;
-					}
-
-				case DOWN:
-					if (check(currentPlayer, direction)) {
-						removePlayerFromPreviousPosition(currentPlayer);
-						currentPlayer.moveDown();
-						calcSet(i);
-						break;
-					} else {
-						i = playerRetry(i);
-						break;
-					}
-
-				case LEFT:
-					if (check(currentPlayer, direction)) {
-						removePlayerFromPreviousPosition(currentPlayer);
-						currentPlayer.moveLeft();
-						calcSet(i);
-						break;
-					} else {
-						i = playerRetry(i);
-						break;
-					}
-
-				case RIGHT:
-					if (check(currentPlayer, direction)) {
-						removePlayerFromPreviousPosition(currentPlayer);
-						currentPlayer.moveRight();
-						calcSet(i);
-						break;
-					} else {
-						i = playerRetry(i);
-						break;
-					}
-
-				default:
-					i = playerRetry(i);
-					break;
-				}
-				// displays score and board
-				display.show(i, checkScore());
+			}
+			String direction = IO.promptAndRead("a? ");
+			switch (direction) {
+			case "y":
+				initializeGame();
+				run();
+			default:
+				playAgain = false;
+				break;
 			}
 		}
 	}
