@@ -70,8 +70,8 @@ public class PlayerPosition {
 	 * Calculates starting position for one player.
 	 */
 	private void onePlayer() {
-		p1x = boardDimensionX / 2;
-		p1y = boardDimensionY / 2 - 1;
+		p1x = boardDimensionX / 2 - 1;
+		p1y = boardDimensionY / 2;
 	}
 
 	/**
@@ -79,8 +79,8 @@ public class PlayerPosition {
 	 */
 	private void twoPlayers() {
 		onePlayer();
-		p2x = boardDimensionX / 2 - 1;
-		p2y = boardDimensionY / 2;
+		p2x = boardDimensionX / 2;
+		p2y = boardDimensionY / 2 - 1;
 	}
 
 	/**
