@@ -44,6 +44,7 @@ public class Game {
 		initializeGame();
 		boolean playAgain = true;
 
+		// runs as long as player wants to
 		while (playAgain) {
 			// runs while players are below score
 			while (!checkScore()) {
