@@ -11,7 +11,8 @@ public class Game {
 	private Player[] player;
 	private Board board;
 	private PlayerPosition playerPosition;
-	private final int SCORE_LIMIT = 105;
+	private Display display;
+	private final int SCORE_LIMIT = 10;
 	private final int PLAYER_COUNT;
 	private final int BOARD_SIZE_X;
 	private final int BOARD_SIZE_Y;
@@ -70,7 +71,7 @@ public class Game {
 
 				case DOWN:
 					if (check(currentPlayer, direction)) {
-						removePlayerFromPreviousPosition(player[i]);
+						removePlayerFromPreviousPosition(currentPlayer);
 						currentPlayer.moveDown();
 						calcSet(i);
 						break;
@@ -106,7 +107,8 @@ public class Game {
 					break;
 				}
 				// displays score and board
-				display(i);
+				// display(i);
+				display.show(i, checkScore());
 			}
 		}
 	}
@@ -129,7 +131,8 @@ public class Game {
 			board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
 		}
 		// displays score and board
-		display(-1);
+		this.display = new Display(player, board);
+		display.show(-1, checkScore());
 	}
 
 	/**
@@ -233,29 +236,6 @@ public class Game {
 		player[playerID].addScore(board.getValue(player[playerID].getX(), player[playerID].getY()));
 		// marks the field to be player owned
 		board.setPlayer(player[playerID].getX(), player[playerID].getY(), player[playerID].getColor());
-	}
-
-	/**
-	 * Displays the score board and the play board to the screen.
-	 * 
-	 * @param playerID
-	 */
-	private void display(int playerID) {
-		String score = "";
-		for (int i = 0; i < player.length; i++) {
-			score += "Score " + board.returnLetter(player[i].getColor()) + ": " + player[i].getScore() + " ";
-		}
-		if (checkScore()) {
-			score += "| " + board.returnLetter(player[playerID].getColor()) + " wins";
-		} else {
-			if (playerID == player.length - 1) {
-				score += "| " + board.returnLetter(player[0].getColor()) + " to move";
-			} else {
-				score += "| " + board.returnLetter(player[playerID + 1].getColor()) + " to move";
-			}
-		}
-		IO.writeln(score);
-		board.showBoard();
 	}
 
 	/**
