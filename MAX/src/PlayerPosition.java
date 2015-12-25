@@ -71,7 +71,7 @@ public class PlayerPosition {
 	 */
 	private void onePlayer() {
 		p1x = boardDimensionX / 2;
-		p1y = boardDimensionY / 2;
+		p1y = boardDimensionY / 2 - 1;
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class PlayerPosition {
 	private void twoPlayers() {
 		onePlayer();
 		p2x = boardDimensionX / 2 - 1;
-		p2y = boardDimensionY / 2 - 1;
+		p2y = boardDimensionY / 2;
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class PlayerPosition {
 	private void threePlayers() {
 		twoPlayers();
 		p3x = boardDimensionX / 2 - 1;
-		p3y = boardDimensionX / 2;
+		p3y = boardDimensionX / 2 - 1;
 	}
 
 	/**
@@ -98,7 +98,7 @@ public class PlayerPosition {
 	private void fourPlayers() {
 		threePlayers();
 		p4x = boardDimensionX / 2;
-		p4y = boardDimensionX / 2 - 1;
+		p4y = boardDimensionX / 2;
 	}
 
 }
