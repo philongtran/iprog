@@ -107,6 +107,9 @@ public class Game {
 					run();
 					break;
 
+				case QUIT:
+					return;
+
 				default:
 					i = playerRetry(i);
 					break;
