@@ -107,7 +107,6 @@ public class Game {
 					break;
 				}
 				// displays score and board
-				// display(i);
 				display.show(i, checkScore());
 			}
 		}
