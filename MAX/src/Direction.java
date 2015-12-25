@@ -7,7 +7,7 @@
  */
 enum Direction {
 
-	LEFT("a"), RIGHT("d"), UP("w"), DOWN("s"), RESTART("r"), QUIT("q"), UNKNOWN("");
+	LEFT("a"), RIGHT("d"), UP("w"), DOWN("s"), RESTART("r"), NEW("n"), QUIT("q"), UNKNOWN("");
 
 	private final String direction;
 

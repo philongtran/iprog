@@ -107,6 +107,11 @@ public class Game {
 					run();
 					break;
 
+				case NEW:
+					initializeGame();
+					run();
+					break;
+
 				case QUIT:
 					return;
 
