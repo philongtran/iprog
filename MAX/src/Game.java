@@ -54,7 +54,7 @@ public class Game {
 						break;
 					}
 					// reads keyboard input to move the active player
-					Direction direction = Direction.of(IO.promptAndRead("i: "));
+					Direction direction = Direction.of(IO.promptAndRead("i: ").toLowerCase().substring(0, 1));
 					// temporary variable to hold current player
 					Player currentPlayer = player[i];
 					// cases which are allowed
@@ -125,7 +125,7 @@ public class Game {
 					display.show(i, checkScore());
 				}
 			}
-			String direction = IO.promptAndRead("a? ");
+			String direction = IO.promptAndRead("a? ").toLowerCase().substring(0, 1);
 			switch (direction) {
 			case "y":
 				initializeGame();
