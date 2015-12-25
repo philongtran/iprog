@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -13,6 +12,7 @@ import java.math.BigInteger;
  * @author Steve Nono <191709>
  *
  */
+
 public class IO {
 
 	private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));

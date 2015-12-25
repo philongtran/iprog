@@ -1,11 +1,12 @@
 /**
- * this class is the starting point of the game creation.
+ * This class is the starting point of the game creation.
  * 
  * @author Phi Long Tran <191624>
  * @author Manuel Wessner <191711>
  * @author Steve Nono <191709>
  *
  */
+
 public class MAX {
 
 	/**

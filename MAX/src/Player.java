@@ -6,6 +6,7 @@
  * @author Steve Nono <191709>
  *
  */
+
 public class Player {
 
 	private final int COLOR; // color of the player (-1 = black; -2 = white)
