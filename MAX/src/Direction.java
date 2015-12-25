@@ -5,6 +5,7 @@
  * @author Phi Long Tran <191624>
  * @author Steve Nono <191709>
  */
+
 enum Direction {
 
 	LEFT("a"), RIGHT("d"), UP("w"), DOWN("s"), RESTART("r"), NEW("n"), QUIT("q"), UNKNOWN("");

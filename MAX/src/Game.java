@@ -12,7 +12,7 @@ public class Game {
 	private Board board;
 	private PlayerPosition playerPosition;
 	private Display display;
-	private final int SCORE_LIMIT = 10;
+	private final int SCORE_LIMIT = 105;
 	private final int PLAYER_COUNT;
 	private final int BOARD_SIZE_X;
 	private final int BOARD_SIZE_Y;
@@ -44,6 +44,7 @@ public class Game {
 		initializeGame();
 		boolean playAgain = true;
 
+		// runs as long as player wants to
 		while (playAgain) {
 			// runs while players are below score
 			while (!checkScore()) {
@@ -54,7 +55,7 @@ public class Game {
 						break;
 					}
 					// reads keyboard input to move the active player
-					Direction direction = Direction.of(IO.promptAndRead("i: "));
+					Direction direction = Direction.of(IO.promptAndRead("i: ").toLowerCase().substring(0, 1));
 					// temporary variable to hold current player
 					Player currentPlayer = player[i];
 					// cases which are allowed
@@ -125,7 +126,7 @@ public class Game {
 					display.show(i, checkScore());
 				}
 			}
-			String direction = IO.promptAndRead("a? ");
+			String direction = IO.promptAndRead("a? ").toLowerCase().substring(0, 1);
 			switch (direction) {
 			case "y":
 				initializeGame();

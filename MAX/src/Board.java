@@ -8,6 +8,7 @@ import java.util.Random;
  * @author Steve Nono <191709>
  *
  */
+
 public class Board {
 	private int minimumNumber; // minimum number which can appear on the board
 	private int maximumNumber; // maximum number which can appear on the board
