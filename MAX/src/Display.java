@@ -16,13 +16,21 @@ public class Display {
 		this.board = board;
 	}
 
+	/**
+	 * Displays the score board and the play board to the screen.
+	 * 
+	 * @param playerID
+	 *            - The ID of the player
+	 * @param checkScore
+	 *            - Boolean if score limit is reached
+	 */
 	public void show(int playerID, boolean checkScore) {
 		showScore(playerID, checkScore);
 		showBoard(board);
 	}
 
 	/**
-	 * Displays the score board and the play board to the screen.
+	 * Displays the score board to the screen.
 	 * 
 	 * @param playerID
 	 *            - The ID of the player
@@ -48,28 +56,6 @@ public class Display {
 	}
 
 	/**
-	 * Assigning letters from the colors to the players.
-	 * 
-	 * @param color
-	 *            - Color of the player
-	 * @return - Letter of the player if available, otherwise generic name
-	 */
-	private String returnLetter(int color) {
-		switch (color) {
-		case -1:
-			return "B";
-		case -2:
-			return "W";
-		case -3:
-			return "G";
-		case -4:
-			return "L";
-		default:
-			return "P" + (color * (-1));
-		}
-	}
-
-	/**
 	 * Displays the formated board on the screen. It shows its values and spots
 	 * the players and then assigns them with a predefined letter or generic
 	 * name.
@@ -88,6 +74,28 @@ public class Display {
 
 			}
 			IO.writeln("");
+		}
+	}
+
+	/**
+	 * Assigning letters from the colors to the players.
+	 * 
+	 * @param color
+	 *            - Color of the player
+	 * @return - Letter of the player if available, otherwise generic name
+	 */
+	private String returnLetter(int color) {
+		switch (color) {
+		case -1:
+			return "B";
+		case -2:
+			return "W";
+		case -3:
+			return "G";
+		case -4:
+			return "L";
+		default:
+			return "P" + (color * (-1));
 		}
 	}
 
