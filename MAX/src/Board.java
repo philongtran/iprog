@@ -95,45 +95,4 @@ public class Board {
 		return this.SIZE_Y;
 	}
 
-	/**
-	 * Assigning letters from the colors to the players.
-	 * 
-	 * @param color
-	 *            - Color of the player
-	 * @return - Letter of the player if available, otherwise generic name
-	 */
-	public String returnLetter(int color) {
-		switch (color) {
-		case -1:
-			return "B";
-		case -2:
-			return "W";
-		case -3:
-			return "G";
-		case -4:
-			return "L";
-		default:
-			return "P" + (color * (-1));
-		}
-	}
-
-	/**
-	 * Displays the formated board on the screen. It shows its values and spots
-	 * the players and then assigns them with a predefined letter or generic
-	 * name.
-	 */
-	public void showBoard() {
-		for (int y = 0; y < SIZE_Y; y++) {
-			for (int x = 0; x < SIZE_X; x++) {
-				if (getValue(x, y) < 0) {
-					System.out.print(returnLetter(getValue(x, y)) + " ");
-				} else {
-					System.out.print(getValue(x, y) + " ");
-				}
-
-			}
-			System.out.println();
-		}
-	}
-
 }
