@@ -110,15 +110,18 @@ public class Game {
 
 					case RESTART:
 						restart = true;
-						run();
+						initializeGame();
+						i = -1;
 						break;
 
 					case NEW:
-						run();
+						initializeGame();
+						i = -1;
 						break;
 
 					case QUIT:
-						System.exit(0);
+						return;
+					// System.exit(0);
 
 					default:
 						i = playerRetry(i);
@@ -133,7 +136,8 @@ public class Game {
 			case "y":
 				run();
 			default:
-				System.exit(0);
+				return;
+			// System.exit(0);
 			}
 		}
 	}
