@@ -99,11 +99,16 @@ public class Board implements Cloneable {
 
 	@Override
 	public Board clone() throws CloneNotSupportedException {
-		clone = new Board(SIZE_X, SIZE_Y);
-		for (int y = 0; y < SIZE_Y; y++) {
-			for (int x = 0; x < SIZE_X; x++) {
-				clone.setPlayer(x, y, this.getValue(x, y));
+		try {
+			clone = (Board) super.clone();
+			clone.board = new int[SIZE_Y][SIZE_X];
+			for (int y = 0; y < SIZE_Y; y++) {
+				for (int x = 0; x < SIZE_X; x++) {
+					clone.setPlayer(x, y, this.getValue(x, y));
+				}
 			}
+		} catch (CloneNotSupportedException e) {
+			IO.writeln("error in cloning");
 		}
 		return clone;
 	}
