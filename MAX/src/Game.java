@@ -108,6 +108,13 @@ public class Game {
 							break;
 						}
 
+					case HELP:
+						IO.writeln(
+								"Up: w | Down: s | Left: a | Right: d | Restart: r | New game: n | Quit: q | Help: h");
+						IO.promptAndRead("Press any key to continue.");
+						i = playerRetry(i);
+						break;
+
 					case RESTART:
 						restart = true;
 						initializeGame();
