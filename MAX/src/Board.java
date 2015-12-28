@@ -97,6 +97,12 @@ public class Board implements Cloneable {
 		return this.SIZE_Y;
 	}
 
+	/**
+	 * Returns the cloned board.
+	 * 
+	 * @return - Returns the cloned board
+	 * 
+	 */
 	@Override
 	public Board clone() throws CloneNotSupportedException {
 		try {

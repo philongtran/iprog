@@ -60,7 +60,7 @@ public class PlayerPosition {
 	/**
 	 * Returns the starting positions.
 	 * 
-	 * @return - Returns the starting positions
+	 * @return - Returns the starting positions as a 2d array
 	 */
 	public int[][] getPosition() {
 		return position;

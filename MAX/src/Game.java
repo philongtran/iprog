@@ -202,7 +202,7 @@ public class Game {
 	 *            - Which player should be tested
 	 * @param direction
 	 *            - Which direction does the player want to go
-	 * @return - Returns boolean if move is legitimate
+	 * @return - Returns boolean true if move is legitimate
 	 */
 	private boolean oobCheck(Player player, Direction direction) {
 		if (direction.equals(Direction.UP) && player.getY() > 0) {
@@ -227,7 +227,7 @@ public class Game {
 	 *            - Which player should be tested
 	 * @param direction
 	 *            - Which direction does the player want to go
-	 * @return - Returns boolean if move is legitimate
+	 * @return - Returns boolean true if move is legitimate
 	 */
 	private boolean collisionCheck(Player player, Direction direction) {
 		if (direction.equals(Direction.UP) && board.getValue(player.getX(), player.getY() - 1) >= 0) {
@@ -253,7 +253,7 @@ public class Game {
 	 *            - Which player should be tested
 	 * @param direction
 	 *            - Which direction does the player want to go
-	 * @return - Returns boolean if move is legitimate
+	 * @return - Returns boolean true if move is legitimate
 	 */
 	private boolean check(Player player, Direction direction) {
 		return oobCheck(player, direction) && collisionCheck(player, direction);
@@ -264,7 +264,7 @@ public class Game {
 	 * 
 	 * @param playerID
 	 *            - ID of the wrongly assumed player.
-	 * @return - The old player ID
+	 * @return - Returns the old player ID
 	 */
 	private int playerRetry(int playerID) {
 		if (playerID == 0) {
