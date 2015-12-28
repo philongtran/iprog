@@ -135,7 +135,7 @@ public class Game {
 						break;
 					}
 					// displays score and board
-					display.show(i, checkScore());
+					display.draw(i, checkScore());
 				}
 			}
 			String direction = IO.promptAndRead("a? ").toLowerCase().substring(0, 1);
@@ -181,7 +181,7 @@ public class Game {
 		}
 		// displays score and board
 		this.display = new Display(player, board);
-		display.show(-1, checkScore());
+		display.draw(-1, checkScore());
 	}
 
 	/**

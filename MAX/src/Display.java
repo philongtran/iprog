@@ -32,7 +32,7 @@ public class Display {
 	 * @param checkScore
 	 *            - Boolean if score limit is reached
 	 */
-	public void show(int playerID, boolean checkScore) {
+	public void draw(int playerID, boolean checkScore) {
 		showScore(playerID, checkScore);
 		showBoard(board);
 	}
