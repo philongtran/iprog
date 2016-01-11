@@ -196,19 +196,18 @@ public class Game {
 	 * @return - Returns boolean true if move is legitimate
 	 */
 	private boolean isOutOfBounds(Player player, Action direction) {
-		if (direction.equals(Action.UP) && player.getY() > 0) {
-			return true;
+		switch (direction) {
+		case LEFT:
+			return player.getX() > 0;
+		case RIGHT:
+			return player.getX() + 1 < board.getSizeX();
+		case DOWN:
+			return player.getY() + 1 < board.getSizeY();
+		case UP:
+			return player.getY() > 0;
+		default:
+			return false;
 		}
-		if (direction.equals(Action.DOWN) && player.getY() + 1 < board.getSizeY()) {
-			return true;
-		}
-		if (direction.equals(Action.LEFT) && player.getX() > 0) {
-			return true;
-		}
-		if (direction.equals(Action.RIGHT) && player.getX() + 1 < board.getSizeX()) {
-			return true;
-		}
-		return false;
 	}
 
 	/**
@@ -224,12 +223,12 @@ public class Game {
 		int x = player.getX();
 		int y = player.getY();
 		switch (direction) {
-		case DOWN:
-			return board.getValue(x, y + 1) >= 0;
 		case LEFT:
 			return board.getValue(x - 1, y) >= 0;
 		case RIGHT:
 			return board.getValue(x + 1, y) >= 0;
+		case DOWN:
+			return board.getValue(x, y + 1) >= 0;
 		case UP:
 			return board.getValue(x, y - 1) >= 0;
 		default:
