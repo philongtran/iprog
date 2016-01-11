@@ -66,9 +66,7 @@ public class Game {
 
 					case UP:
 						if (canMoveInDirection(currentPlayer, direction)) {
-							removePlayerFromPreviousPosition(currentPlayer);
-							currentPlayer.moveUp();
-							addScoreAndSetNewPosition(currentPlayer);
+							move(currentPlayer, direction);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -77,9 +75,7 @@ public class Game {
 
 					case DOWN:
 						if (canMoveInDirection(currentPlayer, direction)) {
-							removePlayerFromPreviousPosition(currentPlayer);
-							currentPlayer.moveDown();
-							addScoreAndSetNewPosition(currentPlayer);
+							move(currentPlayer, direction);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -88,9 +84,7 @@ public class Game {
 
 					case LEFT:
 						if (canMoveInDirection(currentPlayer, direction)) {
-							removePlayerFromPreviousPosition(currentPlayer);
-							currentPlayer.moveLeft();
-							addScoreAndSetNewPosition(currentPlayer);
+							move(currentPlayer, direction);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -98,9 +92,7 @@ public class Game {
 						}
 					case RIGHT:
 						if (canMoveInDirection(currentPlayer, direction)) {
-							removePlayerFromPreviousPosition(currentPlayer);
-							currentPlayer.moveRight();
-							addScoreAndSetNewPosition(currentPlayer);
+							move(currentPlayer, direction);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -140,6 +132,27 @@ public class Game {
 			// System.exit(0);
 			}
 		}
+	}
+
+	private void move(Player currentPlayer, Direction direction) {
+		removePlayerFromPreviousPosition(currentPlayer);
+		switch (direction) {
+		case DOWN:
+			currentPlayer.moveDown();
+			break;
+		case LEFT:
+			currentPlayer.moveLeft();
+			break;
+		case RIGHT:
+			currentPlayer.moveRight();
+			break;
+		case UP:
+			currentPlayer.moveUp();
+			break;
+		default:
+			break;
+		}
+		addScoreAndSetNewPosition(currentPlayer);
 	}
 
 	/**
