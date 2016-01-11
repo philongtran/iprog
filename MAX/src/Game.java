@@ -58,15 +58,14 @@ public class Game {
 						break;
 					}
 					// reads keyboard input to move the active player
-					Direction direction = Direction.of(IO.promptAndRead("i: ").toLowerCase().substring(0, 1));
+					Action action = Action.of(IO.promptAndRead("i: ").toLowerCase().substring(0, 1));
 					// temporary variable to hold current player
 					Player currentPlayer = player[i];
 					// cases which are allowed
-					switch (direction) {
-
+					switch (action) {
 					case UP:
-						if (canMoveInDirection(currentPlayer, direction)) {
-							move(currentPlayer, direction);
+						if (canMoveInDirection(currentPlayer, action)) {
+							move(currentPlayer, action);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -74,8 +73,8 @@ public class Game {
 						}
 
 					case DOWN:
-						if (canMoveInDirection(currentPlayer, direction)) {
-							move(currentPlayer, direction);
+						if (canMoveInDirection(currentPlayer, action)) {
+							move(currentPlayer, action);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -83,16 +82,16 @@ public class Game {
 						}
 
 					case LEFT:
-						if (canMoveInDirection(currentPlayer, direction)) {
-							move(currentPlayer, direction);
+						if (canMoveInDirection(currentPlayer, action)) {
+							move(currentPlayer, action);
 							break;
 						} else {
 							i = playerRetry(i);
 							break;
 						}
 					case RIGHT:
-						if (canMoveInDirection(currentPlayer, direction)) {
-							move(currentPlayer, direction);
+						if (canMoveInDirection(currentPlayer, action)) {
+							move(currentPlayer, action);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -134,7 +133,7 @@ public class Game {
 		}
 	}
 
-	private void move(Player currentPlayer, Direction direction) {
+	private void move(Player currentPlayer, Action direction) {
 		removePlayerFromPreviousPosition(currentPlayer);
 		switch (direction) {
 		case DOWN:
@@ -210,17 +209,17 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean true if move is legitimate
 	 */
-	private boolean oobCheck(Player player, Direction direction) {
-		if (direction.equals(Direction.UP) && player.getY() > 0) {
+	private boolean oobCheck(Player player, Action direction) {
+		if (direction.equals(Action.UP) && player.getY() > 0) {
 			return true;
 		}
-		if (direction.equals(Direction.DOWN) && player.getY() + 1 < board.getSizeY()) {
+		if (direction.equals(Action.DOWN) && player.getY() + 1 < board.getSizeY()) {
 			return true;
 		}
-		if (direction.equals(Direction.LEFT) && player.getX() > 0) {
+		if (direction.equals(Action.LEFT) && player.getX() > 0) {
 			return true;
 		}
-		if (direction.equals(Direction.RIGHT) && player.getX() + 1 < board.getSizeX()) {
+		if (direction.equals(Action.RIGHT) && player.getX() + 1 < board.getSizeX()) {
 			return true;
 		}
 		return false;
@@ -235,17 +234,17 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean true if move is legitimate
 	 */
-	private boolean collisionCheck(Player player, Direction direction) {
-		if (direction.equals(Direction.UP) && board.getValue(player.getX(), player.getY() - 1) >= 0) {
+	private boolean collisionCheck(Player player, Action direction) {
+		if (direction.equals(Action.UP) && board.getValue(player.getX(), player.getY() - 1) >= 0) {
 			return true;
 		}
-		if (direction.equals(Direction.DOWN) && board.getValue(player.getX(), player.getY() + 1) >= 0) {
+		if (direction.equals(Action.DOWN) && board.getValue(player.getX(), player.getY() + 1) >= 0) {
 			return true;
 		}
-		if (direction.equals(Direction.LEFT) && board.getValue(player.getX() - 1, player.getY()) >= 0) {
+		if (direction.equals(Action.LEFT) && board.getValue(player.getX() - 1, player.getY()) >= 0) {
 			return true;
 		}
-		if (direction.equals(Direction.RIGHT) && board.getValue(player.getX() + 1, player.getY()) >= 0) {
+		if (direction.equals(Action.RIGHT) && board.getValue(player.getX() + 1, player.getY()) >= 0) {
 			System.out.println(board.getValue(player.getX(), player.getX() + 1));
 			return true;
 		}
@@ -261,7 +260,7 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean true if move is legitimate
 	 */
-	private boolean canMoveInDirection(Player player, Direction direction) {
+	private boolean canMoveInDirection(Player player, Action direction) {
 		return oobCheck(player, direction) && collisionCheck(player, direction);
 	}
 

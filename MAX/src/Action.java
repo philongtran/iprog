@@ -6,7 +6,7 @@
  * @author Steve Nono <191709>
  */
 
-enum Direction {
+enum Action {
 
 	LEFT("a"), RIGHT("d"), UP("w"), DOWN("s"), RESTART("r"), NEW("n"), QUIT("q"), HELP("h"), UNKNOWN("");
 
@@ -18,7 +18,7 @@ enum Direction {
 	 * @param directionAsString
 	 *            - Representation of direction as string
 	 */
-	private Direction(String directionAsString) {
+	private Action(String directionAsString) {
 		this.direction = directionAsString;
 	}
 
@@ -38,8 +38,8 @@ enum Direction {
 	 *            - w,a,s,d
 	 * @return - Direction as Enum
 	 */
-	static Direction of(String direction) {
-		for (Direction directionEnum : Direction.values()) {
+	static Action of(String direction) {
+		for (Action directionEnum : Action.values()) {
 			if (directionEnum.getDirection().equals(direction)) {
 				return directionEnum;
 			}
