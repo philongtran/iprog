@@ -116,9 +116,12 @@ public class Game {
 					display.draw(i, checkScore());
 				}
 			}
-			boolean restart = IO.promptAndRead("a? ").toLowerCase().substring(0, 1) == "y";
+			boolean restart = IO.promptAndRead("again? Type Y for yes or N for no").toLowerCase().substring(0,
+					1) == "y";
 			if (restart) {
 				run();
+			} else {
+				break;
 			}
 		}
 	}
