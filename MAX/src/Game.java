@@ -68,7 +68,7 @@ public class Game {
 						if (canMoveInDirection(currentPlayer, direction)) {
 							removePlayerFromPreviousPosition(currentPlayer);
 							currentPlayer.moveUp();
-							addScoreAndSetNewPosition(i);
+							addScoreAndSetNewPosition(currentPlayer);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -79,7 +79,7 @@ public class Game {
 						if (canMoveInDirection(currentPlayer, direction)) {
 							removePlayerFromPreviousPosition(currentPlayer);
 							currentPlayer.moveDown();
-							addScoreAndSetNewPosition(i);
+							addScoreAndSetNewPosition(currentPlayer);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -90,7 +90,7 @@ public class Game {
 						if (canMoveInDirection(currentPlayer, direction)) {
 							removePlayerFromPreviousPosition(currentPlayer);
 							currentPlayer.moveLeft();
-							addScoreAndSetNewPosition(i);
+							addScoreAndSetNewPosition(currentPlayer);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -100,7 +100,7 @@ public class Game {
 						if (canMoveInDirection(currentPlayer, direction)) {
 							removePlayerFromPreviousPosition(currentPlayer);
 							currentPlayer.moveRight();
-							addScoreAndSetNewPosition(i);
+							addScoreAndSetNewPosition(currentPlayer);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -270,18 +270,17 @@ public class Game {
 	/**
 	 * Makes the calculation of the score and sets the players new position.
 	 * 
-	 * @param playerID
-	 *            - ID of the player which score and position should be set
+	 * @param currentPlayer
+	 *            - player whos turn it is
 	 */
-	private void addScoreAndSetNewPosition(int playerID) {
+	private void addScoreAndSetNewPosition(Player currentPlayer) {
 		// add the value of the board to the score
-		Player myPlayer = player[playerID];
-		int x = myPlayer.getX();
-		int y = myPlayer.getY();
+		int x = currentPlayer.getX();
+		int y = currentPlayer.getY();
 
-		myPlayer.addScore(board.getValue(x, y));
+		currentPlayer.addScore(board.getValue(x, y));
 		// marks the field to be player owned
-		board.setPlayer(x, y, myPlayer.getColor());
+		board.setPlayer(x, y, currentPlayer.getColor());
 	}
 
 	/**
