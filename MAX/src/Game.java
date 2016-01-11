@@ -8,7 +8,7 @@
  */
 
 public class Game {
-	private final int SCORE_LIMIT = 105;
+	private final int SCORE_LIMIT = 5;
 	private final int PLAYER_COUNT;
 	private final int BOARD_SIZE_X;
 	private final int BOARD_SIZE_Y;
@@ -45,84 +45,78 @@ public class Game {
 	 */
 	public void run() throws Exception {
 		initializeGame();
-		boolean playAgain = true;
 
-		// runs as long as player wants to
-		while (playAgain) {
-			// runs while players are below score
-			while (!checkScore()) {
+		// runs while players are below score
+		while (!checkScore()) {
 
-				for (int i = 0; i < player.length; i++) {
-					// checks if score limit is reached
-					if (checkScore()) {
-						break;
-					}
-					// reads keyboard input to move the active player
-					Action action = Action.of(IO.promptAndRead("i: ").toLowerCase().substring(0, 1));
-					// temporary variable to hold current player
-					Player currentPlayer = player[i];
-					// cases which are allowed
-					switch (action) {
-					case UP:
-						if (canMoveInDirection(currentPlayer, action)) {
-							move(currentPlayer, action);
-						} else {
-							i = playerRetry(i);
-						}
-						break;
-					case DOWN:
-						if (canMoveInDirection(currentPlayer, action)) {
-							move(currentPlayer, action);
-						} else {
-							i = playerRetry(i);
-						}
-						break;
-					case LEFT:
-						if (canMoveInDirection(currentPlayer, action)) {
-							move(currentPlayer, action);
-						} else {
-							i = playerRetry(i);
-						}
-						break;
-					case RIGHT:
-						if (canMoveInDirection(currentPlayer, action)) {
-							move(currentPlayer, action);
-						} else {
-							i = playerRetry(i);
-						}
-						break;
-					case HELP:
-						IO.writeln(
-								"Up: w | Down: s | Left: a | Right: d | Restart: r | New game: n | Quit: q | Help: h");
-						IO.promptAndRead("Press any key to continue.");
-						i = playerRetry(i);
-						break;
-					case RESTART:
-						restart = true;
-						initializeGame();
-						i = -1;
-						break;
-					case NEW:
-						initializeGame();
-						i = -1;
-						break;
-					case QUIT:
-						return;
-					default:
-						i = playerRetry(i);
-						break;
-					}
-					// displays score and board
-					display.draw(i, checkScore());
+			for (int i = 0; i < player.length; i++) {
+				// checks if score limit is reached
+				if (checkScore()) {
+					break;
 				}
+				// reads keyboard input to move the active player
+				Action action = Action.of(IO.promptAndRead("i: ").toLowerCase().substring(0, 1));
+				// temporary variable to hold current player
+				Player currentPlayer = player[i];
+				// cases which are allowed
+				switch (action) {
+				case UP:
+					if (canMoveInDirection(currentPlayer, action)) {
+						move(currentPlayer, action);
+					} else {
+						i = playerRetry(i);
+					}
+					break;
+				case DOWN:
+					if (canMoveInDirection(currentPlayer, action)) {
+						move(currentPlayer, action);
+					} else {
+						i = playerRetry(i);
+					}
+					break;
+				case LEFT:
+					if (canMoveInDirection(currentPlayer, action)) {
+						move(currentPlayer, action);
+					} else {
+						i = playerRetry(i);
+					}
+					break;
+				case RIGHT:
+					if (canMoveInDirection(currentPlayer, action)) {
+						move(currentPlayer, action);
+					} else {
+						i = playerRetry(i);
+					}
+					break;
+				case HELP:
+					IO.writeln("Up: w | Down: s | Left: a | Right: d | Restart: r | New game: n | Quit: q | Help: h");
+					IO.promptAndRead("Press any key to continue.");
+					i = playerRetry(i);
+					break;
+				case RESTART:
+					restart = true;
+					initializeGame();
+					i = -1;
+					break;
+				case NEW:
+					initializeGame();
+					i = -1;
+					break;
+				case QUIT:
+					return;
+				default:
+					i = playerRetry(i);
+					break;
+				}
+				// displays score and board
+				display.draw(i, checkScore());
 			}
-			boolean restart = IO.promptAndRead("again? Type Y for yes or N for no").toLowerCase().substring(0, 1)
-					.equals("y");
-			if (restart) {
-				run();
-			}
-			return;
 		}
+		restart = IO.promptAndRead("again? Type Y for yes or N for no").toLowerCase().substring(0, 1).equals("y");
+		if (restart) {
+			run();
+		}
+		return;
 	}
 
 	private void move(Player currentPlayer, Action direction) {
