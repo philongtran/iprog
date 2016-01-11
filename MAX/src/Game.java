@@ -120,9 +120,8 @@ public class Game {
 					.equals("y");
 			if (restart) {
 				run();
-			} else {
-				return;
 			}
+			return;
 		}
 	}
 
