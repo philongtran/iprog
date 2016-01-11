@@ -66,37 +66,31 @@ public class Game {
 					case UP:
 						if (canMoveInDirection(currentPlayer, action)) {
 							move(currentPlayer, action);
-							break;
 						} else {
 							i = playerRetry(i);
-							break;
 						}
-
+						break;
 					case DOWN:
 						if (canMoveInDirection(currentPlayer, action)) {
 							move(currentPlayer, action);
-							break;
 						} else {
 							i = playerRetry(i);
-							break;
 						}
-
+						break;
 					case LEFT:
 						if (canMoveInDirection(currentPlayer, action)) {
 							move(currentPlayer, action);
-							break;
 						} else {
 							i = playerRetry(i);
-							break;
 						}
+						break;
 					case RIGHT:
 						if (canMoveInDirection(currentPlayer, action)) {
 							move(currentPlayer, action);
-							break;
 						} else {
 							i = playerRetry(i);
-							break;
 						}
+						break;
 					case HELP:
 						IO.writeln(
 								"Up: w | Down: s | Left: a | Right: d | Restart: r | New game: n | Quit: q | Help: h");
@@ -122,13 +116,9 @@ public class Game {
 					display.draw(i, checkScore());
 				}
 			}
-			String direction = IO.promptAndRead("a? ").toLowerCase().substring(0, 1);
-			switch (direction) {
-			case "y":
+			boolean restart = IO.promptAndRead("a? ").toLowerCase().substring(0, 1) == "y";
+			if (restart) {
 				run();
-			default:
-				return;
-			// System.exit(0);
 			}
 		}
 	}
