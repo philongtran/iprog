@@ -195,7 +195,7 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean true if move is legitimate
 	 */
-	private boolean oobCheck(Player player, Action direction) {
+	private boolean isOutOfBounds(Player player, Action direction) {
 		if (direction.equals(Action.UP) && player.getY() > 0) {
 			return true;
 		}
@@ -220,16 +220,18 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean true if move is legitimate
 	 */
-	private boolean collisionCheck(Player player, Action direction) {
+	private boolean isColliding(Player player, Action direction) {
+		int x = player.getX();
+		int y = player.getY();
 		switch (direction) {
 		case DOWN:
-			return board.getValue(player.getX(), player.getY() + 1) >= 0;
+			return board.getValue(x, y + 1) >= 0;
 		case LEFT:
-			return board.getValue(player.getX() - 1, player.getY()) >= 0;
+			return board.getValue(x - 1, y) >= 0;
 		case RIGHT:
-			return board.getValue(player.getX() + 1, player.getY()) >= 0;
+			return board.getValue(x + 1, y) >= 0;
 		case UP:
-			return board.getValue(player.getX(), player.getY() - 1) >= 0;
+			return board.getValue(x, y - 1) >= 0;
 		default:
 			return false;
 		}
@@ -245,7 +247,7 @@ public class Game {
 	 * @return - Returns boolean true if move is legitimate
 	 */
 	private boolean canMoveInDirection(Player player, Action direction) {
-		return oobCheck(player, direction) && collisionCheck(player, direction);
+		return isOutOfBounds(player, direction) && isColliding(player, direction);
 	}
 
 	/**
