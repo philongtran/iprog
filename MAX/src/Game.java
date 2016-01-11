@@ -96,7 +96,6 @@ public class Game {
 							i = playerRetry(i);
 							break;
 						}
-
 					case RIGHT:
 						if (check(currentPlayer, direction)) {
 							removePlayerFromPreviousPosition(currentPlayer);
@@ -107,29 +106,23 @@ public class Game {
 							i = playerRetry(i);
 							break;
 						}
-
 					case HELP:
 						IO.writeln(
 								"Up: w | Down: s | Left: a | Right: d | Restart: r | New game: n | Quit: q | Help: h");
 						IO.promptAndRead("Press any key to continue.");
 						i = playerRetry(i);
 						break;
-
 					case RESTART:
 						restart = true;
 						initializeGame();
 						i = -1;
 						break;
-
 					case NEW:
 						initializeGame();
 						i = -1;
 						break;
-
 					case QUIT:
 						return;
-					// System.exit(0);
-
 					default:
 						i = playerRetry(i);
 						break;
