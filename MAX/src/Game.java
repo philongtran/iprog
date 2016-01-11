@@ -221,20 +221,18 @@ public class Game {
 	 * @return - Returns boolean true if move is legitimate
 	 */
 	private boolean collisionCheck(Player player, Action direction) {
-		if (direction.equals(Action.UP) && board.getValue(player.getX(), player.getY() - 1) >= 0) {
-			return true;
+		switch (direction) {
+		case DOWN:
+			return board.getValue(player.getX(), player.getY() + 1) >= 0;
+		case LEFT:
+			return board.getValue(player.getX() - 1, player.getY()) >= 0;
+		case RIGHT:
+			return board.getValue(player.getX() + 1, player.getY()) >= 0;
+		case UP:
+			return board.getValue(player.getX(), player.getY() - 1) >= 0;
+		default:
+			return false;
 		}
-		if (direction.equals(Action.DOWN) && board.getValue(player.getX(), player.getY() + 1) >= 0) {
-			return true;
-		}
-		if (direction.equals(Action.LEFT) && board.getValue(player.getX() - 1, player.getY()) >= 0) {
-			return true;
-		}
-		if (direction.equals(Action.RIGHT) && board.getValue(player.getX() + 1, player.getY()) >= 0) {
-			System.out.println(board.getValue(player.getX(), player.getX() + 1));
-			return true;
-		}
-		return false;
 	}
 
 	/**
