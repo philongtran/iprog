@@ -1,5 +1,5 @@
 /**
- * Visible representation of a players direction
+ * Visible representation of a players action
  *
  * @author Manuel Wessner <191711>
  * @author Phi Long Tran <191624>
@@ -10,37 +10,37 @@ enum Action {
 
 	LEFT("a"), RIGHT("d"), UP("w"), DOWN("s"), RESTART("r"), NEW("n"), QUIT("q"), HELP("h"), UNKNOWN("");
 
-	private final String direction;
+	private final String key;
 
 	/**
-	 * Representation of direction as string.
+	 * Representation of action as string.
 	 * 
-	 * @param directionAsString
-	 *            - Representation of direction as string
+	 * @param key
+	 *            - Representation of action as string
 	 */
-	private Action(String directionAsString) {
-		this.direction = directionAsString;
+	private Action(String key) {
+		this.key = key;
 	}
 
 	/**
-	 * Returns the direction as string.
+	 * Returns the action as string.
 	 * 
 	 * @return - Returns the direction as string
 	 */
-	private String getDirection() {
-		return direction;
+	private String getAction() {
+		return key;
 	}
 
 	/**
-	 * Gets the corresponding direction value of a string.
+	 * Gets the corresponding action value of a string.
 	 * 
-	 * @param direction
+	 * @param action
 	 *            - w,a,s,d
-	 * @return - Direction as Enum
+	 * @return - Action as Enum
 	 */
-	static Action of(String direction) {
+	static Action of(String action) {
 		for (Action directionEnum : Action.values()) {
-			if (directionEnum.getDirection().equals(direction)) {
+			if (directionEnum.getAction().equals(action)) {
 				return directionEnum;
 			}
 		}
