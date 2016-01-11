@@ -68,7 +68,7 @@ public class Game {
 						if (canMoveInDirection(currentPlayer, direction)) {
 							removePlayerFromPreviousPosition(currentPlayer);
 							currentPlayer.moveUp();
-							calcSet(i);
+							addScoreAndSetNewPosition(i);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -79,7 +79,7 @@ public class Game {
 						if (canMoveInDirection(currentPlayer, direction)) {
 							removePlayerFromPreviousPosition(currentPlayer);
 							currentPlayer.moveDown();
-							calcSet(i);
+							addScoreAndSetNewPosition(i);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -90,7 +90,7 @@ public class Game {
 						if (canMoveInDirection(currentPlayer, direction)) {
 							removePlayerFromPreviousPosition(currentPlayer);
 							currentPlayer.moveLeft();
-							calcSet(i);
+							addScoreAndSetNewPosition(i);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -100,7 +100,7 @@ public class Game {
 						if (canMoveInDirection(currentPlayer, direction)) {
 							removePlayerFromPreviousPosition(currentPlayer);
 							currentPlayer.moveRight();
-							calcSet(i);
+							addScoreAndSetNewPosition(i);
 							break;
 						} else {
 							i = playerRetry(i);
@@ -273,11 +273,15 @@ public class Game {
 	 * @param playerID
 	 *            - ID of the player which score and position should be set
 	 */
-	private void calcSet(int playerID) {
+	private void addScoreAndSetNewPosition(int playerID) {
 		// add the value of the board to the score
-		player[playerID].addScore(board.getValue(player[playerID].getX(), player[playerID].getY()));
+		Player myPlayer = player[playerID];
+		int x = myPlayer.getX();
+		int y = myPlayer.getY();
+
+		myPlayer.addScore(board.getValue(x, y));
 		// marks the field to be player owned
-		board.setPlayer(player[playerID].getX(), player[playerID].getY(), player[playerID].getColor());
+		board.setPlayer(x, y, myPlayer.getColor());
 	}
 
 	/**
