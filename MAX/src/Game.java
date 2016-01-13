@@ -8,6 +8,7 @@
  */
 
 public class Game {
+	private static final String HELP_FORMAT = "%-12s | %-12s | %-12s | %-12s |\n%-12s | %-12s | %-12s | %-12s |";
 	private final int SCORE_LIMIT = 5;
 	private final int PLAYER_COUNT;
 	private final int BOARD_SIZE_X;
@@ -55,7 +56,8 @@ public class Game {
 					break;
 				}
 				// reads keyboard input to move the active player
-				Action action = Action.of(IO.promptAndRead("i: ").toLowerCase().substring(0, 1));
+				Action action = Action.of(IO.promptAndRead("i: ").toLowerCase()
+						.substring(0, 1));
 				// temporary variable to hold current player
 				Player currentPlayer = player[i];
 				// cases which are allowed
@@ -89,7 +91,10 @@ public class Game {
 					}
 					break;
 				case HELP:
-					IO.writeln("Up: w | Down: s | Left: a | Right: d | Restart: r | New game: n | Quit: q | Help: h");
+					String helpText = String.format(HELP_FORMAT, "Up: w",
+							"Down: s", "Left: a", "Right: d", "Restart: r",
+							"New game: n", "Quit: q", "Help: h");
+					IO.writeln(helpText);
 					IO.promptAndRead("Press any key to continue.");
 					i = playerRetry(i);
 					break;
@@ -112,7 +117,8 @@ public class Game {
 				display.draw(i, checkScore());
 			}
 		}
-		restart = IO.promptAndRead("again? Type Y for yes or N for no").toLowerCase().substring(0, 1).equals("y");
+		restart = IO.promptAndRead("again? Type Y for yes or N for no")
+				.toLowerCase().substring(0, 1).equals("y");
 		if (restart) {
 			run();
 		}
@@ -147,11 +153,13 @@ public class Game {
 	 */
 	private void initializeGame() throws CloneNotSupportedException {
 		// set starting positions
-		playerPosition = new PlayerPosition(BOARD_SIZE_X, BOARD_SIZE_Y, PLAYER_COUNT);
+		playerPosition = new PlayerPosition(BOARD_SIZE_X, BOARD_SIZE_Y,
+				PLAYER_COUNT);
 		int[][] position = playerPosition.getPosition();
 		// create players with starting location and color
 		for (int i = 0; i < PLAYER_COUNT; i++) {
-			player[i] = new Player(position[i][0], position[i][1], (i + 1) * (-1));
+			player[i] = new Player(position[i][0], position[i][1], (i + 1)
+					* (-1));
 		}
 		try {
 			// restart game logic
@@ -168,7 +176,8 @@ public class Game {
 		}
 		// plants the players on the board
 		for (int i = 0; i < player.length; i++) {
-			board.setPlayer(player[i].getX(), player[i].getY(), player[i].getColor());
+			board.setPlayer(player[i].getX(), player[i].getY(),
+					player[i].getColor());
 		}
 		// displays score and board
 		this.display = new Display(player, board);
@@ -246,7 +255,8 @@ public class Game {
 	 * @return - Returns boolean true if move is legitimate
 	 */
 	private boolean canMoveInDirection(Player player, Action direction) {
-		return isOutOfBounds(player, direction) && isColliding(player, direction);
+		return isOutOfBounds(player, direction)
+				&& isColliding(player, direction);
 	}
 
 	/**
