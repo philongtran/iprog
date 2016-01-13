@@ -1,2 +1,2 @@
-# iprog
-IProg - Interactive Programs
+# IProg - Interactive Programs
+HS Heilbronn SEB WS15/16
