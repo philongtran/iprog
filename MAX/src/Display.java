@@ -45,7 +45,7 @@ public class Display {
 	 * @param checkScore
 	 *            - Boolean if score limit is reached
 	 */
-	public void showScore(int playerID, boolean checkScore) {
+	private void showScore(int playerID, boolean checkScore) {
 		String score = "";
 		for (int i = 0; i < player.length; i++) {
 			score += "Score " + returnLetter(player[i].getColor()) + ": " + player[i].getScore() + " ";
