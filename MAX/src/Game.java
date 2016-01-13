@@ -8,6 +8,7 @@
  */
 
 public class Game {
+	private static final String HELP_FORMAT = "%-12s | %-12s | %-12s | %-12s |\n%-12s | %-12s | %-12s | %-12s |";
 	private final int SCORE_LIMIT = 105;
 	private final int PLAYER_COUNT;
 	private final int BOARD_SIZE_X;
@@ -45,108 +46,101 @@ public class Game {
 	 */
 	public void run() throws Exception {
 		initializeGame();
-		boolean playAgain = true;
 
-		// runs as long as player wants to
-		while (playAgain) {
-			// runs while players are below score
-			while (!checkScore()) {
+		// runs while players are below score
+		while (!checkScore()) {
 
-				for (int i = 0; i < player.length; i++) {
-					// checks if score limit is reached
-					if (checkScore()) {
-						break;
-					}
-					// reads keyboard input to move the active player
-					Direction direction = Direction.of(IO.promptAndRead("i: ").toLowerCase().substring(0, 1));
-					// temporary variable to hold current player
-					Player currentPlayer = player[i];
-					// cases which are allowed
-					switch (direction) {
-
-					case UP:
-						if (check(currentPlayer, direction)) {
-							removePlayerFromPreviousPosition(currentPlayer);
-							currentPlayer.moveUp();
-							calcSet(i);
-							break;
-						} else {
-							i = playerRetry(i);
-							break;
-						}
-
-					case DOWN:
-						if (check(currentPlayer, direction)) {
-							removePlayerFromPreviousPosition(currentPlayer);
-							currentPlayer.moveDown();
-							calcSet(i);
-							break;
-						} else {
-							i = playerRetry(i);
-							break;
-						}
-
-					case LEFT:
-						if (check(currentPlayer, direction)) {
-							removePlayerFromPreviousPosition(currentPlayer);
-							currentPlayer.moveLeft();
-							calcSet(i);
-							break;
-						} else {
-							i = playerRetry(i);
-							break;
-						}
-
-					case RIGHT:
-						if (check(currentPlayer, direction)) {
-							removePlayerFromPreviousPosition(currentPlayer);
-							currentPlayer.moveRight();
-							calcSet(i);
-							break;
-						} else {
-							i = playerRetry(i);
-							break;
-						}
-
-					case HELP:
-						IO.writeln(
-								"Up: w | Down: s | Left: a | Right: d | Restart: r | New game: n | Quit: q | Help: h");
-						IO.promptAndRead("Press any key to continue.");
-						i = playerRetry(i);
-						break;
-
-					case RESTART:
-						restart = true;
-						initializeGame();
-						i = -1;
-						break;
-
-					case NEW:
-						initializeGame();
-						i = -1;
-						break;
-
-					case QUIT:
-						return;
-					// System.exit(0);
-
-					default:
-						i = playerRetry(i);
-						break;
-					}
-					// displays score and board
-					display.draw(i, checkScore());
+			for (int i = 0; i < player.length; i++) {
+				// checks if score limit is reached
+				if (checkScore()) {
+					break;
 				}
-			}
-			String direction = IO.promptAndRead("a? ").toLowerCase().substring(0, 1);
-			switch (direction) {
-			case "y":
-				run();
-			default:
-				return;
-			// System.exit(0);
+				// reads keyboard input to move the active player
+				Action action = Action.of(IO.promptAndRead("i: ").toLowerCase().substring(0, 1));
+				// temporary variable to hold current player
+				Player currentPlayer = player[i];
+				// cases which are allowed
+				switch (action) {
+				case UP:
+					if (canMoveInDirection(currentPlayer, action)) {
+						move(currentPlayer, action);
+					} else {
+						i = playerRetry(i);
+					}
+					break;
+				case DOWN:
+					if (canMoveInDirection(currentPlayer, action)) {
+						move(currentPlayer, action);
+					} else {
+						i = playerRetry(i);
+					}
+					break;
+				case LEFT:
+					if (canMoveInDirection(currentPlayer, action)) {
+						move(currentPlayer, action);
+					} else {
+						i = playerRetry(i);
+					}
+					break;
+				case RIGHT:
+					if (canMoveInDirection(currentPlayer, action)) {
+						move(currentPlayer, action);
+					} else {
+						i = playerRetry(i);
+					}
+					break;
+				case HELP:
+					String helpText = String.format(HELP_FORMAT, "Up: w", "Down: s", "Left: a", "Right: d",
+							"Restart: r", "New game: n", "Quit: q", "Help: h");
+					IO.writeln(helpText);
+					IO.promptAndRead("Press any key to continue.");
+					i = playerRetry(i);
+					break;
+				case RESTART:
+					restart = true;
+					initializeGame();
+					i = -1;
+					break;
+				case NEW:
+					initializeGame();
+					i = -1;
+					break;
+				case QUIT:
+					return;
+				default:
+					i = playerRetry(i);
+					break;
+				}
+				// displays score and board
+				display.draw(i, checkScore());
 			}
 		}
+		restart = IO.promptAndRead("again? Type Y for yes or N for no").toLowerCase().substring(0, 1).equals("y");
+		if (restart) {
+			run();
+		}
+		return;
+	}
+
+	private void move(Player currentPlayer, Action direction) {
+		removePlayerFromPreviousPosition(currentPlayer);
+		switch (direction) {
+		case DOWN:
+			currentPlayer.moveDown();
+			break;
+		case LEFT:
+			currentPlayer.moveLeft();
+			break;
+		case RIGHT:
+			currentPlayer.moveRight();
+			break;
+		case UP:
+			currentPlayer.moveUp();
+			break;
+		default:
+			break;
+		}
+		addScoreAndSetNewPosition(currentPlayer);
 	}
 
 	/**
@@ -204,20 +198,19 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean true if move is legitimate
 	 */
-	private boolean oobCheck(Player player, Direction direction) {
-		if (direction.equals(Direction.UP) && player.getY() > 0) {
-			return true;
+	private boolean isOutOfBounds(Player player, Action direction) {
+		switch (direction) {
+		case LEFT:
+			return player.getX() > 0;
+		case RIGHT:
+			return player.getX() + 1 < board.getSizeX();
+		case DOWN:
+			return player.getY() + 1 < board.getSizeY();
+		case UP:
+			return player.getY() > 0;
+		default:
+			return false;
 		}
-		if (direction.equals(Direction.DOWN) && player.getY() + 1 < board.getSizeY()) {
-			return true;
-		}
-		if (direction.equals(Direction.LEFT) && player.getX() > 0) {
-			return true;
-		}
-		if (direction.equals(Direction.RIGHT) && player.getX() + 1 < board.getSizeX()) {
-			return true;
-		}
-		return false;
 	}
 
 	/**
@@ -229,21 +222,21 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean true if move is legitimate
 	 */
-	private boolean collisionCheck(Player player, Direction direction) {
-		if (direction.equals(Direction.UP) && board.getValue(player.getX(), player.getY() - 1) >= 0) {
-			return true;
+	private boolean isColliding(Player player, Action direction) {
+		int x = player.getX();
+		int y = player.getY();
+		switch (direction) {
+		case LEFT:
+			return board.getValue(x - 1, y) >= 0;
+		case RIGHT:
+			return board.getValue(x + 1, y) >= 0;
+		case DOWN:
+			return board.getValue(x, y + 1) >= 0;
+		case UP:
+			return board.getValue(x, y - 1) >= 0;
+		default:
+			return false;
 		}
-		if (direction.equals(Direction.DOWN) && board.getValue(player.getX(), player.getY() + 1) >= 0) {
-			return true;
-		}
-		if (direction.equals(Direction.LEFT) && board.getValue(player.getX() - 1, player.getY()) >= 0) {
-			return true;
-		}
-		if (direction.equals(Direction.RIGHT) && board.getValue(player.getX() + 1, player.getY()) >= 0) {
-			System.out.println(board.getValue(player.getX(), player.getX() + 1));
-			return true;
-		}
-		return false;
 	}
 
 	/**
@@ -255,8 +248,8 @@ public class Game {
 	 *            - Which direction does the player want to go
 	 * @return - Returns boolean true if move is legitimate
 	 */
-	private boolean check(Player player, Direction direction) {
-		return oobCheck(player, direction) && collisionCheck(player, direction);
+	private boolean canMoveInDirection(Player player, Action direction) {
+		return isOutOfBounds(player, direction) && isColliding(player, direction);
 	}
 
 	/**
@@ -277,14 +270,17 @@ public class Game {
 	/**
 	 * Makes the calculation of the score and sets the players new position.
 	 * 
-	 * @param playerID
-	 *            - ID of the player which score and position should be set
+	 * @param currentPlayer
+	 *            - player whos turn it is
 	 */
-	private void calcSet(int playerID) {
+	private void addScoreAndSetNewPosition(Player currentPlayer) {
 		// add the value of the board to the score
-		player[playerID].addScore(board.getValue(player[playerID].getX(), player[playerID].getY()));
+		int x = currentPlayer.getX();
+		int y = currentPlayer.getY();
+
+		currentPlayer.addScore(board.getValue(x, y));
 		// marks the field to be player owned
-		board.setPlayer(player[playerID].getX(), player[playerID].getY(), player[playerID].getColor());
+		board.setPlayer(x, y, currentPlayer.getColor());
 	}
 
 	/**
