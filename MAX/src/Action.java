@@ -40,7 +40,7 @@ enum Action {
 	 */
 	static Action of(String action) {
 		for (Action directionEnum : Action.values()) {
-			if (directionEnum.getAction().equals(action)) {
+			if (directionEnum.getAction().equalsIgnoreCase(action)) {
 				return directionEnum;
 			}
 		}
