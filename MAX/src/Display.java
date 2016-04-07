@@ -1,3 +1,8 @@
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 /**
  * This class prints all to the screen.
  *
@@ -6,8 +11,10 @@
  * @author Steve Nono <191709>
  */
 
-public class Display {
+public class Display extends JFrame {
 
+	private static final int HUNDRED = 100;
+	private static final long serialVersionUID = 2968051855032865899L;
 	private Player[] player;
 	private Board board;
 
@@ -22,6 +29,9 @@ public class Display {
 	public Display(Player[] player, Board board) {
 		this.player = player;
 		this.board = board;
+		setLayout(new GridLayout(board.getSizeX(), board.getSizeY()));
+		setSize(board.getSizeX() * HUNDRED, board.getSizeY() * 100);
+		setVisible(true);
 	}
 
 	/**
@@ -73,14 +83,14 @@ public class Display {
 	private void showBoard(Board board) {
 		for (int y = 0; y < board.getSizeY(); y++) {
 			for (int x = 0; x < board.getSizeX(); x++) {
-				if (board.getValue(x, y) < 0) {
-					IO.write(returnLetter(board.getValue(x, y)) + " ");
+				int boardValue = board.getValue(x, y);
+				if (boardValue < 0) {
+					getContentPane().add(new JLabel(returnLetter(boardValue)));
 				} else {
-					IO.write(board.getValue(x, y) + " ");
+					getContentPane().add(new JLabel(String.valueOf(boardValue)));
 				}
 
 			}
-			IO.writeln("");
 		}
 	}
 
